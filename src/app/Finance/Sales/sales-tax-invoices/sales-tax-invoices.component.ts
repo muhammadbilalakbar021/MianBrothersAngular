@@ -80,7 +80,9 @@ export class SalesTaxInvoicesComponent implements OnInit {
     });
   }
   onDelete(index: any) {
-    this._purchaseService
+    var text = "Are you sure to delete?";
+    if (confirm(text) == true) {
+      this._purchaseService
       .deletePurchseSales(this.salesTaxTableData[index].id)
       .then(
         (res: any) => {
@@ -89,6 +91,10 @@ export class SalesTaxInvoicesComponent implements OnInit {
         (err: any) => {
         }
       );
+    }
+    else {
+      alert('You pressed cancel');
+    }
   }
   printReceipt(id: any) {
     let data: any = document.getElementById(id) as HTMLElement;

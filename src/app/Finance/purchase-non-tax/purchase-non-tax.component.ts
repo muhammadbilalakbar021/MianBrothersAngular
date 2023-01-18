@@ -97,12 +97,19 @@ export class PurchaseNonTaxComponent implements OnInit {
     });
   }
   onDelete(index: any) {
-    console.log("index",this.purchaseNonTaxTableData[index].id)
-    this._purchaseService.deletePurchseSales(this.purchaseNonTaxTableData[index].id).then((res:any)=>{
-      window.location.reload();
-    },
-    (err: any) => {
-    })
+    var text = "Are you sure to delete?";
+    if (confirm(text) == true) {
+      console.log("index",this.purchaseNonTaxTableData[index].id)
+      this._purchaseService.deletePurchseSales(this.purchaseNonTaxTableData[index].id).then((res:any)=>{
+        window.location.reload();
+      },
+      (err: any) => {
+      });
+    }
+    else {
+      alert('You pressed cancel');
+    }
+
   }
   printReceipt(id: any) {
 

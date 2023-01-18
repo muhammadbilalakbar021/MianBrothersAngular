@@ -88,7 +88,9 @@ export class BillOfMaterialComponent implements OnInit {
   }
 
   onDelete(index: any) {
-    this._purchaseService
+    var text = "Are you sure to delete?";
+    if (confirm(text) == true) {
+      this._purchaseService
       .deleteBillOfMaterial(this.billOfMaterialTable[index].orderId)
       .then(
         (res: any) => {
@@ -97,6 +99,10 @@ export class BillOfMaterialComponent implements OnInit {
         (err: any) => {
         }
       );
+    }
+    else {
+      alert('You pressed cancel');
+    }
   }
   printReceipt(id: any) {
     let data: any = document.getElementById(id) as HTMLElement;

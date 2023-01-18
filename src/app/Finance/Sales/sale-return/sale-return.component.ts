@@ -93,7 +93,9 @@ export class SaleReturnComponent implements OnInit {
       });
   }
   onDelete(index: any) {
-    this.purchaseService
+    var text = "Are you sure to delete?";
+    if (confirm(text) == true) {
+      this.purchaseService
       .deletePurchseReturn(this.salesReturnTableData[index].returnId)
       .then(
         (res: any) => {
@@ -102,6 +104,10 @@ export class SaleReturnComponent implements OnInit {
         (err: any) => {
         }
       );
+    }
+    else {
+      alert('You pressed cancel');
+    }
   }
   printReceipt(id: any) {
     let data: any = document.getElementById(id) as HTMLElement;

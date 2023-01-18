@@ -77,11 +77,17 @@ export class BankPaymentComponent implements OnInit {
     }
   }
   onDelete(index: any) {
-    this._purchaseService.deleteBankPayment(this.bankPaymentTable[index].id).then((res:any)=>{
-      window.location.reload();
-    },
-    (err: any) => {
-    })
+    var text = "Are you sure to delete?";
+    if (confirm(text) == true) {
+      this._purchaseService.deleteBankPayment(this.bankPaymentTable[index].id).then((res:any)=>{
+        window.location.reload();
+      },
+      (err: any) => {
+      })
+    }
+    else {
+      alert('You pressed cancel');
+    }
   }
   printReceipt(id: any) {
 

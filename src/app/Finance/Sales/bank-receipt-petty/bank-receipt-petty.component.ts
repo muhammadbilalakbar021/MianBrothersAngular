@@ -65,7 +65,9 @@ export class BankReceiptPettyComponent implements OnInit {
     });
   }
   onDelete(index: any) {
-    this._purchaseService
+    var text = "Are you sure to delete?";
+    if (confirm(text) == true) {
+      this._purchaseService
       .deleteBankPayment(this.bankReceiptPettyPaymentTable[index].id)
       .then(
         (res: any) => {
@@ -74,6 +76,10 @@ export class BankReceiptPettyComponent implements OnInit {
         (err: any) => {
         }
       );
+    }
+    else {
+      alert('You pressed cancel');
+    }
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

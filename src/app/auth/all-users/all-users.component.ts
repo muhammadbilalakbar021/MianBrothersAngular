@@ -31,8 +31,8 @@ export class AllUsersComponent implements OnInit {
     private _accountService: AccountsService,
     public dialog: MatDialog,
     public _employeeService: EmployeeService,
-    private _snackbar:MatSnackBar
-  ) {}
+    private _snackbar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this._accountService.getAllUsers().then((res: any) => {
@@ -44,16 +44,41 @@ export class AllUsersComponent implements OnInit {
   }
 
   onDelete(index: any) {
-    this._employeeService.deleteUser(this.allUsers[index].id).then(
-      (deletedEmp: any) => {
-        console.log('deletedEmp' + deletedEmp);
-        window.location.reload();
-      },
-      (err: any) => {
-      }
-    );
-    console.log('deleteUser', this.allUsers[index].id);
+    var text = "Are you sure to delete?";
+    if (confirm(text) == true) {
+      this._employeeService.deleteUser(this.allUsers[index].id).then(
+        (deletedEmp: any) => {
+          console.log('deletedEmp' + deletedEmp);
+          window.location.reload();
+        },
+        (err: any) => {
+        }
+      );
+      console.log('deleteUser', this.allUsers[index].id);
+    }
+    else {
+      alert('You pressed cancel');
+    }
+
   }
+
+
+  // confirmation(index: any) 
+  // {
+  //   var text = "Are you sure to delete?";
+  //   if (confirm(text) == true) {
+  //       this._employeeService.deleteUser(this.allUsers[index].id).then(
+  //         (deletedEmp: any) => {
+  //           console.log('deletedEmp' + deletedEmp);
+  //           window.location.reload();
+  //         },
+  //         (err: any) => {
+  //         }
+  //       );
+  //       console.log('deleteUser', this.allUsers[index].id);
+  //     }
+  //   }
+  // }
 
   onEdit(index: any) {
     this.dialog.open(EditAllUserComponent, {

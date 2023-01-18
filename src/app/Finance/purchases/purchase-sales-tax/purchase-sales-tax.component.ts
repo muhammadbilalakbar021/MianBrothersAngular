@@ -118,10 +118,9 @@ export class PurchaseSalesTaxComponent implements OnInit {
     });
   }
 
-  confirmation(){
-    var result = confirm("Are you sure to delete?");
-    if(result){
-      (index: any) => {
+  onDelete(index: any){
+    var text = "Are you sure to delete?";
+    if (confirm(text) == true) {
         this._purchaseService
           .deletePurchseSales(this.purchaseSalesTaxTableData[index].id)
           .then(
@@ -131,8 +130,11 @@ export class PurchaseSalesTaxComponent implements OnInit {
             (err: any) => {
             }
           );
-      }
     }
+    else {
+      alert('You pressed cancel');
+    }
+    
   }
 
   printReceipt(id: any) {

@@ -95,7 +95,9 @@ export class DeliveryChallanComponent implements OnInit {
     }
   }
   onDelete(index: any) {
-    this._purchaseSevice
+    var text = "Are you sure to delete?";
+    if (confirm(text) == true) {
+      this._purchaseSevice
       .deleteAdjustments(this.deliveryChallanTableData[index].id)
       .then(
         (res: any) => {
@@ -104,6 +106,10 @@ export class DeliveryChallanComponent implements OnInit {
         (err: any) => {
         }
       );
+    }
+    else {
+      alert('You pressed cancel');
+    }
   }
   printReceipt(id: any) {
     let data: any = document.getElementById(id) as HTMLElement;

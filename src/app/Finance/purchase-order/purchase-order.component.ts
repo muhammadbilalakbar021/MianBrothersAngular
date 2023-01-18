@@ -112,12 +112,18 @@ export class PurchaseOrderComponent implements OnInit {
       });
   }
   onDelete(index: any) {
-    this._purchaseService.deletePurchseOrder(this.purchaseTableData[index].orderId).then((res:any)=>{
-      console.log('deleted',res);
-      window.location.reload();
-    },
-    (err: any) => {
-    })
+    var text = "Are you sure to delete?";
+    if (confirm(text) == true) {
+      this._purchaseService.deletePurchseOrder(this.purchaseTableData[index].orderId).then((res:any)=>{
+        console.log('deleted',res);
+        window.location.reload();
+      },
+      (err: any) => {
+      })
+    }
+    else {
+      alert('You pressed cancel');
+    }
   }
   printReceipt(id: any) {
 

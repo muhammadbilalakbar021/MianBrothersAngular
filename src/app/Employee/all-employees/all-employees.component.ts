@@ -46,7 +46,9 @@ export class AllEmployeesComponent implements OnInit {
   }
 
   onDelete(index: any) {
-    this._employeeService
+    var text = "Are you sure to delete?";
+    if (confirm(text) == true) {
+      this._employeeService
       .deleteEmployee(this.allEmployees[index].id)
       .then((deletedEmp: any) => {
         console.log('deletedEmp' + deletedEmp);
@@ -55,6 +57,11 @@ export class AllEmployeesComponent implements OnInit {
       (err: any) => {
       });
     console.log('deleteUser', this.allEmployees[index].id);
+    }
+    else {
+      alert('You pressed cancel');
+    }
+
   }
 
   onEdit(index: any) {
