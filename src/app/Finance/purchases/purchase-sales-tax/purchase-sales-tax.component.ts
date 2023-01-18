@@ -117,17 +117,24 @@ export class PurchaseSalesTaxComponent implements OnInit {
       },
     });
   }
-  onDelete(index: any) {
-    this._purchaseService
-      .deletePurchseSales(this.purchaseSalesTaxTableData[index].id)
-      .then(
-        (res: any) => {
-          window.location.reload();
-        },
-        (err: any) => {
-        }
-      );
+
+  confirmation(){
+    var result = confirm("Are you sure to delete?");
+    if(result){
+      (index: any) => {
+        this._purchaseService
+          .deletePurchseSales(this.purchaseSalesTaxTableData[index].id)
+          .then(
+            (res: any) => {
+              window.location.reload();
+            },
+            (err: any) => {
+            }
+          );
+      }
+    }
   }
+
   printReceipt(id: any) {
     let data: any = document.getElementById(id) as HTMLElement;
     let pdf = new jspdf('p', 'mm', 'a4');
