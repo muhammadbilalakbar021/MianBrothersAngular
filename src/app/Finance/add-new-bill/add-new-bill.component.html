@@ -187,44 +187,6 @@
         </div>
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Rate</mat-label>
-            <input
-              matInput
-              #itemCode
-              required
-              type="number"
-              formControlName="rate"
-            />
-          </mat-form-field>
-          <div
-            *ngIf="
-              addNewBillForm.controls['rate'].invalid &&
-              (addNewBillForm.controls['rate'].dirty ||
-                addNewBillForm.controls['rate'].touched)
-            "
-          >
-            <mat-error
-              *ngIf="
-            this.addNewBillForm.controls.rate.errors?.['required']
-            "
-              >Rate is Required</mat-error
-            >
-            <mat-error
-              *ngIf="
-            this.addNewBillForm.controls.rate.errors?.['minlength']
-            "
-              >Min 1 Characters</mat-error
-            >
-            <mat-error
-              *ngIf="
-            this.addNewBillForm.controls.rate.errors?.['maxlength']
-            "
-              >Max 1000000 Characters</mat-error
-            >
-          </div>
-        </div>
-        <div class="col-md-4">
-          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Estimated Labour Cost</mat-label>
             <input
               matInput
