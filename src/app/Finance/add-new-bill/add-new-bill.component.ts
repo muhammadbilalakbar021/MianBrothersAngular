@@ -110,14 +110,7 @@ export class AddNewBillComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
-      rate: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(1000000),
-        ],
-      ],
+ 
       quantity: [
         '',
         [
@@ -226,10 +219,11 @@ export class AddNewBillComponent implements OnInit {
     for (let i = 0; i < this.forms.length; i++) {
       console.log(this.forms[i].formGroup.value);
       console.log(this.forms[i].formGroup.getRawValue());
+      console.log(this.allRawData[i].itemCode,"HEHEHEHEH")
       temp.push({
-            productName: this.allRawData[this.raw_index].productName,
-            productItemCode: this.allRawData[this.raw_index].itemCode,
-            productId: this.allRawData[this.raw_index].id,
+            productName: this.allRawData[i].productName,
+            productItemCode: this.allRawData[i].itemCode,
+            productId: this.allRawData[i].id,
             unit: this.forms[i].formGroup.value.unit,
             quantity: this.forms[i].formGroup.value.quantity,
             rate: this.forms[i].formGroup.value.rate
@@ -243,7 +237,6 @@ export class AddNewBillComponent implements OnInit {
       productId: this.allFinishedData[this.finished_index].id,
       unit: this.addNewBillForm.controls['unit'].value,
       quantity: this.addNewBillForm.controls['quantity'].value,
-      rate : this.addNewBillForm.controls['rate'].value,
       labourCost : this.addNewBillForm.controls['estimatedLabourCost'].value,
       factoryOverhead : this.addNewBillForm.controls['estimatedFactoryOver'].value,
       product: temp,
