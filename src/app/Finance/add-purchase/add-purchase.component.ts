@@ -280,14 +280,14 @@ export class AddPurchaseComponent implements OnInit {
       product: temp,
     };
     console.log(this.addPurchaseObject);
-    // this._purchaseService
-    //   .AddPurchaseOrder(this.addPurchaseObject)
-    //   .then((data: any) => {
-    //     console.log('purchase order added successfully', data);
-    //     window.location.reload();
-    //   },
-    //   (err: any) => {
-    //   });
+    this._purchaseService
+      .AddPurchaseOrder(this.addPurchaseObject)
+      .then((data: any) => {
+        console.log('purchase order added successfully', data);
+        window.location.reload();
+      },
+      (err: any) => {
+      });
   }
   /* Load Product */
   loadProduct(index: number) {

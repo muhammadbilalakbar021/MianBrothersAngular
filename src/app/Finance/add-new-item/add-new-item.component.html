@@ -15,7 +15,7 @@
   <div class="container-fluid mt-5">
     <form [formGroup]="itemForm">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Item Type</mat-label>
           <mat-select disableRipple (selectionChange)="changeValue($event.value)">
@@ -27,7 +27,7 @@
     </div>
 
    <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Item Code</mat-label>
           <input matInput #itemCode formControlName="itemCode" required type="number">
@@ -45,7 +45,7 @@
         >
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Item Name</mat-label>
           <input matInput #itemName formControlName="itemName" required>
@@ -58,6 +58,24 @@
           *ngIf="
             itemForm.controls['itemName']?.errors?.minlength ||
             itemForm.controls['itemName']?.errors?.maxlength
+          "
+          >Must be between 3 - 30 Characters</mat-error
+        >
+        </div>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Quantity</mat-label>
+          <input matInput #totalQuantity formControlName="totalQuantity" required>
+        </mat-form-field>
+        <div *ngIf="itemForm.controls['totalQuantity'].invalid && (itemForm.controls['totalQuantity'].dirty || itemForm.controls['totalQuantity'].touched)">
+          <mat-error *ngIf="
+          itemForm.controls['totalQuantity']?.errors?.required
+          ">Quantity is required</mat-error>
+        <mat-error
+          *ngIf="
+            itemForm.controls['totalQuantity']?.errors?.minlength ||
+            itemForm.controls['totalQuantity']?.errors?.maxlength
           "
           >Must be between 3 - 30 Characters</mat-error
         >

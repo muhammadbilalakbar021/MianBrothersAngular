@@ -34,6 +34,14 @@ export class AddNewItemComponent implements OnInit {
         '',
         [Validators.required, Validators.min(1), Validators.max(10000000)],
       ],
+      totalQuantity: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(1000000),
+        ],
+      ],
     });
   }
   ngOnInit(): void {}
@@ -46,6 +54,7 @@ export class AddNewItemComponent implements OnInit {
     let newItem = {
       itemCode: this.itemForm.controls['itemCode'].value,
       productName: this.itemForm.controls['itemName'].value,
+      totalQuantity: this.itemForm.controls['totalQuantity'].value,
       productType: this.itemType,
     };
 
