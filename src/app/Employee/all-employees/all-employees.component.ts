@@ -28,7 +28,9 @@ export class AllEmployeesComponent implements OnInit {
   dataSource: MatTableDataSource<any> | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
-
+  startingIndexOfPage:any;
+  endingIndexOfPage:any;
+  innerIndexCalculated:any;
   constructor(
     private _employeeService: EmployeeService,
     public dialog: MatDialog,
@@ -63,8 +65,8 @@ export class AllEmployeesComponent implements OnInit {
     }
 
   }
-
   onEdit(index: any) {
+    console.log(index,index);
     this.dialog.open(EditUserComponent, {
       data: {
         userData: this.allEmployees[index],

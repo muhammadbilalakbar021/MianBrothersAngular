@@ -12,13 +12,13 @@ import { EmployeeService } from '../../employee.service';
 })
 export class EditUserComponent implements OnInit {
   editEmployeeForm: FormBuilder | any;
-
+  editObj: any = {};
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private dataPipe: DatePipe,
     private _employeeService: EmployeeService,
-    private _snackbar : MatSnackBar
+    private _snackbar: MatSnackBar
   ) {
     this.myForm();
   }
@@ -37,7 +37,7 @@ export class EditUserComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(3),
+          Validators.minLength(2),
           Validators.maxLength(30),
         ],
       ],
@@ -45,7 +45,7 @@ export class EditUserComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(3),
+          Validators.minLength(2),
           Validators.maxLength(30),
         ],
       ],
@@ -54,7 +54,7 @@ export class EditUserComponent implements OnInit {
         [Validators.required, Validators.min(1), Validators.max(1000000)],
       ],
       joiningDate: ['', [Validators.required]],
-      leavingDate: ['',[Validators.required]],
+      leavingDate: ['', []],
       cnic: [
         '',
         [Validators.required, Validators.pattern('^[0-9]{5}-[0-9]{7}-[0-9]$')],
@@ -97,24 +97,41 @@ export class EditUserComponent implements OnInit {
   }
 
   editEmployee() {
-    let editObj = {
-      fullName: this.editEmployeeForm.controls.fullName.value,
-      position: this.editEmployeeForm.controls.position.value,
-      department: this.editEmployeeForm.controls.department.value,
-      salary: this.editEmployeeForm.controls.salary.value,
-      joiningDate: this.transformDate(
-        this.editEmployeeForm.controls.joiningDate.value
-      ),
-      cnic: this.editEmployeeForm.controls.cnic.value,
-      dob: this.transformDate(this.editEmployeeForm.controls.dob.value),
-      addressInformation:
-        this.editEmployeeForm.controls.addressInformation.value,
-      leavingDate: this.transformDate(
-        this.editEmployeeForm.controls.leavingDate.value
-      ),
-    };
+    if (this.editEmployeeForm.controls.leavingDate.value != null) {
+      this.editObj = {
+        fullName: this.editEmployeeForm.controls.fullName.value,
+        position: this.editEmployeeForm.controls.position.value,
+        department: this.editEmployeeForm.controls.department.value,
+        salary: this.editEmployeeForm.controls.salary.value,
+        joiningDate: this.transformDate(
+          this.editEmployeeForm.controls.joiningDate.value
+        ),
+        cnic: this.editEmployeeForm.controls.cnic.value,
+        dob: this.transformDate(this.editEmployeeForm.controls.dob.value),
+        addressInformation:
+          this.editEmployeeForm.controls.addressInformation.value,
+        leavingDate: this.transformDate(
+          this.editEmployeeForm.controls.leavingDate.value
+        ),
+      };
+    } else {
+      this.editObj = {
+        fullName: this.editEmployeeForm.controls.fullName.value,
+        position: this.editEmployeeForm.controls.position.value,
+        department: this.editEmployeeForm.controls.department.value,
+        salary: this.editEmployeeForm.controls.salary.value,
+        joiningDate: this.transformDate(
+          this.editEmployeeForm.controls.joiningDate.value
+        ),
+        cnic: this.editEmployeeForm.controls.cnic.value,
+        dob: this.transformDate(this.editEmployeeForm.controls.dob.value),
+        addressInformation:
+          this.editEmployeeForm.controls.addressInformation.value,
+      };
+    }
+    console.log('EDIT OBJ', this.editObj);
     this._employeeService
-      .editEmployee(editObj, this.data.userData.id)
+      .editEmployee(this.editObj, this.data.userData.id)
       .then((data: any) => {
         console.log('Data edited succesfully', data);
         window.location.reload();
