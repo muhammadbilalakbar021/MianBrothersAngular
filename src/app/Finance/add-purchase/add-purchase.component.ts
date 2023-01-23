@@ -277,6 +277,7 @@ export class AddPurchaseComponent implements OnInit {
       deliveryDate: this.transformDate(deliveryDate),
       buyingDate: this.transformDate(buyDate),
       vendorId: this.productCode[this.product_index].id,
+      vendorCode:  this.productCode[this.product_index].vendorCode,
       product: temp,
     };
     console.log(this.addPurchaseObject);

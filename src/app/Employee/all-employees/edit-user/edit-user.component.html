@@ -137,6 +137,27 @@
             <mat-label>Cnic</mat-label>
             <input matInput formControlName="cnic" />
           </mat-form-field>
+          <div
+            *ngIf="
+              editEmployeeForm.controls['cnic'].invalid &&
+              (editEmployeeForm.controls['cnic'].dirty ||
+                editEmployeeForm.controls['cnic'].touched)
+            "
+          >
+            <mat-error
+              *ngIf="editEmployeeForm.controls['cnic']?.errors?.required"
+              >CNIC Number is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                editEmployeeForm.controls['cnic']?.errors?.required ||
+                editEmployeeForm.controls['cnic']?.errors?.pattern
+              "
+            >
+              CNIC should be exactly 9 characters long. Should include hyphen
+              before the check digit.
+            </mat-error>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -199,6 +220,7 @@
             <input
               matInput
               [matDatepicker]="datepicker3"
+              formControlName="leavingDate"
             />
             <mat-datepicker-toggle
               matSuffix
