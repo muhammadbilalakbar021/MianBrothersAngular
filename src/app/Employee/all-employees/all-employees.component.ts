@@ -65,11 +65,12 @@ export class AllEmployeesComponent implements OnInit {
     }
 
   }
+
   onEdit(index: any) {
-    console.log(index,index);
+    console.log(index);
     this.dialog.open(EditUserComponent, {
       data: {
-        userData: this.allEmployees[index],
+        userData: index,
       },
     });
   }
@@ -84,5 +85,5 @@ export class AllEmployeesComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
+  }  
 }
