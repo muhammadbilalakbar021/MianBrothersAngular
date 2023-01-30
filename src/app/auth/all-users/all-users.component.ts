@@ -83,7 +83,7 @@ export class AllUsersComponent implements OnInit {
   onEdit(index: any) {
     this.dialog.open(EditAllUserComponent, {
       data: {
-        userData: this.allUsers[index],
+        userData: index,
       },
     });
   }

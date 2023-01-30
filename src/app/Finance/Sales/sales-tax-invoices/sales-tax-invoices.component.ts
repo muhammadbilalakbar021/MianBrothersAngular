@@ -75,7 +75,7 @@ export class SalesTaxInvoicesComponent implements OnInit {
   onEdit(index: any) {
     this.dialog.open(EditTaxComponent, {
       data: {
-        userData: this.salesTaxTableData[index],
+        userData: index,
       },
     });
   }

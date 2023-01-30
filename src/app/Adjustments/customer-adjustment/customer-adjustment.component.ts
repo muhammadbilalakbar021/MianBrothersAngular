@@ -67,7 +67,7 @@ export class CustomerAdjustmentComponent implements OnInit {
     console.log('INDEX', index);
     this.dialog.open(EditCustomerComponent, {
       data: {
-        userData: this.allCustomerAdjustments[index],
+        userData: index,
       },
     });
   }

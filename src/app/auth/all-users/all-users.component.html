@@ -49,7 +49,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Edit </th>
         <td mat-cell *matCellDef="let row; let i = index">
           <mat-icon class="material-symbols-outlined">
-            <span (click)="onEdit(i)">edit</span>
+            <span (click)="onEdit(row)">edit</span>
           </mat-icon>
         </td>
       </ng-container>

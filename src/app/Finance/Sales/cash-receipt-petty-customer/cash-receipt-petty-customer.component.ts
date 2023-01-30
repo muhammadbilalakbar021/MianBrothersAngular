@@ -59,7 +59,7 @@ export class CashReceiptPettyCustomerComponent implements OnInit {
   onEdit(index: any) {
     this.dialog.open(EditCashPettyComponent, {
       data: {
-        userData: this.cashReceiptPettyPaymentTable[index],
+        userData: index,
       },
     });
   }

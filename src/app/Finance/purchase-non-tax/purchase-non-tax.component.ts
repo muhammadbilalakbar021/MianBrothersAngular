@@ -92,7 +92,7 @@ export class PurchaseNonTaxComponent implements OnInit {
   openEditTaxDialog(index: any) {
     this.dialog.open(EditTaxComponent, {
       data: {
-        userData: this.purchaseNonTaxTableData[index],
+        userData: index,
       },
     });
   }

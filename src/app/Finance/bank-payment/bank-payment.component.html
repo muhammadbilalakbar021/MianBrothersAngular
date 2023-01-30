@@ -248,7 +248,7 @@
           <ng-container matColumnDef="edit">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton">Edit</th>
             <td mat-cell *matCellDef="let row; let i = index">
-              <mat-icon class="material-symbols-outlined" (click)="onEdit(i)">
+              <mat-icon class="material-symbols-outlined" (click)="onEdit(row)">
                 edit
               </mat-icon>
             </td>

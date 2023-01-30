@@ -113,7 +113,7 @@ export class PurchaseSalesTaxComponent implements OnInit {
   onEdit(index: any) {
     this.dialog.open(EditTaxComponent, {
       data: {
-        userData: this.purchaseSalesTaxTableData[index],
+        userData: index,
       },
     });
   }

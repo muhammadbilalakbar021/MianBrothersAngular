@@ -74,7 +74,7 @@ export class BankPettyComponent implements OnInit {
   onEdit(index: any) {
     this.dialog.open(EditBankPettyComponent, {
       data: {
-        userData: this.bankPettyPaymentTable[index],
+        userData: index,
       },
     });
   }

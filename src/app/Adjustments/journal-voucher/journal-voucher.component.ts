@@ -65,7 +65,7 @@ export class JournalVoucherComponent implements OnInit {
   onEdit(index: any) {
     this.dialog.open(EditJournalComponent, {
       data: {
-        userData: this.allJournalVoucher[index],
+        userData: index,
       },
     });
   }

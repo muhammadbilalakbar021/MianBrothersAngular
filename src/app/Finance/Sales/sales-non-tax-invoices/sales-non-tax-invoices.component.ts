@@ -76,7 +76,7 @@ export class SalesNonTaxInvoicesComponent implements OnInit {
   onEdit(index: any) {
     this.dialog.open(EditTaxComponent, {
       data: {
-        userData: this.salesNonTaxTableData[index],
+        userData: index,
       },
     });
   }
