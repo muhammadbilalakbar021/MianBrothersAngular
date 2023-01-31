@@ -57,7 +57,7 @@ export class AddNonPurchaseSalesComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this._purchaseService.getPurchaseOrders().subscribe((response: any) => {
+    this._purchaseService.getUngeneratedPurchaseOrders().subscribe((response: any) => {
       console.log('get purchase orders', response);
       this.getPurchaseOrders = response.payload;
     });

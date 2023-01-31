@@ -41,7 +41,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton pr-5"> Delete </th>
         <td mat-cell *matCellDef="let row; let i = index">
           <mat-icon class="material-symbols-outlined">
-            <span (click)="onDelete(dataSource.filteredData.indexOf(row))">delete</span>
+            <span (click)="onDelete(i)">delete</span>
           </mat-icon>
         </td>
       </ng-container>

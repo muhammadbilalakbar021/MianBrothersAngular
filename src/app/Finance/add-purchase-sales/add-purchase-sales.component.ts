@@ -73,7 +73,7 @@ export class AddPurchaseSalesComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this._purchaseService.getPurchaseOrders().subscribe((response: any) => {
+    this._purchaseService. getUngeneratedPurchaseOrders().subscribe((response: any) => {
       console.log('get purchase orders', response);
       this.getPurchaseOrders = response.payload;
     });
@@ -95,13 +95,19 @@ export class AddPurchaseSalesComponent implements OnInit {
   }
 
   addPurchasesSales(date: any, vendorDate: any) {
+    console.log("Order Date",this.getPurchaseOrders[this.purchase_index].orderDate);
+    console.log("Order Date After",this.transformDate(this.getPurchaseOrders[this.purchase_index].orderDate));
+    console.log(" Date",date);
+    console.log(" Date After",this.transformDate(date));
+    console.log("Vendor Date",this.addPurchaseSalesForm.controls['vendorDate'].value);
+    console.log("Vendor Date After",this.transformDate(this.addPurchaseSalesForm.controls['vendorDate'].value));
     let purchaseSalesObj = {
       serialNumber: this.addPurchaseSalesForm.controls['serialNumber'].value,
       types: 'Purchases',
       saleType: 'Tax',
       saleDate: this.transformDate(date),
       invoice: this.addPurchaseSalesForm.controls['vendorInvoiceNumber'].value,
-      invoiceDate: this.transformDate(vendorDate),
+      invoiceDate: this.transformDate(this.addPurchaseSalesForm.controls['vendorDate'].value),
       orderId: this.getPurchaseOrders[this.purchase_index]?.id,
       accountId: this.allAccounts[this.account_index]?.id,
       vendorId: this.getPurchaseOrders[this.purchase_index]?.vendorId,
@@ -130,6 +136,7 @@ export class AddPurchaseSalesComponent implements OnInit {
       (err: any) => {
       }
     );
+    console.log('Purchase',purchaseSalesObj);
   }
   loadPurchase(index: number) {
     this.purchase_index = index;

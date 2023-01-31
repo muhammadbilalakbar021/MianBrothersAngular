@@ -39,6 +39,12 @@ export class PurchasesService {
     );
   }
 
+  getUngeneratedPurchaseOrders() {
+    return this.http.get<any>(
+      'http://43.205.120.176:3000/finance/purchase_sale_orders/search_non_generated_purchases'
+    );
+  }
+
   getPurchaseSales() {
     return this.http.get<any>(
       'http://43.205.120.176:3000/finance/purchase_sales/search'

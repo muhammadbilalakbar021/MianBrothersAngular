@@ -52,12 +52,12 @@ export class AllEmployeesComponent implements OnInit {
     if (confirm(text) == true) {
       this._employeeService
       .deleteEmployee(this.allEmployees[index].id)
-      .then((deletedEmp: any) => {
-        console.log('deletedEmp' + deletedEmp);
-        window.location.reload();
-      },
-      (err: any) => {
-      });
+      // .then((deletedEmp: any) => {
+      //   console.log('deletedEmp' + deletedEmp);
+      //   window.location.reload();
+      // },
+      // (err: any) => {
+      // });
     console.log('deleteUser', this.allEmployees[index].id);
     }
     else {
