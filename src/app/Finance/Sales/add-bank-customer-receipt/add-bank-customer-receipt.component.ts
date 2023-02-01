@@ -99,7 +99,7 @@ export class AddBankCustomerReceiptComponent implements OnInit {
     //   this.vendorAccounts = res.payload;
     //   console.log('this.allAccounts:', this.allAccounts);
     // });
-    this._accountService.getUserCustomerAccounts().subscribe((res: any) => {
+    this._accountService.getCustomerAccounts().subscribe((res: any) => {
       this.customerAccounts = res.payload;
       console.log('this.allAccounts:', this.allAccounts);
     });

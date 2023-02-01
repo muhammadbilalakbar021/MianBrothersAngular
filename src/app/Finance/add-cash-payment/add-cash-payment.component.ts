@@ -91,7 +91,7 @@ export class AddCashPaymentComponent implements OnInit {
 
     this._accountService.getUserCustomerAccounts().subscribe((res: any) => {
       this.customerAccounts = res.payload;
-      console.log('this.allAccounts:', this.allAccounts);
+      console.log('this.allAccounts: Add cash', this.customerAccounts);
     });
 
    this._employeeService.getAllVendorAccounts().subscribe((res: any) => {
@@ -142,7 +142,7 @@ export class AddCashPaymentComponent implements OnInit {
       totalAmountDebited : this.addCashPaymentForm.controls['cashPaid'].value,
     }
 
-    this._bankService.addBankPayment(cashPaymentObject).then((data:any)=>{
+    this._bankService.addCashPayment(cashPaymentObject).then((data:any)=>{
       window.location.reload();
     },
     (err: any) => {

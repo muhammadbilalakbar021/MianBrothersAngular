@@ -23,8 +23,13 @@ export class AccountsService {
     return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_user_cash_accounts')
   }
   getUserCustomerAccounts(){
+    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_vendor_accounts')
+  }
+
+  getCustomerAccounts(){
     return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_customer_accounts')
   }
+
   getAccountOfOtherType(){
     return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_other_type_accounts')
   }
