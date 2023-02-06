@@ -24,6 +24,8 @@ export class AddNonPurchaseSalesComponent implements OnInit {
   public account_index: number = 0;
   public purchase_index: number = 0;
   addPurchaseNonSalesForm: FormBuilder | any;
+  vendorByIdData: any;
+  getVendorAccountByOrdersId: any;
   constructor(
     private _purchaseService: PurchasesService,
     private _employeesService: EmployeeService,
@@ -82,6 +84,21 @@ export class AddNonPurchaseSalesComponent implements OnInit {
   loadPurchase(index: number) {
     this.purchase_index = index;
     this.isPurchaseLoaded = true;
+
+    this._purchaseService
+    .getVendorById(this.getPurchaseOrders[this.purchase_index].vendorId)
+    .subscribe((res: any) => {
+      this.vendorByIdData = res.payload;
+      this.isProductCodeLoaded = true;
+      console.log('VENDOR', res.payload);
+    });
+    this._purchaseService
+    .getVendorAccountByOrdersId(this.getPurchaseOrders[this.purchase_index].id)
+    .subscribe((res: any) => {
+      this.getVendorAccountByOrdersId = res.payload;
+      this.isProductCodeLoaded = true;
+      console.log('GET Vendor Account', res.payload);
+    });
   }
 
   loadProduct(index: number) {

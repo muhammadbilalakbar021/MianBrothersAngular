@@ -179,14 +179,15 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Expense Account</mat-label>
-            <mat-select disableRipple>
-              <mat-option
-                *ngFor="let accountData of this.allAccounts; let i = index"
-                [value]="accountData.accountCode"
-                (click)="loadAccount(i)"
-                >{{ accountData.accountCode }}</mat-option
-              >
-            </mat-select>
+            <input
+            readonly
+              matInput
+              [value]="
+                isPurchaseLoaded
+                  ? this.getVendorAccountByOrdersId[purchase_index]?.accountCode
+                  : ''
+              "
+            />
           </mat-form-field>
         </div>
         <div class="col-md-4">
@@ -196,8 +197,8 @@
             readonly
               matInput
               [value]="
-                isAccountLoaded
-                  ? this.allAccounts[account_index]?.accountType
+                isPurchaseLoaded
+                  ? this.getVendorAccountByOrdersId[purchase_index]?.accountType
                   : ''
               "
             />
@@ -210,14 +211,15 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Vendor Code</mat-label>
-            <mat-select disableRipple>
-              <mat-option
-                *ngFor="let pCode of this.vendorCodes; let i = index"
-                [value]="pCode.vendorCode"
-                (click)="loadProduct(i)"
-                >{{ pCode.vendorCode }}</mat-option
-              >
-            </mat-select>
+            <input
+            readonly
+              matInput
+              [value]="
+              isProductCodeLoaded
+                  ? this.vendorByIdData[purchase_index]?.vendorCode
+                  : ''
+              "
+            />
           </mat-form-field>
         </div>
         <div class="col-md-4">
