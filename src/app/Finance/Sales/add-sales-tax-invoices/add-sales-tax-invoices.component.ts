@@ -28,6 +28,8 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
   getPurchaseOrders: any;
   allAccounts: any;
   deliverChallan: any;
+  vendorByIdData: any;
+  getCustomerAccountByOrdersId: any;
   public account_index: number = 0;
   public purchase_index: number = 0;
   public isAccountLoaded: boolean = false;
@@ -39,7 +41,7 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
     private fb: FormBuilder,
     public dataPipe: DatePipe,
     public _employeesService: EmployeeService,
-    private _snackbar:MatSnackBar
+    private _snackbar: MatSnackBar
   ) {
     this.myForm();
   }
@@ -61,8 +63,8 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
-      orderDate : ['',[Validators.required]],
-      customerDate : ['',[Validators.required]],
+      orderDate: ['', [Validators.required]],
+      customerDate: ['', [Validators.required]],
       termsOfPayment: [
         '',
         [
@@ -116,6 +118,20 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
         this.deliverChallan = data.payload;
         console.log('this.salesOrders', this.deliverChallan);
       });
+      this._salesService
+      .getVendorById(this.saleOrders[this.sale_index].vendorId)
+      .subscribe((res: any) => {
+        this.vendorByIdData = res.payload;
+        this.isCustomerCodeLoaded = true;
+        console.log('VENDOR', res.payload);
+      });
+    this._salesService
+      .getCustomerAccountByOrdersId(this.saleOrders[this.sale_index].id)
+      .subscribe((res: any) => {
+        this.getCustomerAccountByOrdersId = res.payload;
+        this.isCustomerCodeLoaded = true;
+        console.log('GET Vendor Account', res.payload);
+      });
   }
   loadDelivery(index: any) {
     this.delivery_index = index;
@@ -153,14 +169,14 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
         this.addSalesTaxInvoiceForm.controls['termsOfPayment'].value,
       accountId: this.allAccounts[this.account_index].id,
       accountType: this.allAccounts[this.account_index].accountType,
-      deliveryChallan : this.deliverChallan[this.delivery_index].serialNumber
+      deliveryChallan: this.deliverChallan[this.delivery_index].serialNumber
     };
 
     this._purchaseService.addPurchaseSales(salesTax).then((data: any) => {
       window.location.reload();
     },
-    (err: any) => {
-    })
+      (err: any) => {
+      })
   }
 
   transformDate(date: any) {

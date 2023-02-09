@@ -29,6 +29,8 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
   getPurchaseOrders: any;
   allAccounts: any;
   deliverChallan: any;
+  vendorByIdData: any;
+  getCustomerAccountByOrdersId: any;
   public account_index: number = 0;
   public purchase_index: number = 0;
   public isAccountLoaded: boolean = false;
@@ -117,6 +119,21 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
       .subscribe((data: any) => {
         this.deliverChallan = data.payload;
         console.log('this.salesOrders', this.deliverChallan);
+      });
+
+      this._salesService
+      .getVendorById(this.saleOrders[this.sale_index].vendorId)
+      .subscribe((res: any) => {
+        this.vendorByIdData = res.payload;
+        this.isItemCodeLoaded = true;
+        console.log('VENDOR', res.payload);
+      });
+    this._salesService
+      .getCustomerAccountByOrdersId(this.saleOrders[this.sale_index].id)
+      .subscribe((res: any) => {
+        this.getCustomerAccountByOrdersId = res.payload;
+        this.isItemCodeLoaded = true;
+        console.log('GET Vendor Account', res.payload);
       });
   }
   loadDelivery(index: any) {

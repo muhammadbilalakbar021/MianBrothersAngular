@@ -84,7 +84,7 @@ export class SalesNonTaxInvoicesComponent implements OnInit {
     var text = "Are you sure to delete?";
     if (confirm(text) == true) {
       this._purchaseService
-      .deletePurchseSales(this.salesNonTaxTableData[index].id)
+      .deletePurchseSales(index.id)
       .then((res: any) => {
       window.location.reload();
     },

@@ -98,7 +98,7 @@ export class DeliveryChallanComponent implements OnInit {
     var text = "Are you sure to delete?";
     if (confirm(text) == true) {
       this._purchaseSevice
-      .deleteAdjustments(this.deliveryChallanTableData[index].id)
+      .deleteAdjustments(index.id)
       .then(
         (res: any) => {
           window.location.reload();

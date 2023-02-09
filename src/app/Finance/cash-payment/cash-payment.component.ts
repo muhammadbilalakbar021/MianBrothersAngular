@@ -70,7 +70,7 @@ export class CashPaymentComponent implements OnInit {
   onDelete(index: any) {
     var text = "Are you sure to delete?";
     if (confirm(text) == true) {
-      this._purchaseService.deleteBankPayment(this.cashPaymentTable[index].id).then((res:any)=>{
+      this._purchaseService.deleteBankPayment(index.id).then((res:any)=>{
         window.location.reload();
       },
       (err: any) => {

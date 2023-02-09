@@ -92,7 +92,7 @@ export class SalesOrderComponent implements OnInit {
   onDelete(index: any) {
     var text = "Are you sure to delete?";
     if (confirm(text) == true) {
-      this._purchaseService.deletePurchseOrder(this.salesTableData[index].orderId).then((res:any)=>{
+      this._purchaseService.deletePurchseOrder(index.orderId).then((res:any)=>{
         console.log('deleted',res);
         window.location.reload();
       },

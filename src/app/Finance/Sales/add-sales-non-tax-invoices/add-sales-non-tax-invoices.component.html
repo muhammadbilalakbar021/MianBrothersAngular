@@ -182,17 +182,16 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Delivery Challan Number</mat-label>
-            <mat-select disableRipple>
-              <mat-option
-                *ngFor="
-                  let deliverChallanData of this.deliverChallan;
-                  let i = index
-                "
-                [value]="deliverChallanData.serialNumber"
-                (click)="loadDelivery(i)"
-                >{{ deliverChallanData.serialNumber }}</mat-option
-              >
-            </mat-select>
+            <input
+            readonly
+              matInput
+              #vendorInvoiceNumber
+              [value]="
+              isSaleCodeLoaded
+                  ? this.getCustomerAccountByOrdersId[sale_index]?.serialNumber
+                  : ''
+              "
+            />
           </mat-form-field>
         </div>
 
@@ -258,14 +257,16 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Income Account</mat-label>
-            <mat-select disableRipple>
-              <mat-option
-                *ngFor="let customerAccount of this.allAccounts; let i = index"
-                [value]="customerAccount.accountCode"
-                (click)="loadAccount(i)"
-                >{{ customerAccount.accountCode }}</mat-option
-              >
-            </mat-select>
+            <input
+            readonly
+              matInput
+              #vendorInvoiceNumber
+              [value]="
+              isSaleCodeLoaded
+                  ? this.getCustomerAccountByOrdersId[sale_index]?.accountCode
+                  : ''
+              "
+            />
           </mat-form-field>
           <!-- <div
           *ngIf="
@@ -296,12 +297,12 @@
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Income Account Type</mat-label>
             <input
-              readonly
+            readonly
               matInput
               #vendorInvoiceNumber
               [value]="
-                isAccountLoaded
-                  ? this.allAccounts[account_index]?.accountType
+              isSaleCodeLoaded
+                  ? this.getCustomerAccountByOrdersId[sale_index]?.accountType
                   : ''
               "
             />
@@ -335,22 +336,24 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Customer Code</mat-label>
-            <mat-select disableRipple>
-              <mat-option
-                *ngFor="let customerData of this.allCustomers; let i = index"
-                [value]="customerData.customerCode"
-                (click)="loadCustomers(i)"
-                >{{ customerData.customerCode }}</mat-option
-              >
-            </mat-select>
+            <input
+            readonly
+              matInput
+              #vendorInvoiceNumber
+              [value]="
+              isSaleCodeLoaded
+                  ? this.getCustomerAccountByOrdersId[sale_index]?.customerCode
+                  : ''
+              "
+            />
           </mat-form-field>
         </div>
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Customer Name</mat-label>
             <input
+            readonly
               matInput
-              readonly
               [value]="
                 isCustomerCodeLoaded
                   ? this.allCustomers[customer_index]?.customerName

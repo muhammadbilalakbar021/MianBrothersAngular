@@ -96,7 +96,7 @@ export class SaleReturnComponent implements OnInit {
     var text = "Are you sure to delete?";
     if (confirm(text) == true) {
       this.purchaseService
-      .deletePurchseReturn(this.salesReturnTableData[index].returnId)
+      .deletePurchseReturn(index.returnId)
       .then(
         (res: any) => {
           window.location.reload();

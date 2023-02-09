@@ -49,15 +49,17 @@ export class AllEmployeesComponent implements OnInit {
 
   onDelete(index: any) {
     var text = "Are you sure to delete?";
+    console.log('acbcsd',this.allEmployees[index.id])
+    console.log('INDEXX',index)
     if (confirm(text) == true) {
       this._employeeService
-      .deleteEmployee(this.allEmployees[index].id)
-      // .then((deletedEmp: any) => {
-      //   console.log('deletedEmp' + deletedEmp);
-      //   window.location.reload();
-      // },
-      // (err: any) => {
-      // });
+      .deleteEmployee(index.id)
+      .then((deletedEmp: any) => {
+        console.log('deletedEmp' + deletedEmp);
+        window.location.reload();
+      },
+      (err: any) => {
+      });
     console.log('deleteUser', this.allEmployees[index].id);
     }
     else {

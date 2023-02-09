@@ -120,9 +120,11 @@ export class PurchaseSalesTaxComponent implements OnInit {
 
   onDelete(index: any){
     var text = "Are you sure to delete?";
+    console.log('acbcsd',this.purchaseSalesTaxTableData[index.id])
+    console.log('INDEXX',index)
     if (confirm(text) == true) {
         this._purchaseService
-          .deletePurchseSales(this.purchaseSalesTaxTableData[index].id)
+          .deletePurchseSales(index.id)
           .then(
             (res: any) => {
               window.location.reload();

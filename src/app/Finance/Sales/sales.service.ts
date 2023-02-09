@@ -55,4 +55,12 @@ export class SalesService {
   getCustomersById(id:any){
     return this.http.get<any>(`http://43.205.120.176:3000/finance/customers/search/${id}`)
   }
+  getVendorById(id: any) {
+    return this.http.get<any>(
+      `http://43.205.120.176:3000/finance/vendors/search/${id}`
+    );
+  }
+  getCustomerAccountByOrdersId(id:any){
+    return this.http.get<any>(`http://43.205.120.176:3000/finance/list_of_accounts/search_customer_account/${id}`)
+  }
 }

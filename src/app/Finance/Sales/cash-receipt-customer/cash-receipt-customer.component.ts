@@ -72,7 +72,7 @@ export class CashReceiptCustomerComponent implements OnInit {
     var text = "Are you sure to delete?";
     if (confirm(text) == true) {
       this._purchaseService
-      .deleteBankPayment(this.cashReceiptPaymentTable[index].id)
+      .deleteBankPayment(index.id)
       .then(
         (res: any) => {
           window.location.reload();
