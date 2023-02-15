@@ -262,7 +262,7 @@
              readonly
               matInput
               [value]="
-                isProductCodeLoaded
+              isPurchaseLoaded
                   ? this.vendorByIdData[purchase_index]?.vendorCode
                   : ''
               "
@@ -277,7 +277,7 @@
              readonly
               matInput
               [value]="
-                isProductCodeLoaded
+              isPurchaseLoaded
                   ? this.vendorByIdData[purchase_index]?.vendorName
                   : ''
               "
@@ -292,7 +292,7 @@
             readonly
               matInput
               [value]="
-                isProductCodeLoaded
+              isPurchaseLoaded
                   ? this.vendorByIdData[purchase_index]?.mobileNumber
                   : ''
               "
@@ -310,7 +310,7 @@
             readonly
               matInput
               [value]="
-                isProductCodeLoaded
+              isPurchaseLoaded
                   ? this.vendorByIdData[purchase_index]?.stRegistrationNumber
                   : ''
               "
@@ -325,7 +325,7 @@
             readonly
               matInput
               [value]="
-                isProductCodeLoaded ? this.vendorByIdData[purchase_index]?.ntn : ''
+              isPurchaseLoaded ? this.vendorByIdData[purchase_index]?.ntn : ''
               "
             />
 
@@ -338,10 +338,10 @@
             readonly
               matInput
               [value]="
-                isProductCodeLoaded
-                  ? this.vendorByIdData[purchase_index]?.vendorBalance
-                  : ''
-              "
+              isPurchaseLoaded
+                ? this.vendorByIdData[purchase_index]?.balance
+                : ''
+            "
             />
 
           </mat-form-field>
@@ -356,7 +356,7 @@
             matInput
             rows="8"
             [value]="
-              isProductCodeLoaded
+            isPurchaseLoaded
                 ? this.vendorByIdData[purchase_index]?.vendorAddress
                 : ''
             "

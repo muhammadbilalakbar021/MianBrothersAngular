@@ -148,14 +148,14 @@ export class AddPurchaseSalesComponent implements OnInit {
       .getVendorById(this.getPurchaseOrders[this.purchase_index].vendorId)
       .subscribe((res: any) => {
         this.vendorByIdData = res.payload;
-        this.isProductCodeLoaded = true;
+        this.isPurchaseLoaded = true;
         console.log('VENDOR', res.payload);
       });
       this._purchaseService
       .getVendorAccountByOrdersId(this.getPurchaseOrders[this.purchase_index].id)
       .subscribe((res: any) => {
         this.getVendorAccountByOrdersId = res.payload;
-        this.isProductCodeLoaded = true;
+        this.isPurchaseLoaded = true;
         console.log('GET Vendor Account', res.payload);
       });
 
