@@ -151,7 +151,7 @@
               [matDatepicker]="datepicker2"
               required
               [value]="
-                isSaleCodeLoaded ? this.saleOrders[sale_index]?.orderDate : ''
+                isSaleCodeLoaded ? this.saleOrders[customer_index]?.orderDate : ''
               "
             />
             <mat-datepicker-toggle
@@ -174,12 +174,11 @@
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Delivery Challan Number</mat-label>
             <input
-            readonly
+             readonly
               matInput
-              #vendorInvoiceNumber
               [value]="
-              isSaleCodeLoaded
-                  ? this.getCustomerAccountByOrdersId[sale_index]?.serialNumber
+              isDeliveryLoaded
+                  ? this.getDeliveryChallanByOrderId[sale_index]?.serialNumber
                   : ''
               "
             />
@@ -367,8 +366,8 @@
              readonly
               matInput
               [value]="
-              isItemCodeLoaded
-                  ? this.vendorByIdData[sale_index]?.customerCode
+              isSaleCodeLoaded
+                  ? this.customerByIdData[sale_index]?.customerCode
                   : ''
               "
             />
@@ -392,8 +391,8 @@
             readonly
               matInput
               [value]="
-                isCustomerCodeLoaded
-                  ? this.allCustomers[customer_index]?.customerName
+              isSaleCodeLoaded
+                  ? this.allCustomers[sale_index]?.customerName
                   : ''
               "
             />
@@ -406,8 +405,8 @@
             readonly
               matInput
               [value]="
-                isCustomerCodeLoaded
-                  ? this.allCustomers[customer_index]?.mobileNumber
+              isSaleCodeLoaded
+                  ? this.allCustomers[sale_index]?.mobileNumber
                   : ''
               "
             />
@@ -423,8 +422,8 @@
             readonly
               matInput
               [value]="
-                isCustomerCodeLoaded
-                  ? this.allCustomers[customer_index]?.stRegistrationNumber
+              isSaleCodeLoaded
+                  ? this.allCustomers[sale_index]?.stRegistrationNumber
                   : ''
               "
             />
@@ -437,8 +436,8 @@
             readonly
               matInput
               [value]="
-                isCustomerCodeLoaded
-                  ? this.allCustomers[customer_index]?.ntn
+              isSaleCodeLoaded
+                  ? this.allCustomers[sale_index]?.ntn
                   : ''
               "
             />
@@ -451,8 +450,8 @@
               readonly
               matInput
               [value]="
-                isCustomerCodeLoaded
-                  ? this.allCustomers[customer_index]?.balance
+              isSaleCodeLoaded
+                  ? this.allCustomers[sale_index]?.balance
                   : ''
               "
             />
@@ -468,8 +467,8 @@
             matInput
             rows="8"
             [value]="
-              isCustomerCodeLoaded
-                ? this.allCustomers[customer_index]?.customerAddress
+            isSaleCodeLoaded
+                ? this.allCustomers[sale_index]?.customerAddress
                 : ''
             "
           ></textarea>

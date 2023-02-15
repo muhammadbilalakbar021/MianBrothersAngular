@@ -29,8 +29,9 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
   getPurchaseOrders: any;
   allAccounts: any;
   deliverChallan: any;
-  vendorByIdData: any;
+  customerByIdData: any;
   getCustomerAccountByOrdersId: any;
+  getDeliveryChallanByOrderId: any;
   public account_index: number = 0;
   public purchase_index: number = 0;
   public isAccountLoaded: boolean = false;
@@ -122,18 +123,26 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
       });
 
       this._salesService
-      .getVendorById(this.saleOrders[this.sale_index].vendorId)
+      .getCustomersById(this.saleOrders[this.sale_index].customerId)
       .subscribe((res: any) => {
-        this.vendorByIdData = res.payload;
-        this.isItemCodeLoaded = true;
+        this.customerByIdData = res.payload;
+        this.isSaleCodeLoaded = true;
         console.log('VENDOR', res.payload);
       });
     this._salesService
       .getCustomerAccountByOrdersId(this.saleOrders[this.sale_index].id)
       .subscribe((res: any) => {
         this.getCustomerAccountByOrdersId = res.payload;
-        this.isItemCodeLoaded = true;
+        this.isSaleCodeLoaded = true;
         console.log('GET Vendor Account', res.payload);
+      });
+
+      this._salesService
+      .getDeliveryChallanByOrderId(this.saleOrders[this.sale_index].id)
+      .subscribe((res: any) => {
+        this.getDeliveryChallanByOrderId = res.payload;
+        this.isDeliveryLoaded = true;
+        console.log('GET Vendor Account',this.sale_index,  res.payload);
       });
   }
   loadDelivery(index: any) {
