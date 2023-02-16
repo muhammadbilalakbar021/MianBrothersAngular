@@ -186,7 +186,7 @@
             <mat-label>Income Account</mat-label>
             <input readonly matInput #vendorInvoiceNumber [value]="
             isSaleCodeLoaded
-            ? this.getCustomerAccountByOrdersId[sale_index]?.accountCode
+            ? this.getCustomerAccountByOrdersId[account_index]?.accountCode
             : ''
         " />
           </mat-form-field>
@@ -220,7 +220,7 @@
             <mat-label>Income Account Type</mat-label>
             <input readonly matInput #vendorInvoiceNumber [value]="
             isSaleCodeLoaded
-            ? this.getCustomerAccountByOrdersId[sale_index]?.accountType
+            ? this.getCustomerAccountByOrdersId[account_index]?.accountType
             : ''
         " />
           </mat-form-field>
@@ -255,7 +255,7 @@
             <mat-label>Customer Code</mat-label>
             <input readonly matInput #vendorInvoiceNumber [value]="
             isSaleCodeLoaded
-            ? this.customerByIdData[sale_index]?.customerCode
+            ? this.customerByIdData[account_index]?.customerCode
             : ''
         " />
           </mat-form-field>
@@ -265,7 +265,7 @@
             <mat-label>Customer Name</mat-label>
             <input readonly matInput [value]="
             isSaleCodeLoaded
-            ? this.allCustomers[sale_index]?.customerName
+            ? this.allCustomers[account_index]?.customerName
             : ''
         " />
           </mat-form-field>
@@ -275,7 +275,7 @@
             <mat-label>Customer Telephone</mat-label>
             <input matInput readonly [value]="
             isSaleCodeLoaded
-            ? this.allCustomers[sale_index]?.mobileNumber
+            ? this.allCustomers[account_index]?.mobileNumber
             : ''
         " />
           </mat-form-field>
@@ -288,7 +288,7 @@
             <mat-label>Customer GST Registration Number</mat-label>
             <input matInput readonly [value]="
             isSaleCodeLoaded
-            ? this.allCustomers[sale_index]?.stRegistrationNumber
+            ? this.allCustomers[account_index]?.stRegistrationNumber
             : ''
         " />
           </mat-form-field>
@@ -298,7 +298,7 @@
             <mat-label>Customer NTN</mat-label>
             <input matInput readonly [value]="
               isSaleCodeLoaded
-              ? this.allCustomers[sale_index]?.ntn
+              ? this.allCustomers[account_index]?.ntn
               : ''
           " />
           </mat-form-field>
@@ -308,7 +308,7 @@
             <mat-label>Customer Balance</mat-label>
             <input matInput readonly [value]="
             isSaleCodeLoaded
-            ? this.allCustomers[sale_index]?.balance
+            ? this.allCustomers[account_index]?.balance
             : ''
         " />
           </mat-form-field>
@@ -320,7 +320,7 @@
           <mat-label>Customer Address</mat-label>
           <textarea matInput readonly rows="8" [value]="
             isSaleCodeLoaded
-            ? this.allCustomers[sale_index]?.customerAddress
+            ? this.allCustomers[account_index]?.customerAddress
             : ''
         "></textarea>
         </mat-form-field>

@@ -184,7 +184,7 @@
               matInput
               [value]="
                 isPurchaseLoaded
-                  ? this.getVendorAccountByOrdersId[purchase_index]?.accountCode
+                  ? this.getVendorAccountByOrdersId[account_index]?.accountCode
                   : ''
               "
             />
@@ -198,7 +198,7 @@
               matInput
               [value]="
                 isPurchaseLoaded
-                  ? this.getVendorAccountByOrdersId[purchase_index]?.accountType
+                  ? this.getVendorAccountByOrdersId[account_index]?.accountType
                   : ''
               "
             />
@@ -216,7 +216,7 @@
               matInput
               [value]="
               isProductCodeLoaded
-                  ? this.vendorByIdData[purchase_index]?.vendorCode
+                  ? this.vendorByIdData[account_index]?.vendorCode
                   : ''
               "
             />

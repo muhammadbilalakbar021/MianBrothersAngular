@@ -278,7 +278,7 @@
               #vendorInvoiceNumber
               [value]="
               isSaleCodeLoaded
-                  ? this.getCustomerAccountByOrdersId[sale_index]?.accountCode
+                  ? this.getCustomerAccountByOrdersId[account_index]?.accountCode
                   : ''
               "
             />
@@ -328,7 +328,7 @@
               #vendorInvoiceNumber
               [value]="
               isSaleCodeLoaded
-                  ? this.getCustomerAccountByOrdersId[sale_index]?.accountType
+                  ? this.getCustomerAccountByOrdersId[account_index]?.accountType
                   : ''
               "
             />
@@ -367,7 +367,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.customerByIdData[sale_index]?.customerCode
+                  ? this.customerByIdData[account_index]?.customerCode
                   : ''
               "
             />
@@ -392,7 +392,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[sale_index]?.customerName
+                  ? this.allCustomers[account_index]?.customerName
                   : ''
               "
             />
@@ -406,7 +406,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[sale_index]?.mobileNumber
+                  ? this.allCustomers[account_index]?.mobileNumber
                   : ''
               "
             />
@@ -423,7 +423,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[sale_index]?.stRegistrationNumber
+                  ? this.allCustomers[account_index]?.stRegistrationNumber
                   : ''
               "
             />
@@ -437,7 +437,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[sale_index]?.ntn
+                  ? this.allCustomers[account_index]?.ntn
                   : ''
               "
             />
@@ -451,7 +451,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[sale_index]?.balance
+                  ? this.allCustomers[account_index]?.balance
                   : ''
               "
             />
@@ -468,7 +468,7 @@
             rows="8"
             [value]="
             isSaleCodeLoaded
-                ? this.allCustomers[sale_index]?.customerAddress
+                ? this.allCustomers[account_index]?.customerAddress
                 : ''
             "
           ></textarea>

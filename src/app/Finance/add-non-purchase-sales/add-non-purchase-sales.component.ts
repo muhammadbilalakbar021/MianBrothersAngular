@@ -93,7 +93,7 @@ export class AddNonPurchaseSalesComponent implements OnInit {
       console.log('VENDOR', res.payload);
     });
     this._purchaseService
-    .getVendorAccountByOrdersId(this.getPurchaseOrders[this.purchase_index].id)
+    .getVendorAccountByOrdersId(this.getPurchaseOrders[this.account_index].id)
     .subscribe((res: any) => {
       this.getVendorAccountByOrdersId = res.payload;
       this.isProductCodeLoaded = true;

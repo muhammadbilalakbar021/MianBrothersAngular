@@ -224,13 +224,13 @@
         </div>
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Expense Account Type</mat-label>
+            <mat-label>Expense Account</mat-label>
             <input
              readonly
               matInput
               [value]="
                 isPurchaseLoaded
-                  ? this.getVendorAccountByOrdersId[purchase_index]?.accountCode
+                  ? this.getVendorAccountByOrdersId[account_index]?.accountCode
                   : ''
               "
             />
@@ -245,7 +245,7 @@
               matInput
               [value]="
                 isPurchaseLoaded
-                  ? this.getVendorAccountByOrdersId[purchase_index]?.accountType
+                  ? this.getVendorAccountByOrdersId[account_index]?.accountType
                   : ''
               "
             />
@@ -263,7 +263,7 @@
               matInput
               [value]="
               isPurchaseLoaded
-                  ? this.vendorByIdData[purchase_index]?.vendorCode
+                  ? this.vendorByIdData[account_index]?.vendorCode
                   : ''
               "
             />
@@ -278,7 +278,7 @@
               matInput
               [value]="
               isPurchaseLoaded
-                  ? this.vendorByIdData[purchase_index]?.vendorName
+                  ? this.vendorByIdData[account_index]?.vendorName
                   : ''
               "
             />
@@ -293,7 +293,7 @@
               matInput
               [value]="
               isPurchaseLoaded
-                  ? this.vendorByIdData[purchase_index]?.mobileNumber
+                  ? this.vendorByIdData[account_index]?.mobileNumber
                   : ''
               "
             />
@@ -311,7 +311,7 @@
               matInput
               [value]="
               isPurchaseLoaded
-                  ? this.vendorByIdData[purchase_index]?.stRegistrationNumber
+                  ? this.vendorByIdData[account_index]?.stRegistrationNumber
                   : ''
               "
             />
@@ -325,7 +325,7 @@
             readonly
               matInput
               [value]="
-              isPurchaseLoaded ? this.vendorByIdData[purchase_index]?.ntn : ''
+              isPurchaseLoaded ? this.vendorByIdData[account_index]?.ntn : ''
               "
             />
 
@@ -339,7 +339,7 @@
               matInput
               [value]="
               isPurchaseLoaded
-                ? this.vendorByIdData[purchase_index]?.balance
+                ? this.vendorByIdData[account_index]?.balance
                 : ''
             "
             />
@@ -357,7 +357,7 @@
             rows="8"
             [value]="
             isPurchaseLoaded
-                ? this.vendorByIdData[purchase_index]?.vendorAddress
+                ? this.vendorByIdData[account_index]?.vendorAddress
                 : ''
             "
           ></textarea>

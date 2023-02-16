@@ -138,7 +138,7 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
       });
 
       this._salesService
-      .getDeliveryChallanByOrderId(this.saleOrders[this.sale_index].id)
+      .getDeliveryChallanByOrderId(this.saleOrders[this.account_index].id)
       .subscribe((res: any) => {
         this.getDeliveryChallanByOrderId = res.payload;
         this.isDeliveryLoaded = true;
