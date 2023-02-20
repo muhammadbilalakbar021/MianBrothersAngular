@@ -120,7 +120,7 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
         console.log('this.salesOrders', this.deliverChallan);
       });
 
-      this._salesService
+    this._salesService
       .getCustomersById(this.saleOrders[this.sale_index].customerId)
       .subscribe((res: any) => {
         this.customerByIdData = res.payload;
@@ -132,14 +132,14 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
       .subscribe((res: any) => {
         this.getCustomerAccountByOrdersId = res.payload;
         this.isSaleCodeLoaded = true;
-        console.log('GET Vendor Account',this.sale_index,  res.payload);
+        console.log('GET Vendor Account', this.sale_index, res.payload);
       });
-      this._salesService
+    this._salesService
       .getDeliveryChallanByOrderId(this.saleOrders[this.account_index].id)
       .subscribe((res: any) => {
         this.getDeliveryChallanByOrderId = res.payload;
         this.isDeliveryLoaded = true;
-        console.log('GET Vendor Account',this.sale_index,  res.payload);
+        console.log('GET Vendor Account', this.sale_index, res.payload);
       });
   }
   loadDelivery(index: any) {

@@ -480,7 +480,7 @@
       <button
         mat-button
         class="blueButton ml-2"
-        [disabled]="this.addSalesTaxInvoiceForm.invalid || !isCustomerCodeLoaded || !isAccountLoaded || !isDeliveryLoaded || !isSaleCodeLoaded"
+        [disabled]="this.addSalesTaxInvoiceForm.invalid || !isDeliveryLoaded || !isSaleCodeLoaded"
         (click)="addSalesTax(date.value,customerDate.value)"
       >
         Add

@@ -43,7 +43,7 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
     private fb: FormBuilder,
     public dataPipe: DatePipe,
     public _employeesService: EmployeeService,
-    private _snackbar : MatSnackBar
+    private _snackbar: MatSnackBar
   ) {
     this.myForm();
   }
@@ -57,8 +57,8 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
-      orderDate : ['',[Validators.required]],
-      customerDate : ['',[Validators.required]],
+      orderDate: ['', [Validators.required]],
+      customerDate: ['', [Validators.required]],
       customerInvoiceNumber: [
         '',
         [
@@ -122,7 +122,7 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
         console.log('this.salesOrders', this.deliverChallan);
       });
 
-      this._salesService
+    this._salesService
       .getCustomersById(this.saleOrders[this.sale_index].customerId)
       .subscribe((res: any) => {
         this.customerByIdData = res.payload;
@@ -137,12 +137,12 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
         console.log('GET Vendor Account', res.payload);
       });
 
-      this._salesService
+    this._salesService
       .getDeliveryChallanByOrderId(this.saleOrders[this.account_index].id)
       .subscribe((res: any) => {
         this.getDeliveryChallanByOrderId = res.payload;
         this.isDeliveryLoaded = true;
-        console.log('GET Vendor Account',this.sale_index,  res.payload);
+        console.log('GET Vendor Account', this.sale_index, res.payload);
       });
   }
   loadDelivery(index: any) {
@@ -181,14 +181,14 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
         this.salesNonTaxForm.controls['termsOfPayment'].value,
       accountId: this.allAccounts[this.account_index].id,
       accountType: this.allAccounts[this.account_index].accountType,
-      deliveryChallan : this.deliverChallan[this.delivery_index].serialNumber
+      deliveryChallan: this.deliverChallan[this.delivery_index].serialNumber
     };
 
     this._purchaseService.addPurchaseSales(salesTax).then((data: any) => {
       window.location.reload();
     },
-    (err: any) => {
-    })
+      (err: any) => {
+      })
   }
 
   transformDate(date: any) {

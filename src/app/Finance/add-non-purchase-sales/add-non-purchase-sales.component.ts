@@ -127,6 +127,7 @@ export class AddNonPurchaseSalesComponent implements OnInit {
       orderId : this.getPurchaseOrders[this.purchase_index]?.id,
       accountId : this.allAccounts[this.account_index]?.id,
       vendorId : this.getPurchaseOrders[this.purchase_index]?.vendorId,
+      vendorCode: this.getPurchaseOrders[this.purchase_index]?.vendorCode,
       orderDate : this.transformDate(this.getPurchaseOrders[this.purchase_index].orderDate),
       orderSerialNumber : this.getPurchaseOrders[this.purchase_index].serialNumber,
       paymentTerms : this.addPurchaseNonSalesForm.controls['termsOfPayment'].value,

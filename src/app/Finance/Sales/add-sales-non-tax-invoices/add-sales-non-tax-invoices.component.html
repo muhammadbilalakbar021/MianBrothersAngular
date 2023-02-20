@@ -130,11 +130,15 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Delivery Challan Number</mat-label>
-            <input readonly matInput #vendorInvoiceNumber [value]="
-            isDeliveryLoaded
-            ? this.getDeliveryChallanByOrderId[sale_index]?.serialNumber
-            : ''
-        " />
+            <input
+             readonly
+              matInput
+              [value]="
+              isDeliveryLoaded
+                  ? this.getDeliveryChallanByOrderId[sale_index]?.serialNumber
+                  : ''
+              "
+            />
           </mat-form-field>
         </div>
 
@@ -327,9 +331,15 @@
       </div>
     </form>
     <div class="row mr-1" style="float: right">
-      <button mat-button routerLink="/employee-home/sales-non-tax-invoices">Back</button>
-      <button mat-button class="blueButton ml-2" (click)="addSalesTax(date.value,customerDate.value)"
-        [disabled]="this.salesNonTaxForm || !isCustomerCodeLoaded || !isAccountLoaded || !isDeliveryLoaded || !isAccountLoaded">Add</button>
+      <button mat-button routerLink="/employee-home/sales-tax-invoices">Back</button>
+      <button
+        mat-button
+        class="blueButton ml-2"
+        [disabled]="this.salesNonTaxForm.invalid || !isDeliveryLoaded || !isSaleCodeLoaded"
+        (click)="addSalesTax(date.value,customerDate.value)"
+      >
+        Add
+      </button>
     </div>
   </div>
 </div>
