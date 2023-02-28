@@ -392,7 +392,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[customer_index]?.customerName
+                  ? this.customerByIdData[customer_index]?.customerName
                   : ''
               "
             />
@@ -406,7 +406,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[customer_index]?.mobileNumber
+                  ? this.customerByIdData[customer_index]?.mobileNumber
                   : ''
               "
             />
@@ -423,7 +423,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[customer_index]?.stRegistrationNumber
+                  ? this.customerByIdData[customer_index]?.stRegistrationNumber
                   : ''
               "
             />
@@ -437,7 +437,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[customer_index]?.ntn
+                  ? this.customerByIdData[customer_index]?.ntn
                   : ''
               "
             />
@@ -451,7 +451,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[customer_index]?.balance
+                  ? this.customerByIdData[customer_index]?.balance
                   : ''
               "
             />
@@ -468,7 +468,7 @@
             rows="8"
             [value]="
             isSaleCodeLoaded
-                ? this.allCustomers[customer_index]?.customerAddress
+                ? this.customerByIdData[customer_index]?.customerAddress
                 : ''
             "
           ></textarea>

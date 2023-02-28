@@ -91,39 +91,39 @@ export class AddNonPurchaseSalesComponent implements OnInit {
       invoice : this.addPurchaseNonSalesForm.controls['serialNumber'].value,
       invoiceDate : this.transformDate(date),
       orderId : this.getPurchaseOrders[this.purchase_index]?.id,
-      accountId : this.allAccounts[this.account_index]?.id,
-      vendorId : this.getPurchaseOrders[this.purchase_index]?.vendorId,
-      vendorCode: this.getPurchaseOrders[this.purchase_index]?.vendorCode,
+      accountId : this.getVendorAccountByOrdersId[this.account_index]?.id,
+      vendorId : this.getPurchaseOrders[this.product_index]?.vendorId,
+      vendorCode: this.getPurchaseOrders[this.product_index]?.vendorCode,
       orderDate : this.transformDate(this.getPurchaseOrders[this.purchase_index].orderDate),
-      orderSerialNumber : this.getPurchaseOrders[this.purchase_index].serialNumber,
+      orderSerialNumber : this.getPurchaseOrders[this.product_index].serialNumber,
       paymentTerms : this.addPurchaseNonSalesForm.controls['termsOfPayment'].value,
-      accountType : this.allAccounts[this.account_index].accountType,
+      accountType : this.getVendorAccountByOrdersId[this.purchase_index].accountType,
       discount :JSON.parse(this.addPurchaseNonSalesForm.controls['disc'].value),
     }
-    this._purchaseService.addPurchase(purchaseSalesObj).then(
-      (data: any) => {
-        window.location.reload();
-        console.log('data',data)
-      },
-      (err: any) => {
-      }
-    );
+    // this._purchaseService.addPurchase(purchaseSalesObj).then(
+    //   (data: any) => {
+    //     window.location.reload();
+    //     console.log('data',data)
+    //   },
+    //   (err: any) => {
+    //   }
+    // );
     console.log('Purchase',purchaseSalesObj);
   }
 
   loadPurchase(index: number) {
-    this.purchase_index = index;
+    this.product_index = index;
     this.isPurchaseLoaded = true;
 
     this._purchaseService
-    .getVendorById(this.getPurchaseOrders[this.purchase_index].vendorId)
+    .getVendorById(this.getPurchaseOrders[this.product_index].vendorId)
     .subscribe((res: any) => {
       this.vendorByIdData = res.payload;
       this.isPurchaseLoaded = true;
       console.log('VENDOR', res.payload);
     });
     this._purchaseService
-    .getVendorAccountByOrdersId(this.getPurchaseOrders[this.account_index].id)
+    .getVendorAccountByOrdersId(this.getPurchaseOrders[this.product_index].id)
     .subscribe((res: any) => {
       this.getVendorAccountByOrdersId = res.payload;
       this.isPurchaseLoaded = true;

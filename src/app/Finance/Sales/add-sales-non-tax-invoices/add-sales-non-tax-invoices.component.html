@@ -269,7 +269,7 @@
             <mat-label>Customer Name</mat-label>
             <input readonly matInput [value]="
             isSaleCodeLoaded
-            ? this.allCustomers[account_index]?.customerName
+            ? this.customerByIdData[account_index]?.customerName
             : ''
         " />
           </mat-form-field>
@@ -279,7 +279,7 @@
             <mat-label>Customer Telephone</mat-label>
             <input matInput readonly [value]="
             isSaleCodeLoaded
-            ? this.allCustomers[account_index]?.mobileNumber
+            ? this.customerByIdData[account_index]?.mobileNumber
             : ''
         " />
           </mat-form-field>
@@ -292,7 +292,7 @@
             <mat-label>Customer GST Registration Number</mat-label>
             <input matInput readonly [value]="
             isSaleCodeLoaded
-            ? this.allCustomers[account_index]?.stRegistrationNumber
+            ? this.customerByIdData[account_index]?.stRegistrationNumber
             : ''
         " />
           </mat-form-field>
@@ -302,7 +302,7 @@
             <mat-label>Customer NTN</mat-label>
             <input matInput readonly [value]="
               isSaleCodeLoaded
-              ? this.allCustomers[account_index]?.ntn
+              ? this.customerByIdData[account_index]?.ntn
               : ''
           " />
           </mat-form-field>
@@ -312,7 +312,7 @@
             <mat-label>Customer Balance</mat-label>
             <input matInput readonly [value]="
             isSaleCodeLoaded
-            ? this.allCustomers[account_index]?.balance
+            ? this.customerByIdData[account_index]?.balance
             : ''
         " />
           </mat-form-field>
@@ -324,7 +324,7 @@
           <mat-label>Customer Address</mat-label>
           <textarea matInput readonly rows="8" [value]="
             isSaleCodeLoaded
-            ? this.allCustomers[account_index]?.customerAddress
+            ? this.customerByIdData[account_index]?.customerAddress
             : ''
         "></textarea>
         </mat-form-field>
