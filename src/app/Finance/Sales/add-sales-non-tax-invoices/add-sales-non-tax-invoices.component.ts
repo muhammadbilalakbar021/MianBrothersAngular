@@ -77,7 +77,7 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
       ],
       discount: [
         '',
-        [Validators.required, Validators.min(1), Validators.max(10000000)],
+        [Validators.required, Validators.min(0), Validators.max(100)],
       ],
 
     });
@@ -179,8 +179,8 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
       customerCode: this.allCustomers[this.customer_index].customerCode,
       paymentTerms:
         this.salesNonTaxForm.controls['termsOfPayment'].value,
-      accountId: this.allAccounts[this.account_index].id,
-      accountType: this.allAccounts[this.account_index].accountType,
+      accountId: this.getCustomerAccountByOrdersId[this.account_index].id,
+      accountType: this.getCustomerAccountByOrdersId[this.account_index].accountType,
       deliveryChallan: this.deliverChallan[this.delivery_index].serialNumber
     };
 
@@ -189,6 +189,7 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
     },
       (err: any) => {
       })
+    console.log('Sales',salesTax);
   }
 
   transformDate(date: any) {

@@ -178,7 +178,7 @@
               matInput
               [value]="
               isDeliveryLoaded
-                  ? this.getDeliveryChallanByOrderId[sale_index]?.serialNumber
+                  ? this.getDeliveryChallanByOrderId[delivery_index]?.serialNumber
                   : ''
               "
             />
@@ -229,7 +229,7 @@
               addSalesTaxInvoiceForm.controls['discount']?.errors
                 ?.max
             "
-            >Must be between 1 - 1000000 Characters</mat-error
+            >Must be between 0 - 100</mat-error
           >
         </div>
         </div>
@@ -367,7 +367,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.customerByIdData[account_index]?.customerCode
+                  ? this.customerByIdData[customer_index]?.customerCode
                   : ''
               "
             />
@@ -392,7 +392,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[account_index]?.customerName
+                  ? this.allCustomers[customer_index]?.customerName
                   : ''
               "
             />
@@ -406,7 +406,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[account_index]?.mobileNumber
+                  ? this.allCustomers[customer_index]?.mobileNumber
                   : ''
               "
             />
@@ -423,7 +423,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[account_index]?.stRegistrationNumber
+                  ? this.allCustomers[customer_index]?.stRegistrationNumber
                   : ''
               "
             />
@@ -437,7 +437,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[account_index]?.ntn
+                  ? this.allCustomers[customer_index]?.ntn
                   : ''
               "
             />
@@ -451,7 +451,7 @@
               matInput
               [value]="
               isSaleCodeLoaded
-                  ? this.allCustomers[account_index]?.balance
+                  ? this.allCustomers[customer_index]?.balance
                   : ''
               "
             />
@@ -468,7 +468,7 @@
             rows="8"
             [value]="
             isSaleCodeLoaded
-                ? this.allCustomers[account_index]?.customerAddress
+                ? this.allCustomers[customer_index]?.customerAddress
                 : ''
             "
           ></textarea>

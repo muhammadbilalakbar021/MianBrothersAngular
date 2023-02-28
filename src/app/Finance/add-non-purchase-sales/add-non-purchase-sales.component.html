@@ -137,7 +137,7 @@
                 ?.min ||
               addPurchaseNonSalesForm.controls['disc']?.errors?.max
             "
-            >Must be between 1 - 1000000 Characters</mat-error
+            >Must be between 0 - 100</mat-error
           >
         </div>
         </div>
@@ -215,8 +215,8 @@
             readonly
               matInput
               [value]="
-              isProductCodeLoaded
-                  ? this.vendorByIdData[account_index]?.vendorCode
+              isPurchaseLoaded
+                  ? this.vendorByIdData[purchase_index]?.vendorCode
                   : ''
               "
             />
@@ -229,8 +229,8 @@
             readonly
               matInput
               [value]="
-                isProductCodeLoaded
-                  ? this.vendorCodes[product_index]?.vendorName
+              isPurchaseLoaded
+                  ? this.vendorByIdData[purchase_index]?.vendorName
                   : ''
               "
             />
@@ -244,8 +244,8 @@
             readonly
               matInput
               [value]="
-                isProductCodeLoaded
-                  ? this.vendorCodes[product_index]?.mobileNumber
+              isPurchaseLoaded
+                  ? this.vendorByIdData[purchase_index]?.mobileNumber
                   : ''
               "
             />
@@ -262,8 +262,8 @@
             readonly
               matInput
               [value]="
-                isProductCodeLoaded
-                  ? this.vendorCodes[product_index]?.stRegistrationNumber
+              isPurchaseLoaded
+                  ? this.vendorByIdData[purchase_index]?.stRegistrationNumber
                   : ''
               "
             />
@@ -277,7 +277,7 @@
             readonly
               matInput
               [value]="
-                isProductCodeLoaded ? this.vendorCodes[product_index]?.ntn : ''
+              isPurchaseLoaded ? this.vendorByIdData[purchase_index]?.ntn : ''
               "
             />
 
@@ -290,8 +290,8 @@
             readonly
               matInput
               [value]="
-                isProductCodeLoaded
-                  ? this.vendorCodes[product_index]?.balance
+              isPurchaseLoaded
+                  ? this.vendorByIdData[purchase_index]?.balance
                   : ''
               "
             />
@@ -308,8 +308,8 @@
             matInput
             rows="8"
             [value]="
-              isProductCodeLoaded
-                ? this.vendorCodes[product_index]?.vendorAddress
+            isPurchaseLoaded
+                ? this.vendorByIdData[purchase_index]?.vendorAddress
                 : ''
             "
           ></textarea>
@@ -325,8 +325,8 @@
         <button
           mat-button
           [disabled]="
-            this.addPurchaseNonSalesForm.inavlid ||
-            addPurchaseNonSalesForm.pristine || !this.allAccounts || !this.isPurchaseLoaded || !this.isProductCodeLoaded
+            this.addPurchaseNonSalesForm.invalid ||
+            addPurchaseNonSalesForm.pristine || !this.isPurchaseLoaded
           "
           class="blueButton ml-2"
           (click)="addPurchaseNonSales(date.value)"

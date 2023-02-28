@@ -54,7 +54,7 @@ export class AddNonPurchaseSalesComponent implements OnInit {
       ],
       disc: [
         '',
-        [Validators.required, Validators.min(1), Validators.max(10000000)],
+        [Validators.required, Validators.min(0), Validators.max(100)],
       ],
     });
   }
@@ -81,40 +81,6 @@ export class AddNonPurchaseSalesComponent implements OnInit {
       this.vendorCodes = data.payload;
     });
   }
-  loadPurchase(index: number) {
-    this.purchase_index = index;
-    this.isPurchaseLoaded = true;
-
-    this._purchaseService
-    .getVendorById(this.getPurchaseOrders[this.purchase_index].vendorId)
-    .subscribe((res: any) => {
-      this.vendorByIdData = res.payload;
-      this.isProductCodeLoaded = true;
-      console.log('VENDOR', res.payload);
-    });
-    this._purchaseService
-    .getVendorAccountByOrdersId(this.getPurchaseOrders[this.account_index].id)
-    .subscribe((res: any) => {
-      this.getVendorAccountByOrdersId = res.payload;
-      this.isProductCodeLoaded = true;
-      console.log('GET Vendor Account', res.payload);
-    });
-  }
-
-  loadProduct(index: number) {
-    this.product_index = index;
-    this.isProductCodeLoaded = true;
-  }
-
-  loadAccount(index: number) {
-    this.account_index = index;
-    this.isAccountLoaded = true;
-  }
-
-  loadItem(index: number) {
-    this.item_index = index;
-    this.isItemCodeLoaded = true;
-  }
 
   addPurchaseNonSales(date:any){
     let purchaseSalesObj = {
@@ -134,13 +100,53 @@ export class AddNonPurchaseSalesComponent implements OnInit {
       accountType : this.allAccounts[this.account_index].accountType,
       discount :JSON.parse(this.addPurchaseNonSalesForm.controls['disc'].value),
     }
-    this._purchaseService.addPurchase(purchaseSalesObj).then((data:any)=>{
-      window.location.reload();
-    },
-    (err: any) => {
-    })
+    this._purchaseService.addPurchase(purchaseSalesObj).then(
+      (data: any) => {
+        window.location.reload();
+        console.log('data',data)
+      },
+      (err: any) => {
+      }
+    );
+    console.log('Purchase',purchaseSalesObj);
   }
 
+  loadPurchase(index: number) {
+    this.purchase_index = index;
+    this.isPurchaseLoaded = true;
+
+    this._purchaseService
+    .getVendorById(this.getPurchaseOrders[this.purchase_index].vendorId)
+    .subscribe((res: any) => {
+      this.vendorByIdData = res.payload;
+      this.isPurchaseLoaded = true;
+      console.log('VENDOR', res.payload);
+    });
+    this._purchaseService
+    .getVendorAccountByOrdersId(this.getPurchaseOrders[this.account_index].id)
+    .subscribe((res: any) => {
+      this.getVendorAccountByOrdersId = res.payload;
+      this.isPurchaseLoaded = true;
+      console.log('GET Vendor Account', res.payload);
+    });
+  }
+
+  loadProduct(index: number) {
+    this.product_index = index;
+    this.isProductCodeLoaded = true;
+  }
+
+  loadAccount(index: number) {
+    this.account_index = index;
+    this.isAccountLoaded = true;
+  }
+
+  loadItem(index: number) {
+    this.item_index = index;
+    this.isItemCodeLoaded = true;
+  }
+
+ 
   transformDate(date : any){
     return this.dataPipe.transform(date,'yyyy-MM-dd');
    }

@@ -183,7 +183,7 @@
                 ?.min ||
               addPurchaseSalesForm.controls['discount']?.errors?.max
             "
-            >Must be between 1 - 1000000 Characters</mat-error
+            >Must be between 0 - 100</mat-error
           >
         </div>
         </div>
@@ -263,7 +263,7 @@
               matInput
               [value]="
               isPurchaseLoaded
-                  ? this.vendorByIdData[account_index]?.vendorCode
+                  ? this.vendorByIdData[purchase_index]?.vendorCode
                   : ''
               "
             />
@@ -278,7 +278,7 @@
               matInput
               [value]="
               isPurchaseLoaded
-                  ? this.vendorByIdData[account_index]?.vendorName
+                  ? this.vendorByIdData[purchase_index]?.vendorName
                   : ''
               "
             />
@@ -293,7 +293,7 @@
               matInput
               [value]="
               isPurchaseLoaded
-                  ? this.vendorByIdData[account_index]?.mobileNumber
+                  ? this.vendorByIdData[purchase_index]?.mobileNumber
                   : ''
               "
             />
@@ -311,7 +311,7 @@
               matInput
               [value]="
               isPurchaseLoaded
-                  ? this.vendorByIdData[account_index]?.stRegistrationNumber
+                  ? this.vendorByIdData[purchase_index]?.stRegistrationNumber
                   : ''
               "
             />
@@ -325,7 +325,7 @@
             readonly
               matInput
               [value]="
-              isPurchaseLoaded ? this.vendorByIdData[account_index]?.ntn : ''
+              isPurchaseLoaded ? this.vendorByIdData[purchase_index]?.ntn : ''
               "
             />
 
@@ -339,7 +339,7 @@
               matInput
               [value]="
               isPurchaseLoaded
-                ? this.vendorByIdData[account_index]?.balance
+                ? this.vendorByIdData[purchase_index]?.balance
                 : ''
             "
             />
@@ -357,7 +357,7 @@
             rows="8"
             [value]="
             isPurchaseLoaded
-                ? this.vendorByIdData[account_index]?.vendorAddress
+                ? this.vendorByIdData[purchase_index]?.vendorAddress
                 : ''
             "
           ></textarea>

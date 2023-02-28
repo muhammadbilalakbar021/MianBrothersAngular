@@ -76,7 +76,7 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
       ],
       discount: [
         '',
-        [Validators.required, Validators.min(1), Validators.max(10000000)],
+        [Validators.required, Validators.min(0), Validators.max(100)],
       ],
     });
   }
@@ -125,21 +125,21 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
       .subscribe((res: any) => {
         this.customerByIdData = res.payload;
         this.isSaleCodeLoaded = true;
-        console.log('Customer', res.payload);
+        console.log('Customer', this.sale_index, res.payload);
       });
     this._salesService
-      .getCustomerAccountByOrdersId(this.saleOrders[this.account_index].id)
+      .getCustomerAccountByOrdersId(this.saleOrders[this.sale_index].id)
       .subscribe((res: any) => {
         this.getCustomerAccountByOrdersId = res.payload;
         this.isSaleCodeLoaded = true;
-        console.log('GET Vendor Account', this.account_index, res.payload);
+        console.log('GET Vendor Account', this.sale_index, res.payload);
       });
     this._salesService
-      .getDeliveryChallanByOrderId(this.saleOrders[this.sale_index].id)
+      .getDeliveryChallanByOrderId(this.saleOrders[this.delivery_index].id)
       .subscribe((res: any) => {
         this.getDeliveryChallanByOrderId = res.payload;
         this.isDeliveryLoaded = true;
-        console.log('GET Vendor Account', this.sale_index, res.payload);
+        console.log('GET Vendor Account', this.delivery_index, res.payload);
       });
   }
   loadDelivery(index: any) {
@@ -172,12 +172,12 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
         this.saleOrders[this.sale_index].customerOrderReference,
       orderDate: this.transformDate(this.saleOrders[this.sale_index].orderDate),
       discount: this.addSalesTaxInvoiceForm.controls['discount'].value,
-      customerId: this.allCustomers[this.customer_index].id,
-      customerCode: this.allCustomers[this.customer_index].customerCode,
+      customerId: this.saleOrders[this.sale_index].id,
+      customerCode: this.saleOrders[this.sale_index].customerCode,
       paymentTerms:
         this.addSalesTaxInvoiceForm.controls['termsOfPayment'].value,
-      accountId: this.allAccounts[this.account_index].id,
-      accountType: this.allAccounts[this.account_index].accountType,
+      accountId: this.getCustomerAccountByOrdersId[this.account_index].id,
+      accountType: this.getCustomerAccountByOrdersId[this.account_index].accountType,
       deliveryChallan: this.deliverChallan[this.delivery_index].serialNumber
     };
 
@@ -186,6 +186,7 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
     },
       (err: any) => {
       })
+    console.log('Sales',salesTax);
   }
 
   transformDate(date: any) {

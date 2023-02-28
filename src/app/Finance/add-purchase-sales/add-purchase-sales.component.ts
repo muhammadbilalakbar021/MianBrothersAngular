@@ -70,7 +70,7 @@ export class AddPurchaseSalesComponent implements OnInit {
       ],
       discount: [
         '',
-        [Validators.required, Validators.min(1), Validators.max(1000000)],
+        [Validators.required, Validators.min(0), Validators.max(100)],
       ],
     });
   }
@@ -111,7 +111,7 @@ export class AddPurchaseSalesComponent implements OnInit {
       invoice: this.addPurchaseSalesForm.controls['vendorInvoiceNumber'].value,
       invoiceDate: this.transformDate(this.addPurchaseSalesForm.controls['vendorDate'].value),
       orderId: this.getPurchaseOrders[this.purchase_index]?.id,
-      accountId: this.getVendorAccountByOrdersId[this.purchase_index]?.id,
+      accountId: this.getVendorAccountByOrdersId[this.account_index]?.id,
       vendorId: this.getPurchaseOrders[this.purchase_index]?.vendorId,
       vendorCode: this.getPurchaseOrders[this.purchase_index]?.vendorCode,
       orderDate: this.transformDate(
