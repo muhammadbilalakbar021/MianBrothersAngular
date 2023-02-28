@@ -131,14 +131,14 @@ export class AddPurchaseSalesComponent implements OnInit {
       // accountType : this.allAccounts[this.account_index].accountType
     };
 
-    // this._purchaseService.addPurchase(purchaseSalesObj).then(
-    //   (data: any) => {
-    //     window.location.reload();
-    //     console.log('data',data)
-    //   },
-    //   (err: any) => {
-    //   }
-    // );
+    this._purchaseService.addPurchase(purchaseSalesObj).then(
+      (data: any) => {
+        window.location.reload();
+        console.log('data',data)
+      },
+      (err: any) => {
+      }
+    );
     console.log('Purchase',purchaseSalesObj);
   }
   loadPurchase(index: number) {

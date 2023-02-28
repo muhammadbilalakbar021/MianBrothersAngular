@@ -100,14 +100,14 @@ export class AddNonPurchaseSalesComponent implements OnInit {
       accountType : this.getVendorAccountByOrdersId[this.purchase_index].accountType,
       discount :JSON.parse(this.addPurchaseNonSalesForm.controls['disc'].value),
     }
-    // this._purchaseService.addPurchase(purchaseSalesObj).then(
-    //   (data: any) => {
-    //     window.location.reload();
-    //     console.log('data',data)
-    //   },
-    //   (err: any) => {
-    //   }
-    // );
+    this._purchaseService.addPurchase(purchaseSalesObj).then(
+      (data: any) => {
+        window.location.reload();
+        console.log('data',data)
+      },
+      (err: any) => {
+      }
+    );
     console.log('Purchase',purchaseSalesObj);
   }
 
