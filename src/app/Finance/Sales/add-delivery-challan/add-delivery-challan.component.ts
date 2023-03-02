@@ -127,6 +127,7 @@ export class AddDeliveryChallanComponent implements OnInit {
       (err: any) => {
       }
     );
+    console.log('Delivery',deliveryChallan);
   }
   transformDate(date: any) {
     return this.dataPipe.transform(date, 'yyyy-MM-dd');

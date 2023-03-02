@@ -200,14 +200,21 @@
           <div class="col-md-4">
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Customer Code</mat-label>
-              <mat-select disableRipple>
-                <mat-option
+                <input
+                matInput
+                readonly
+                [value]="
+                isSaleCodeLoaded
+                    ? this.allCustomers[customer_index]?.customerCode
+                    : ''
+                "
+              />
+                <!-- <mat-option
                   *ngFor="let customerData of this.allCustomers; let i = index"
                   [value]="customerData.customerCode"
                   (click)="loadCustomers(i)"
                   >{{ customerData.customerCode }}</mat-option
-                >
-              </mat-select>
+                > -->
             </mat-form-field>
           </div>
           <div class="col-md-4">
@@ -217,7 +224,7 @@
                 matInput
                 readonly
                 [value]="
-                  isCustomerCodeLoaded
+                isSaleCodeLoaded
                     ? this.allCustomers[customer_index]?.customerName
                     : ''
                 "
@@ -232,7 +239,7 @@
               readonly
                 matInput
                 [value]="
-                isCustomerCodeLoaded
+                isSaleCodeLoaded
                     ? this.allCustomers[customer_index]?.mobileNumber
                     : ''
                 "
@@ -251,7 +258,7 @@
                 matInput
                 readonly
                 [value]="
-                  isCustomerCodeLoaded
+                isSaleCodeLoaded
                     ? this.allCustomers[customer_index]?.stRegistrationNumber
                     : ''
                 "
@@ -266,7 +273,7 @@
                 matInput
                 readonly
                 [value]="
-                  isCustomerCodeLoaded
+                isSaleCodeLoaded
                     ? this.allCustomers[customer_index]?.ntn
                     : ''
                 "
@@ -282,7 +289,7 @@
                 matInput
                 readonly
                 [value]="
-                  isCustomerCodeLoaded
+                isSaleCodeLoaded
                     ? this.allCustomers[customer_index]?.balance
                     : ''
                 "
@@ -301,7 +308,7 @@
                 readonly
                 rows="8"
                 [value]="
-                  isCustomerCodeLoaded
+                isSaleCodeLoaded
                     ? this.allCustomers[customer_index]?.customerAddress
                     : ''
                 "
@@ -385,7 +392,7 @@
       <button
         mat-button
         class="blueButton ml-5"
-        [disabled]="addDeliveryChallanForm.invalid || !isCustomerCodeLoaded || !isSaleCodeLoaded"
+        [disabled]="addDeliveryChallanForm.invalid || !isSaleCodeLoaded"
         (click)="addDeliveryChallan(date.value, deliveryDate.value)"
       >
         Add
