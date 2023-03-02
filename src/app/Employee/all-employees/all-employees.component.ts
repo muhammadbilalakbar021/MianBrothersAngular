@@ -65,7 +65,6 @@ export class AllEmployeesComponent implements OnInit {
     else {
       alert('You pressed cancel');
     }
-
   }
 
   onEdit(index: any) {
