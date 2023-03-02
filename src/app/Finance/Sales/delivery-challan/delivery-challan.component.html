@@ -158,7 +158,7 @@
                 readonly
                   matInput
                   [value]="
-                    isProductCodeLoaded ? this.vendorByIdData[0].customerCode : ''
+                  isPurchaseLoaded ? this.customerByIdData[0].customerCode : ''
                   "
                 />
               </mat-form-field>
@@ -172,7 +172,7 @@
                 readonly
                   matInput
                   [value]="
-                    isProductCodeLoaded ? this.vendorByIdData[0].balance : ''
+                  isPurchaseLoaded ? this.customerByIdData[0].balance : ''
                   "
                 />
               </mat-form-field>
@@ -185,7 +185,7 @@
                 readonly
                   matInput
                   [value]="
-                    isProductCodeLoaded ? this.vendorByIdData[0].customerName : ''
+                  isPurchaseLoaded ? this.customerByIdData[0].customerName : ''
                   "
                 />
               </mat-form-field>
@@ -199,7 +199,7 @@
                 readonly
                   matInput
                   [value]="
-                    isProductCodeLoaded ? this.vendorByIdData[0].mobileNumber : ''
+                  isPurchaseLoaded ? this.customerByIdData[0].mobileNumber : ''
                   "
                 />
               </mat-form-field>
@@ -213,8 +213,8 @@
                   matInput
                   rows="8"
                   [value]="
-                    isProductCodeLoaded
-                      ? this.vendorByIdData[0].customerAddress
+                  isPurchaseLoaded
+                      ? this.customerByIdData[0].customerAddress
                       : ''
                   "
                 ></textarea>
@@ -514,14 +514,14 @@
             <div class="row">
               <h2>
                 {{
-                  isProductCodeLoaded ? this.vendorByIdData[0].customerName : ""
+                  isProductCodeLoaded ? this.customerByIdData[0].customerName : ""
                 }}
               </h2>
             </div>
             <div class="row">
               <h5>
                 {{
-                  isProductCodeLoaded ? this.vendorByIdData[0].mobileNumber : ""
+                  isProductCodeLoaded ? this.customerByIdData[0].mobileNumber : ""
                 }}
               </h5>
             </div>
@@ -529,7 +529,7 @@
               <h5>
                 {{
                   isProductCodeLoaded
-                    ? this.vendorByIdData[0].customerAddress
+                    ? this.customerByIdData[0].customerAddress
                     : ""
                 }}
               </h5>

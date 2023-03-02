@@ -26,7 +26,7 @@ export class DeliveryChallanComponent implements OnInit {
   public isPurchaseLoaded: boolean = false;
   allDataById: any;
   disablePrint: boolean = false;
-  vendorByIdData: any;
+  customerByIdData: any;
   deliveryChallanById: any;
   displayedColumns: string[] = [
     'challanDate',
@@ -62,13 +62,13 @@ export class DeliveryChallanComponent implements OnInit {
     this.purchase_index = index;
     this.isPurchaseLoaded = true;
     this._salesService
-      .getCustomersById(this.deliveryChallanTableData[this.purchase_index].id)
+      .getCustomersById(this.deliveryChallanTableData[this.purchase_index].customerId)
       .subscribe((res: any) => {
-        this.vendorByIdData = res.payload;
-        this.isProductCodeLoaded = true;
-        console.log('VENDOR', this.vendorByIdData);
+        this.customerByIdData = res.payload;
+        this.isPurchaseLoaded = true;
+        console.log('Customer', this.purchase_index, res.payload);
       });
-    let obj = new Array(this.deliveryChallanTableData[this.purchase_index]);
+    let obj = new Array(this.deliveryChallanTableData[this.product_index]);
     this.dataSource = obj;
     this.disablePrint = true;
     console.log('HEHEH', this.dataSource);
