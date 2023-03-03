@@ -90,8 +90,8 @@
                 <mat-label>Cash Account</mat-label>
                 <input readonly matInput [value]="
                 isCashLoaded
-                  ? this.cashPaymentTable[cash_index]
-                      ?.accoundCode
+                  ? this.cashPaymentTable[this.cash_index]
+                      ?.accountCode
                   : ''
               ">
               </mat-form-field>
