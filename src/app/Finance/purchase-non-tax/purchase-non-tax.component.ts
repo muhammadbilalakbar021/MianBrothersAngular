@@ -33,7 +33,7 @@ export class PurchaseNonTaxComponent implements OnInit {
     'paymentTerms',
     'orderSerialNumber',
     'orderDate',
-    'deliveryChallan',
+    // 'deliveryChallan',
     'accountType',
     'delete',
     'edit',

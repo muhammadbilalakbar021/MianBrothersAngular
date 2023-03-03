@@ -33,7 +33,6 @@ export class PurchaseSalesTaxComponent implements OnInit {
     'paymentTerms',
     'orderSerialNumber',
     'orderDate',
-    'deliveryChallan',
     'accountType',
     'delete',
     'edit',
@@ -136,7 +135,7 @@ export class PurchaseSalesTaxComponent implements OnInit {
     else {
       alert('You pressed cancel');
     }
-    
+
   }
 
   printReceipt(id: any) {
