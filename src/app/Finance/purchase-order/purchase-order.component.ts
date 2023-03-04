@@ -80,6 +80,9 @@ export class PurchaseOrderComponent implements OnInit {
         this.isProductCodeLoaded = true;
         console.log('VENDOR', res.payload);
       });
+      console.log("ID PUR",this.purchaseOrder[this.purchase_index].id)
+      console.log("ID PUR 1",this.purchaseOrder)
+      console.log("ID PUR 2",this.purchase_index)
     this._purchaseService.getProductHistory(this.purchaseOrder[this.purchase_index].id).subscribe((response: any) => {
         console.log('Purchase table response', response);
         this.purchaseTableData = response.payload;

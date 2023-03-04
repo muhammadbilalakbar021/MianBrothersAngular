@@ -296,6 +296,9 @@ export class AddPurchaseReturnComponent implements OnInit {
   loadPurchaseSales(index: number) {
     this.purchaseSales_index = index;
     this.isPurchaseSalesLoaded = true;
+    console.log("ID",this.allPurchaseSalesData[this.purchaseSales_index].orderId)
+    console.log("ID 2",this.allPurchaseSalesData)
+    console.log("ID 3",this.purchaseSales_index)
     this._purchaseService
       .getAllOrdersByItemCodes(this.allPurchaseSalesData[this.purchaseSales_index].orderId)
       .subscribe((res: any) => {

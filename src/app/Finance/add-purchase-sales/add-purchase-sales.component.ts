@@ -75,7 +75,7 @@ export class AddPurchaseSalesComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this._purchaseService. getUngeneratedPurchaseOrders().subscribe((response: any) => {
+    this._purchaseService.getUngeneratedPurchaseOrders().subscribe((response: any) => {
       console.log('get purchase orders', response);
       this.getPurchaseOrders = response.payload;
     });
@@ -110,12 +110,12 @@ export class AddPurchaseSalesComponent implements OnInit {
       saleDate: this.transformDate(date),
       invoice: this.addPurchaseSalesForm.controls['vendorInvoiceNumber'].value,
       invoiceDate: this.transformDate(this.addPurchaseSalesForm.controls['vendorDate'].value),
-      orderId: this.getPurchaseOrders[this.purchase_index]?.id,
+      orderId: this.getPurchaseOrders[this.product_index]?.id,
       accountId: this.getVendorAccountByOrdersId[this.account_index]?.id,
       vendorId: this.getPurchaseOrders[this.product_index]?.vendorId,
       vendorCode: this.getPurchaseOrders[this.product_index]?.vendorCode,
       orderDate: this.transformDate(
-        this.getPurchaseOrders[this.purchase_index].orderDate
+        this.getPurchaseOrders[this.product_index].orderDate
       ),
       orderSerialNumber:
         this.getPurchaseOrders[this.product_index].serialNumber,
@@ -144,13 +144,17 @@ export class AddPurchaseSalesComponent implements OnInit {
   loadPurchase(index: number) {
     this.product_index = index;
     this.isPurchaseLoaded = true;
-        this._purchaseService
+    console.log("ID in add 1",this.getPurchaseOrders[this.product_index].vendorId);
+    console.log("ID in add 2",this.getPurchaseOrders);
+    console.log("ID in add 3",this.product_index);
+    this._purchaseService
       .getVendorById(this.getPurchaseOrders[this.product_index].vendorId)
       .subscribe((res: any) => {
         this.vendorByIdData = res.payload;
         this.isPurchaseLoaded = true;
         console.log('VENDOR', res.payload);
       });
+      console.log("ID in add 4",this.getPurchaseOrders[this.product_index].id);
       this._purchaseService
       .getVendorAccountByOrdersId(this.getPurchaseOrders[this.product_index].id)
       .subscribe((res: any) => {

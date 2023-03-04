@@ -90,11 +90,11 @@ export class AddNonPurchaseSalesComponent implements OnInit {
       saleDate : this.transformDate(date),
       invoice : this.addPurchaseNonSalesForm.controls['serialNumber'].value,
       invoiceDate : this.transformDate(date),
-      orderId : this.getPurchaseOrders[this.purchase_index]?.id,
+      orderId : this.getPurchaseOrders[this.product_index]?.id,
       accountId : this.getVendorAccountByOrdersId[this.account_index]?.id,
       vendorId : this.getPurchaseOrders[this.product_index]?.vendorId,
       vendorCode: this.getPurchaseOrders[this.product_index]?.vendorCode,
-      orderDate : this.transformDate(this.getPurchaseOrders[this.purchase_index].orderDate),
+      orderDate : this.transformDate(this.getPurchaseOrders[this.product_index].orderDate),
       orderSerialNumber : this.getPurchaseOrders[this.product_index].serialNumber,
       paymentTerms : this.addPurchaseNonSalesForm.controls['termsOfPayment'].value,
       accountType : this.getVendorAccountByOrdersId[this.purchase_index].accountType,
@@ -146,7 +146,7 @@ export class AddNonPurchaseSalesComponent implements OnInit {
     this.isItemCodeLoaded = true;
   }
 
- 
+
   transformDate(date : any){
     return this.dataPipe.transform(date,'yyyy-MM-dd');
    }
