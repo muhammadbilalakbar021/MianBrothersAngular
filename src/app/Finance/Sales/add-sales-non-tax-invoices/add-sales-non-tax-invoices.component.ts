@@ -77,7 +77,7 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
       ],
       discount: [
         '',
-        [Validators.required, Validators.min(0), Validators.max(100)],
+        [Validators.required, Validators.min(0)],
       ],
 
     });

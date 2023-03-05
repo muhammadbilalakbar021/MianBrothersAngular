@@ -202,7 +202,7 @@ export class AddPurchaseReturnComponent implements OnInit {
 
     return formValidators;
   }
-  deleteForm(index:any){
+   deleteForm(index:any){
     console.log('Index is',index)
     this.forms.splice(index,1);
     console.log(this.forms,"forms")
