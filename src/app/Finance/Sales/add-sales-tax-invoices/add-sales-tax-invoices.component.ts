@@ -139,8 +139,11 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
       .subscribe((res: any) => {
         this.getDeliveryChallanByOrderId = res.payload;
         this.isDeliveryLoaded = true;
-        console.log('GET Vendor Account', this.delivery_index, res.payload);
+        console.log('GET Vendor Account', this.sale_index, res.payload);
+        console.log('HAHHAHAHAHAHA', this.getDeliveryChallanByOrderId[this.delivery_index].serialNumber);
       });
+
+
   }
   loadDelivery(index: any) {
     this.delivery_index = index;
@@ -178,7 +181,7 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
         this.addSalesTaxInvoiceForm.controls['termsOfPayment'].value,
       accountId: this.getCustomerAccountByOrdersId[this.account_index].id,
       accountType: this.getCustomerAccountByOrdersId[this.account_index].accountType,
-      deliveryChallan: this.getDeliveryChallanByOrderId[this.sale_index].serialNumber
+      deliveryChallan: this.getDeliveryChallanByOrderId[this.delivery_index].serialNumber
     };
 
     this._purchaseService.addPurchaseSales(salesTax).then((data: any) => {
