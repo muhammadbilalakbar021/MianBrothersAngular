@@ -193,6 +193,20 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Account</mat-label>
+            <input
+              matInput
+              #vendorInvoiceNumber
+              readonly
+              [value]="
+              isAccountLoaded
+                  ? this.getCustomerAccountByOrdersId[account_index]?.accountCode
+                  : ''
+              "
+            />
+
+          </mat-form-field>
+          <!-- <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Account</mat-label>
             <mat-select disableRipple>
               <mat-option
                 *ngFor="let accountData of this.allAccounts; let i = index"
@@ -201,7 +215,7 @@
                 >{{ accountData.accountCode }}</mat-option
               >
             </mat-select>
-          </mat-form-field>
+          </mat-form-field> -->
         </div>
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
@@ -211,8 +225,8 @@
               #vendorInvoiceNumber
               readonly
               [value]="
-                isAccountLoaded
-                  ? this.allAccounts[account_index]?.accountType
+              isPurchaseSalesLoaded
+                  ? this.getCustomerAccountByOrdersId[account_index]?.accountType
                   : ''
               "
             />
