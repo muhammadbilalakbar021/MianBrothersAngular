@@ -181,7 +181,7 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
         this.salesNonTaxForm.controls['termsOfPayment'].value,
       accountId: this.getCustomerAccountByOrdersId[this.account_index].id,
       accountType: this.getCustomerAccountByOrdersId[this.account_index].accountType,
-      deliveryChallan: this.getDeliveryChallanByOrderId[this.sale_index].serialNumber
+      deliveryChallan: this.getDeliveryChallanByOrderId[this.delivery_index].serialNumber
     };
 
     this._purchaseService.addPurchaseSales(salesTax).then((data: any) => {

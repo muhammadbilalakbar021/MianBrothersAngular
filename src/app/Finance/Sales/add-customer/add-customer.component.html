@@ -69,31 +69,7 @@
             >
           </div>
         </div>
-        <div class="col-md-4">
-          <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Order Limit</mat-label>
-            <input type="number" required #limit matInput formControlName="orderLimit" />
-          </mat-form-field>
-          <div
-            *ngIf="
-              addCustomerForm.controls['orderLimit'].invalid &&
-              (addCustomerForm.controls['orderLimit'].dirty ||
-                addCustomerForm.controls['orderLimit'].touched)
-            "
-          >
-            <mat-error
-              *ngIf="addCustomerForm.controls['orderLimit']?.errors?.required"
-              >Order Limit is required</mat-error
-            >
-            <mat-error
-              *ngIf="
-                addCustomerForm.controls['orderLimit']?.errors?.minLength ||
-                addCustomerForm.controls['orderLimit']?.errors?.maxLength
-              "
-              >Must be between 1 - 10000000 Characters</mat-error
-            >
-          </div>
-        </div>
+
       </div>
       <div class="row">
         <div class="col-md-4">

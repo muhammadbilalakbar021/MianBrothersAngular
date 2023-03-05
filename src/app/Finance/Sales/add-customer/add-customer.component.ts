@@ -40,14 +40,6 @@ export class AddCustomerComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
-      orderLimit: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(10000000),
-        ],
-      ],
       balance: [
         '',
         [
@@ -148,7 +140,7 @@ export class AddCustomerComponent implements OnInit {
     let saveCustomerObj = {
       customerName: this.addCustomerForm.controls['customerName'].value,
       customerCode: this.addCustomerForm.controls['customerCode'].value,
-      orderLimit: this.addCustomerForm.controls['orderLimit'].value,
+      orderLimit: 0,
       creditLimit: this.addCustomerForm.controls['creditLimit'].value,
       creditTerms: this.addCustomerForm.controls['creditTerms'].value,
       contactPerson: this.addCustomerForm.controls['contactPerson'].value,
