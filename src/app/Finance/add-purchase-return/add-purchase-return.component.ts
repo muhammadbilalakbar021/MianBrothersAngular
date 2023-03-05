@@ -202,6 +202,11 @@ export class AddPurchaseReturnComponent implements OnInit {
 
     return formValidators;
   }
+  deleteForm(index:any){
+    console.log('Index is',index)
+    this.forms.splice(index,1);
+    console.log(this.forms,"forms")
+  }
 
   // public hasValidator(controlName: string, validator: string): boolean {
   //   let control: AbstractControl = this.addPurchaseForm.controls[controlName];

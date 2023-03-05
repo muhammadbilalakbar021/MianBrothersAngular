@@ -274,12 +274,13 @@
                       [formControlName]="f.metaData[1].key"
                       [id]="f.metaData[1].key"
                     />
+                    <mat-error
+                      *ngIf="
+                      f.metaData[1].Validation.required
+                      "
+                      >Quantity is required</mat-error
+                    >
                   </mat-form-field>
-                  <mat-error
-                    *ngIf="
-                    f.metaData[1].Validation.required"
-                    >Quantity is required</mat-error
-                  >
                 </div>
                 <div class="col-md-4">
                   <mat-form-field appearance="outline" class="w-100">
@@ -289,12 +290,22 @@
                       [formControlName]="f.metaData[2].key"
                       [id]="f.metaData[2].key"
                     />
-
-                  </mat-form-field>
-                  <mat-error
+                    <mat-error
                     *ngIf="
-                    f.metaData[2].Validation.required"
+                    f.metaData[2].Validation.required
+                    "
                     >Unit is required</mat-error
+                  >
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div (click)="deleteForm(ind)" class="col-md-2">
+                  <a mat-button color="primary"
+                    ><mat-icon
+                      ><span class="material-symbols-outlined"> delete </span></mat-icon
+                    >
+                    Delete Items</a
                   >
                 </div>
               </div>

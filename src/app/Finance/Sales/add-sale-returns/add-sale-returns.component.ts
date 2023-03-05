@@ -27,6 +27,7 @@ export class AddSaleReturnsComponent implements OnInit {
   public itemCodes: any;
   public vendorCodes: any;
   public allAccounts: any;
+  public getCustomerAccountByOrdersId: any;
   public isProductCodeLoaded: boolean = false;
   public isItemCodeLoaded: boolean = false;
   public isAccountLoaded: boolean = false;
@@ -302,6 +303,15 @@ export class AddSaleReturnsComponent implements OnInit {
         this.itemCodesById = res.payload;
         console.log('itemCodes', this.itemCodesById);
       });
+
+      this._purchaseService
+      .getCustomerAccountByOrdersId(this.getPurchaseOrders[this.account_index].id)
+      .subscribe((res: any) => {
+        this.getCustomerAccountByOrdersId = res.payload;
+        this.isAccountLoaded = true;
+        console.log('GET Vendor Account', this.account_index, res.payload);
+      });
+
   }
   loadItem(index: number, value: any) {
     this.tempArr[index] = value;
