@@ -203,6 +203,18 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Account</mat-label>
+            <input
+              readonly
+              matInput
+              [value]="
+              isPurchaseSalesLoaded
+                  ? this.getVendorAccountByOrdersId[account_index]?.accountCode
+                  : ''
+              "
+            />
+          </mat-form-field>
+          <!-- <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Account</mat-label>
             <mat-select disableRipple>
               <mat-option
                 *ngFor="let accountData of this.allAccounts; let i = index"
@@ -211,7 +223,7 @@
                 >{{ accountData.accountCode }}</mat-option
               >
             </mat-select>
-          </mat-form-field>
+          </mat-form-field> -->
         </div>
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
@@ -220,8 +232,8 @@
               readonly
               matInput
               [value]="
-                isAccountLoaded
-                  ? this.allAccounts[account_index]?.accountType
+              isPurchaseSalesLoaded
+                  ? this.getVendorAccountByOrdersId[account_index]?.accountType
                   : ''
               "
             />
@@ -306,7 +318,7 @@
         <button
           mat-button
           class="blueButton ml-2"
-          [disabled]="this.addPurchaseReturnsForm.inavlid || !isPurchaseSalesLoaded || !isAccountLoaded"
+          [disabled]="this.addPurchaseReturnsForm.inavlid || !isPurchaseSalesLoaded"
           (click)="addPurchaseReturn(date.value)"
         >
           Add

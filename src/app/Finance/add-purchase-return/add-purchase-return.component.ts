@@ -26,6 +26,7 @@ export class AddPurchaseReturnComponent implements OnInit {
   public itemCodes: any;
   public vendorCodes: any;
   public allAccounts: any;
+  public getVendorAccountByOrdersId: any;
   public isProductCodeLoaded: boolean = false;
   public isItemCodeLoaded: boolean = false;
   public isAccountLoaded: boolean = false;
@@ -262,20 +263,21 @@ export class AddPurchaseReturnComponent implements OnInit {
         this.allPurchaseSalesData[this.purchaseSales_index].invoiceDate
       ),
       saleId: this.allPurchaseSalesData[this.purchaseSales_index].id,
-      accountCode: this.allAccounts[this.account_index].accountCode,
-      accountType: this.allAccounts[this.account_index].accountType,
+      accountCode: this.getVendorAccountByOrdersId[this.account_index].accountCode,
+      accountType: this.getVendorAccountByOrdersId[this.account_index].accountType,
       accountId: this.allAccounts[this.account_index].id,
       returns: temp,
       // orderDate :
     };
     console.log("this.pruc",purchaseSalesObj);
-    this._purchaseService
-      .AddPurchaseReturn(purchaseSalesObj)
-      .then((res: any) => {
-      window.location.reload();
-    },
-    (err: any) => {
-    })
+    // this._purchaseService
+    //   .AddPurchaseReturn(purchaseSalesObj)
+    //   .then((res: any) => {
+    //   window.location.reload();
+    // },
+    // (err: any) => {
+    // })
+    console.log('Purchase',purchaseSalesObj);
   }
 
   // loadPurchase(index: number) {
@@ -304,6 +306,13 @@ export class AddPurchaseReturnComponent implements OnInit {
       .subscribe((res: any) => {
         this.itemCodesById = res.payload;
         console.log('itemCodes', this.itemCodesById);
+      });
+      this._purchaseService
+      .getVendorAccountByOrdersId(this.getPurchaseOrders[this.account_index].id)
+      .subscribe((res: any) => {
+        this.getVendorAccountByOrdersId = res.payload;
+        this.isPurchaseSalesLoaded = true;
+        console.log('GET Vendor Account', res.payload);
       });
   }
 
