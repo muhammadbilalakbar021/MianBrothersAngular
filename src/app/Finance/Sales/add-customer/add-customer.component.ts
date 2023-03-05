@@ -140,7 +140,7 @@ export class AddCustomerComponent implements OnInit {
     let saveCustomerObj = {
       customerName: this.addCustomerForm.controls['customerName'].value,
       customerCode: this.addCustomerForm.controls['customerCode'].value,
-      orderLimit: 0,
+      orderLimit: 1,
       creditLimit: this.addCustomerForm.controls['creditLimit'].value,
       creditTerms: this.addCustomerForm.controls['creditTerms'].value,
       contactPerson: this.addCustomerForm.controls['contactPerson'].value,
