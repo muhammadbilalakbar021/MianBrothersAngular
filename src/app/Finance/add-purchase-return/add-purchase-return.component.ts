@@ -270,7 +270,7 @@ export class AddPurchaseReturnComponent implements OnInit {
       saleId: this.allPurchaseSalesData[this.purchaseSales_index].id,
       accountCode: this.getVendorAccountByOrdersId[this.account_index].accountCode,
       accountType: this.getVendorAccountByOrdersId[this.account_index].accountType,
-      accountId: this.allAccounts[this.account_index].id,
+      accountId: this.getVendorAccountByOrdersId[this.account_index].id,
       returns: temp,
       // orderDate :
     };
@@ -313,7 +313,7 @@ export class AddPurchaseReturnComponent implements OnInit {
         console.log('itemCodes', this.itemCodesById);
       });
       this._purchaseService
-      .getVendorAccountByOrdersId(this.getPurchaseOrders[this.account_index].id)
+      .getListOfAllAccountById(this.allPurchaseSalesData[this.purchaseSales_index].accountId)
       .subscribe((res: any) => {
         this.getVendorAccountByOrdersId = res.payload;
         this.isPurchaseSalesLoaded = true;
