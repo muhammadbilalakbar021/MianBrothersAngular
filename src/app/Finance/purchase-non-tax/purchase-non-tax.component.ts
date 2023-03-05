@@ -29,7 +29,7 @@ export class PurchaseNonTaxComponent implements OnInit {
     'discount',
     'types',
     'totalAmount',
-    'productItemCode',
+    // 'productItemCode',
     'paymentTerms',
     'orderSerialNumber',
     'orderDate',
