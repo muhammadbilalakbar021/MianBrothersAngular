@@ -175,8 +175,8 @@ export class AddSalesTaxInvoicesComponent implements OnInit {
         this.saleOrders[this.sale_index].customerOrderReference,
       orderDate: this.transformDate(this.saleOrders[this.sale_index].orderDate),
       discount: this.addSalesTaxInvoiceForm.controls['discount'].value,
-      customerId: this.saleOrders[this.sale_index].id,
-      customerCode: this.saleOrders[this.sale_index].customerCode,
+      customerId: this.customerByIdData[this.customer_index].id,
+      customerCode: this.customerByIdData[this.customer_index].customerCode,
       paymentTerms:
         this.addSalesTaxInvoiceForm.controls['termsOfPayment'].value,
       accountId: this.getCustomerAccountByOrdersId[this.account_index].id,

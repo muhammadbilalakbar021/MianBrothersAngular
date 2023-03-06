@@ -275,13 +275,13 @@ export class AddPurchaseReturnComponent implements OnInit {
       // orderDate :
     };
     console.log("this.pruc",purchaseSalesObj);
-    // this._purchaseService
-    //   .AddPurchaseReturn(purchaseSalesObj)
-    //   .then((res: any) => {
-    //   window.location.reload();
-    // },
-    // (err: any) => {
-    // })
+    this._purchaseService
+      .AddPurchaseReturn(purchaseSalesObj)
+      .then((res: any) => {
+      window.location.reload();
+    },
+    (err: any) => {
+    })
     console.log('Purchase',purchaseSalesObj);
   }
 

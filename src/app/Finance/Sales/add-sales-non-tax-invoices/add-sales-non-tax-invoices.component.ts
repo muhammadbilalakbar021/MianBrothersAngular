@@ -175,8 +175,8 @@ export class AddSalesNonTaxInvoicesComponent implements OnInit {
         this.saleOrders[this.sale_index].customerOrderReference,
       orderDate: this.transformDate(this.saleOrders[this.sale_index].orderDate),
       discount: this.salesNonTaxForm.controls['discount'].value,
-      customerId: this.allCustomers[this.customer_index].id,
-      customerCode: this.allCustomers[this.customer_index].customerCode,
+      customerId: this.customerByIdData[this.customer_index].id,
+      customerCode: this.customerByIdData[this.customer_index].customerCode,
       paymentTerms:
         this.salesNonTaxForm.controls['termsOfPayment'].value,
       accountId: this.getCustomerAccountByOrdersId[this.account_index].id,
