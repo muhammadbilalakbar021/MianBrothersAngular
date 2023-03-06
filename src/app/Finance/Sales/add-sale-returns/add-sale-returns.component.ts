@@ -258,9 +258,9 @@ export class AddSaleReturnsComponent implements OnInit {
         this.allPurchaseSalesData[this.purchaseSales_index].invoiceDate
       ),
       saleId: this.allPurchaseSalesData[this.purchaseSales_index].id,
-      accountCode: this.allAccounts[this.account_index].accountCode,
-      accountType: this.allAccounts[this.account_index].accountType,
-      accountId: this.allAccounts[this.account_index].id,
+      accountCode: this.getCustomerAccountByOrdersId[this.account_index].accountCode,
+      accountType: this.getCustomerAccountByOrdersId[this.account_index].accountType,
+      accountId: this.getCustomerAccountByOrdersId[this.account_index].id,
       returns: temp,
       // orderDate :
     };
@@ -305,11 +305,11 @@ export class AddSaleReturnsComponent implements OnInit {
       });
 
       this._purchaseService
-      .getCustomerAccountByOrdersId(this.getPurchaseOrders[this.account_index].id)
+      .getListOfAllAccountById(this.allPurchaseSalesData[this.purchaseSales_index].accountId)
       .subscribe((res: any) => {
         this.getCustomerAccountByOrdersId = res.payload;
-        this.isAccountLoaded = true;
-        console.log('GET Vendor Account', this.account_index, res.payload);
+        this.isPurchaseSalesLoaded = true;
+        console.log('GET Vendor Account', this.purchaseSales_index, res.payload);
       });
 
   }

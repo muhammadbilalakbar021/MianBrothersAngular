@@ -80,7 +80,7 @@ export class AddBankPaymentComponent implements OnInit {
       ],
       disc: [
         '',
-        [Validators.required, Validators.min(1), Validators.max(10000000)],
+        [Validators.required, Validators.min(0)],
       ],
       totalDebited: [
         '',

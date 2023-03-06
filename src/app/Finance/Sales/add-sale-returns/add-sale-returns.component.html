@@ -198,7 +198,7 @@
               #vendorInvoiceNumber
               readonly
               [value]="
-              isAccountLoaded
+              isPurchaseSalesLoaded
                   ? this.getCustomerAccountByOrdersId[account_index]?.accountCode
                   : ''
               "
@@ -320,7 +320,7 @@
     <div class="row mr-1" style="float: right">
       <button mat-button routerLink="/employee-home/sale-returns">Back</button>
       <button mat-button class="blueButton ml-2" (click)="addSaleReturn(date.value)"
-      [disabled]="addSalesReturnsForm.invalid || !isAccountLoaded || !isPurchaseSalesLoaded"
+      [disabled]="addSalesReturnsForm.invalid || !isPurchaseSalesLoaded"
       >Add</button>
     </div>
   </div>

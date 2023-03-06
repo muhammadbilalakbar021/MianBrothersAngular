@@ -153,7 +153,7 @@
                 <mat-label>Name</mat-label>
                 <input
                   matInput
-                  [value]="isProductCodeLoaded ? this.vendorByIdData[0].vendorName : ''"
+                  [value]="isProductCodeLoaded ? this.vendorByIdData[0].customerName : ''"
                 />
               </mat-form-field>
               <mat-form-field appearance="outline" class="ml-2" style="width:63.5%">
@@ -171,7 +171,7 @@
                 <textarea
                   matInput
                   rows="8"
-                  [value]="isProductCodeLoaded ? this.vendorByIdData[0].vendorAddress : ''"
+                  [value]="isProductCodeLoaded ? this.vendorByIdData[0].customerAddress : ''"
                 ></textarea>
               </mat-form-field>
             </div>

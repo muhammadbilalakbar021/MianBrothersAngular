@@ -73,8 +73,8 @@ export class AddCustomerCreditComponent implements OnInit {
     this._accountService.getAllUserAccounts().subscribe((res: any) => {
       this.allAccounts = res.payload;
       console.log('this.allAccounts:', this.allAccounts);
-    });
-    this._accountService.getUserCustomerAccounts().subscribe((res: any) => {
+    }); 
+    this._accountService.getCustomerAccounts  ().subscribe((res: any) => {
       this.customerAccounts = res.payload;
       console.log('this.allAccounts:', this.allAccounts);
     });
