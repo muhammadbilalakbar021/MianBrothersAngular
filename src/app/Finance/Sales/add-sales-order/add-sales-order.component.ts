@@ -256,10 +256,10 @@ export class AddSalesOrderComponent implements OnInit {
         quantity: this.forms[i].formGroup.value.quantity,
         salesTaxRate: this.forms[i].formGroup.value.salesTaxRate,
         unit: this.forms[i].formGroup.value.unit,
-        productItemCode: this.tempArr[i],
-        productName: this.productName,
-        productType: this.productType,
-        productId: this.item_id,
+        productItemCode: this.itemCodes[i].itemCode,
+        productName: this.itemCodes[i].productName,
+        productType: this.itemCodes[i].productType,
+        productId: this.itemCodes[i].id,
       });
     }
 
@@ -276,7 +276,6 @@ export class AddSalesOrderComponent implements OnInit {
       customerCode: this.allCustomers[this.customer_index].customerCode,
       product: temp,
     };
-    console.log(this.addSalesOrderForm);
     this._purchaseService.AddPurchaseSalesOrder(this.addSalesOrderForm).then(
       (data: any) => {
         console.log('purchase order added successfully', data);
