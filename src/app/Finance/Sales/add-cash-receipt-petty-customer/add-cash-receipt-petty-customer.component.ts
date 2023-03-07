@@ -83,7 +83,7 @@ export class AddCashReceiptPettyCustomerComponent implements OnInit {
 
   addCashPetty(date: any) {
     let cashPetty: any = {
-      types: 'Purchases',
+      types: 'Sales',
       paymentType: 'Cash',
       isPetty: 1,
       serialNumber:
