@@ -68,7 +68,7 @@ export class SaleReturnComponent implements OnInit {
     this.purchaseService
       .getReturnsByOrderId(this.salesReturnData[this.sales_index].id)
       .subscribe((response: any) => {
-        console.log('Sales Return Tax Table', response);
+        console.log('TABLE', response);
         this.salesReturnTableData = response.payload;
         this.dataSource = new MatTableDataSource(this.salesReturnTableData);
         this.dataSource.paginator = this.paginator;

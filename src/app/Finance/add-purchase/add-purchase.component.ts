@@ -31,7 +31,7 @@ export class AddPurchaseComponent implements OnInit {
   public productName: any;
   public productType: any;
   addPurchaseForm: FormBuilder | any;
-  disableForm : boolean = false;
+  disableForm: boolean = false;
   address: boolean = false;
   fg: FormGroup | any;
   addPurchaseObject: any;
@@ -121,7 +121,6 @@ export class AddPurchaseComponent implements OnInit {
         maxLength: 10000000,
       },
     },
-
   };
 
   forms: form[] = [];
@@ -131,7 +130,7 @@ export class AddPurchaseComponent implements OnInit {
     private _purchaseService: PurchasesService,
     private fb: FormBuilder,
     private dataPipe: DatePipe,
-    private _snackbar : MatSnackBar
+    private _snackbar: MatSnackBar
   ) {
     this.myForm();
   }
@@ -147,9 +146,9 @@ export class AddPurchaseComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
-      purchaseDate:['',Validators.required],
-      deliveryDate:['',Validators.required],
-      buyDate:['',Validators.required],
+      purchaseDate: ['', Validators.required],
+      deliveryDate: ['', Validators.required],
+      buyDate: ['', Validators.required],
       termsOfPayment: [
         '',
         [
@@ -176,7 +175,6 @@ export class AddPurchaseComponent implements OnInit {
     let objectProps = Object.keys(dataObject).map((prop) => {
       return Object.assign({}, { key: prop }, dataObject[prop]);
     });
-    console.log('objectProps', objectProps);
     const formGroup: any = {};
     for (let prop of Object.keys(dataObject)) {
       formGroup[prop] = new FormControl(
@@ -184,7 +182,6 @@ export class AddPurchaseComponent implements OnInit {
         this.mapValidators(dataObject[prop].validation)
       );
     }
-    console.log('formGroup', formGroup);
 
     this.fg = new FormGroup(formGroup);
     const form: form = {
@@ -192,13 +189,10 @@ export class AddPurchaseComponent implements OnInit {
       formGroup: this.fg,
       metaData: objectProps,
     };
-    console.log('FORM', form);
     this.fg.valueChanges.subscribe((values: any) => {
       this.output.emit(values);
     });
-    console.log('this.forms', this.fg);
     this.forms.push(form);
-    console.log('thissasdaaaaaaaaaaa', this.forms);
     return form;
   }
 
@@ -219,10 +213,8 @@ export class AddPurchaseComponent implements OnInit {
 
     return formValidators;
   }
-  deleteForm(index:any){
-    console.log('Index is',index)
-    this.forms.splice(index,1);
-    console.log(this.forms,"forms")
+  deleteForm(index: any) {
+    this.forms.splice(index, 1);
   }
   // public hasValidator(controlName: string, validator: string): boolean {
   //   let control: AbstractControl = this.addPurchaseForm.controls[controlName];
@@ -243,29 +235,23 @@ export class AddPurchaseComponent implements OnInit {
     this.json = JSON.parse($event.target.value);
   }
 
-  onSubmit(form: any) {
-    console.log('on submit form', form);
-  }
+  onSubmit(form: any) {}
 
   //** *Add Purchase Order */
   addPurchaseOrder(date: any, deliveryDate: any, buyDate: any) {
     let temp = [];
-    console.log('tempArr', this.tempArr);
 
-    console.log('Helloe');
     for (let i = 0; i < this.forms.length; i++) {
-      console.log(this.forms[i].formGroup.value);
-      console.log(this.forms[i].formGroup.getRawValue());
       temp.push({
         rate: this.forms[i].formGroup.value.rate,
         furtherTaxRate: this.forms[i].formGroup.value.furtherTaxRate,
         quantity: this.forms[i].formGroup.value.quantity,
         salesTaxRate: this.forms[i].formGroup.value.salesTaxRate,
         unit: this.forms[i].formGroup.value.unit,
-        productItemCode: this.tempArr[i],
-        productName: this.productName,
-        productType: this.productType,
-        productId :  this.item_id
+        productItemCode: this.itemCode[i].itemCode,
+        productName: this.itemCode[i].productName,
+        productType: this.itemCode[i].productType,
+        productId: this.itemCode[i].id,
       });
     }
 
@@ -277,18 +263,17 @@ export class AddPurchaseComponent implements OnInit {
       deliveryDate: this.transformDate(deliveryDate),
       buyingDate: this.transformDate(buyDate),
       vendorId: this.productCode[this.product_index].id,
-      vendorCode:  this.productCode[this.product_index].vendorCode,
+      vendorCode: this.productCode[this.product_index].vendorCode,
       product: temp,
     };
-    console.log(this.addPurchaseObject);
-    this._purchaseService
-      .AddPurchaseOrder(this.addPurchaseObject)
-      .then((data: any) => {
+    // console.log("pucccccccccccccccc",this.addPurchaseObject);
+    this._purchaseService.AddPurchaseOrder(this.addPurchaseObject).then(
+      (data: any) => {
         console.log('purchase order added successfully', data);
         window.location.reload();
       },
-      (err: any) => {
-      });
+      (err: any) => {}
+    );
   }
   /* Load Product */
   loadProduct(index: number) {
@@ -298,14 +283,12 @@ export class AddPurchaseComponent implements OnInit {
   }
 
   loadItem(index: number, value: any) {
-    console.log('index and value', index, value);
-    this.tempArr[index] = value;
-    console.log('tempArr', this.itemCode[index]);
-    this.item_id = this.itemCode[index].id
-    this.productName = this.itemCode[index].productName;
-    this.productType = this.itemCode[index].productType;
     this.item_index = index;
     this.isItemCodeLoaded = true;
+    this.tempArr[index] = value;
+    this.item_id = this.itemCode[index].id;
+    this.productName = this.itemCode[index].productName;
+    this.productType = this.itemCode[index].productType;
   }
 
   transformDate(date: any) {

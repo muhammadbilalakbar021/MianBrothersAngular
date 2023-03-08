@@ -242,9 +242,9 @@ export class AddPurchaseReturnComponent implements OnInit {
       temp.push({
         quantity: this.forms[i].formGroup.value.quantity,
         unit: this.forms[i].formGroup.value.unit,
-        productName: this.productName,
-        productItemCode: this.tempArr[i],
-        productId: this.item_id,
+        productName: this.itemCodesById[i].productName,
+        productItemCode:this.itemCodesById[i].itemCode,
+        productId: this.itemCodesById[i].productId,
       });
     }
 

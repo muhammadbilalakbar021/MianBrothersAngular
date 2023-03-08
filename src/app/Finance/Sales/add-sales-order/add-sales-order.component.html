@@ -354,7 +354,7 @@
                       <mat-option
                         *ngFor="let iCode of this.itemCodes; let i = index"
                         [value]="iCode.itemCode"
-                        (click)="loadItem(ind, iCode.itemCode)"
+                        (click)="loadItem(i, iCode.itemCode)"
                         >{{ iCode.itemCode }}</mat-option
                       >
                     </mat-select>
@@ -447,7 +447,7 @@
                   </mat-form-field>
                 </div>
               </div>
-              
+
               <div class="row">
                 <div (click)="deleteForm(ind)" class="col-md-2">
                   <a mat-button color="primary"

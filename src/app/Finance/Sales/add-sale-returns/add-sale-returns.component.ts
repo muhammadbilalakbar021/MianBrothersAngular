@@ -235,9 +235,10 @@ export class AddSaleReturnsComponent implements OnInit {
       temp.push({
         quantity: this.forms[i].formGroup.value.quantity,
         unit: this.forms[i].formGroup.value.unit,
-        productName: this.productName,
-        productItemCode: this.tempArr[i],
-        productId: this.item_id,
+        productName:this.itemCodesById[i].productName,
+        productItemCode: this.itemCodesById[i].productItemCode
+        ,
+        productId: this.itemCodesById[i].productId,
       });
     }
 
@@ -264,7 +265,7 @@ export class AddSaleReturnsComponent implements OnInit {
       returns: temp,
       // orderDate :
     };
-    console.log('this.pruc', purchaseSalesObj);
+    console.log('SLAE>RETURN', purchaseSalesObj);
     this._purchaseService.AddPurchaseReturn(purchaseSalesObj).then(
       (res: any) => {
         window.location.reload();
@@ -314,15 +315,12 @@ export class AddSaleReturnsComponent implements OnInit {
 
   }
   loadItem(index: number, value: any) {
-    this.tempArr[index] = value;
+    console.log("INDEX",index,value)
     this.item_index = index;
     this.isItemCodeLoaded = true;
-
     this.tempArr[index] = value;
     console.log('tempArr', this.itemCodesById[index]);
-    this.item_id = this.itemCodesById[index].productId;
-    this.productName = this.itemCodesById[index].productName;
-    this.productType = this.itemCodesById[index].productType;
+
   }
 
   transformDate(date: any) {
