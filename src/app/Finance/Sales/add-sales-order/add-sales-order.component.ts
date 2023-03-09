@@ -215,7 +215,7 @@ export class AddSalesOrderComponent implements OnInit {
   deleteForm(index:any){
     console.log('Index is',index)
     this.forms.splice(index,1);
-    console.log(this.forms,"forms")
+    this.tempArr.splice(index,1);
   }
 
   // public hasValidator(controlName: string, validator: string): boolean {
@@ -256,10 +256,10 @@ export class AddSalesOrderComponent implements OnInit {
         quantity: this.forms[i].formGroup.value.quantity,
         salesTaxRate: this.forms[i].formGroup.value.salesTaxRate,
         unit: this.forms[i].formGroup.value.unit,
-        productItemCode: this.itemCodes[i].itemCode,
-        productName: this.itemCodes[i].productName,
-        productType: this.itemCodes[i].productType,
-        productId: this.itemCodes[i].id,
+        productItemCode: this.tempArr[i].productItemCode,
+        productName: this.tempArr[i].productName,
+        productType: this.tempArr[i].productType,
+        productId: this.tempArr[i].productId,
       });
     }
 
@@ -292,13 +292,28 @@ export class AddSalesOrderComponent implements OnInit {
     this.disableForm = true;
   }
 
-  loadItem(index: number, value: any) {
-    this.tempArr[index] = value;
+  loadItem(index: number, i:any , f:any) {
+    // this.tempArr[index] = value;
     this.item_index = index;
     this.isItemCodeLoaded = true;
-    this.item_id = this.itemCodes[index].id;
-    this.productName = this.itemCodes[index].productName;
-    this.productType = this.itemCodes[index].productType;
+    // this.item_id = this.itemCodes[index].id;
+    // this.productName = this.itemCodes[index].productName;
+    // this.productType = this.itemCodes[index].productType;
+    if(i < this.tempArr.length){
+      this.tempArr[i] =  {
+        productName : this.itemCodes[index].productName,
+        productType : this.itemCodes[index].productType,
+        productId : this.itemCodes[index].id,
+        productItemCode : this.itemCodes[index].itemCode
+      }
+     }else{
+    this.tempArr.push({
+      productName : this.itemCodes[index].productName,
+      productType : this.itemCodes[index].productType,
+      productId : this.itemCodes[index].id,
+      productItemCode : this.itemCodes[index].itemCode
+    });
+  }
   }
 
   transformDate(date: any) {

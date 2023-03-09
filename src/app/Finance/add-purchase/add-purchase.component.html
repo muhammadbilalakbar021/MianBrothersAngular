@@ -165,6 +165,7 @@
                 *ngFor="let pCode of this.productCode; let i = index"
                 [value]="pCode.vendorCode"
                 (click)="loadProduct(i)"
+
                 >{{ pCode.vendorCode }}</mat-option
               >
             </mat-select>
@@ -276,13 +277,13 @@
             <ng-container>
               <div class="row">
                 <div class="col-md-4">
-                  <mat-form-field appearance="outline" class="w-100">
+                  <mat-form-field appearance="outline" class="w-100" >
                     <mat-label>{{ f.metaData[0].label }}</mat-label>
                     <mat-select disableRipple>
                       <mat-option
                         *ngFor="let iCode of this.itemCode; let i = index"
                         [value]="iCode.itemCode"
-                        (click)="loadItem(i, iCode.itemCode)"
+                        (click)="loadItem(i,ind,f)"
                         >{{ iCode.itemCode }}</mat-option
                       >
                     </mat-select>
@@ -419,7 +420,7 @@
         </form>
       </div>
     </div>
-    <div (click)="createForm()" class="col-md-2">
+    <div (click)="createForm()" class="col-md-2" >
       <a mat-button color="primary"
         ><mat-icon
           ><span class="material-symbols-outlined"> add </span></mat-icon

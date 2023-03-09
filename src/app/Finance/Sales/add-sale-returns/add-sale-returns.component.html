@@ -27,7 +27,12 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Serial Number</mat-label>
-            <input matInput #serialNumber formControlName="serialNumber" required/>
+            <input
+              matInput
+              #serialNumber
+              formControlName="serialNumber"
+              required
+            />
           </mat-form-field>
           <div
             *ngIf="
@@ -59,7 +64,13 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="example-form-field w-100">
             <mat-label>Date</mat-label>
-            <input matInput [matDatepicker]="datepicker1" #date required formControlName="orderDate" />
+            <input
+              matInput
+              [matDatepicker]="datepicker1"
+              #date
+              required
+              formControlName="orderDate"
+            />
             <mat-datepicker-toggle
               matSuffix
               [for]="datepicker1"
@@ -100,7 +111,7 @@
               [matDatepicker]="datepicker2"
               readonly
               [value]="
-              isPurchaseSalesLoaded
+                isPurchaseSalesLoaded
                   ? this.allPurchaseSalesData[purchaseSales_index]?.invoiceDate
                   : ''
               "
@@ -122,7 +133,12 @@
         <div class="col-md-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Nature Of Credit Note</mat-label>
-            <input matInput #vendorInvoiceNumber required formControlName="debitNotes"/>
+            <input
+              matInput
+              #vendorInvoiceNumber
+              required
+              formControlName="debitNotes"
+            />
           </mat-form-field>
           <div
             *ngIf="
@@ -198,12 +214,12 @@
               #vendorInvoiceNumber
               readonly
               [value]="
-              isPurchaseSalesLoaded
-                  ? this.getCustomerAccountByOrdersId[account_index]?.accountCode
+                isPurchaseSalesLoaded
+                  ? this.getCustomerAccountByOrdersId[account_index]
+                      ?.accountCode
                   : ''
               "
             />
-
           </mat-form-field>
           <!-- <mat-form-field appearance="outline" class="w-100">
             <mat-label>Account</mat-label>
@@ -225,12 +241,12 @@
               #vendorInvoiceNumber
               readonly
               [value]="
-              isPurchaseSalesLoaded
-                  ? this.getCustomerAccountByOrdersId[account_index]?.accountType
+                isPurchaseSalesLoaded
+                  ? this.getCustomerAccountByOrdersId[account_index]
+                      ?.accountType
                   : ''
               "
             />
-
           </mat-form-field>
         </div>
       </div>
@@ -253,7 +269,7 @@
                       <mat-option
                         *ngFor="let iCode of this.itemCodesById; let i = index"
                         [value]="iCode.productItemCode"
-                        (click)="loadItem(ind, iCode.productItemCode)"
+                        (click)="loadItem(i, ind, f)"
                         >{{ iCode.productItemCode }}</mat-option
                       >
                     </mat-select>
@@ -268,10 +284,7 @@
                       [formControlName]="f.metaData[1].key"
                       [id]="f.metaData[1].key"
                     />
-                    <mat-error
-                      *ngIf="
-                      f.metaData[1].Validation.required
-                      "
+                    <mat-error *ngIf="f.metaData[1].Validation.required"
                       >Quantity is required</mat-error
                     >
                   </mat-form-field>
@@ -284,21 +297,20 @@
                       [formControlName]="f.metaData[2].key"
                       [id]="f.metaData[2].key"
                     />
-                    <mat-error
-                    *ngIf="
-                    f.metaData[2].Validation.required
-                    "
-                    >Unit is required</mat-error
-                  >
+                    <mat-error *ngIf="f.metaData[2].Validation.required"
+                      >Unit is required</mat-error
+                    >
                   </mat-form-field>
                 </div>
               </div>
-              
+
               <div class="row">
                 <div (click)="deleteForm(ind)" class="col-md-2">
                   <a mat-button color="primary"
                     ><mat-icon
-                      ><span class="material-symbols-outlined"> delete </span></mat-icon
+                      ><span class="material-symbols-outlined">
+                        delete
+                      </span></mat-icon
                     >
                     Delete Items</a
                   >
@@ -319,9 +331,14 @@
     </div>
     <div class="row mr-1" style="float: right">
       <button mat-button routerLink="/employee-home/sale-returns">Back</button>
-      <button mat-button class="blueButton ml-2" (click)="addSaleReturn(date.value)"
-      [disabled]="addSalesReturnsForm.invalid || !isPurchaseSalesLoaded"
-      >Add</button>
+      <button
+        mat-button
+        class="blueButton ml-2"
+        (click)="addSaleReturn(date.value)"
+        [disabled]="addSalesReturnsForm.invalid || !isPurchaseSalesLoaded"
+      >
+        Add
+      </button>
     </div>
   </div>
   <br />

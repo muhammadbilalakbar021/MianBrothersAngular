@@ -1,6 +1,11 @@
 import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ProductService } from '../product.service';
@@ -20,10 +25,10 @@ export class AddNewBillComponent implements OnInit {
   allFinishedData: any;
   allRawData: any;
   forms: form[] = [];
-  finished_index : number = 0;
-  raw_index : number = 0;
-  isFinishedCode : boolean = false;
-  isRawCode : boolean = false;
+  finished_index: number = 0;
+  raw_index: number = 0;
+  isFinishedCode: boolean = false;
+  isRawCode: boolean = false;
   @Output() output: EventEmitter<FormGroup> = new EventEmitter();
   tempArr: any = [];
   public item_id: any;
@@ -64,19 +69,18 @@ export class AddNewBillComponent implements OnInit {
         maxLength: 10000000,
       },
     },
-
   };
   constructor(
     private _productService: ProductService,
     private fb: FormBuilder,
     private dataPipe: DatePipe,
-    public route : Router,
-    private _snackbar : MatSnackBar
+    public route: Router,
+    private _snackbar: MatSnackBar
   ) {
     this.myForm();
   }
 
-  myForm(){
+  myForm() {
     this.addNewBillForm = this.fb.group({
       serialNumber: [
         '',
@@ -110,7 +114,7 @@ export class AddNewBillComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
- 
+
       quantity: [
         '',
         [
@@ -124,12 +128,12 @@ export class AddNewBillComponent implements OnInit {
   ngOnInit(): void {
     this._productService.getAllFinishedProducts().subscribe((res: any) => {
       this.allFinishedData = res.payload;
-      console.log("this.allFinished",this.allFinishedData)
+      console.log('this.allFinished', this.allFinishedData);
     });
 
     this._productService.getAllRawProducts().subscribe((res: any) => {
       this.allRawData = res.payload;
-      console.log("this.allFinished",this.allRawData)
+      console.log('this.allFinished', this.allRawData);
     });
   }
 
@@ -165,12 +169,10 @@ export class AddNewBillComponent implements OnInit {
     return form;
   }
 
-
-  
-  deleteForm(index:any){
-    console.log('Index is',index)
-    this.forms.splice(index,1);
-    console.log(this.forms,"forms")
+  deleteForm(index: any) {
+    console.log('Index is', index);
+    this.forms.splice(index, 1);
+    this.tempArr.splice(index, 1);
   }
 
   private mapValidators(validators: any) {
@@ -191,27 +193,39 @@ export class AddNewBillComponent implements OnInit {
     return formValidators;
   }
 
-  loadFinishedGoods(index:any){
+  loadFinishedGoods(index: any) {
     this.finished_index = index;
     this.isFinishedCode = true;
   }
 
-  loadRawGoods(index:any, value: any){
+  loadRawGoods(index: any, i: any, f: any) {
     this.raw_index = index;
     this.isRawCode = true;
-    this.tempArr[index] = value;
-    this.item_id = this.allRawData[index].id
+    // this.tempArr[index] = value;
+    this.item_id = this.allRawData[index].id;
     this.productName = this.allRawData[index].productName;
     this.productType = this.allRawData[index].productType;
 
+    if (i < this.tempArr.length) {
+      this.tempArr[i] = {
+        productName: this.allRawData[index].productName,
+        productId: this.allRawData[index].id,
+        productItemCode: this.allRawData[index].itemCode,
+      };
+    } else {
+      this.tempArr.push({
+        productName: this.allRawData[index].productName,
+        productId: this.allRawData[index].id,
+        productItemCode: this.allRawData[index].itemCode,
+      });
+    }
   }
 
   onSubmit(form: any) {
     console.log('on submit form', form);
-
   }
 
-  addBillOfMaterial(){
+  addBillOfMaterial() {
     let temp = [];
     console.log('tempArr', this.tempArr);
 
@@ -219,14 +233,14 @@ export class AddNewBillComponent implements OnInit {
     for (let i = 0; i < this.forms.length; i++) {
       console.log(this.forms[i].formGroup.value);
       console.log(this.forms[i].formGroup.getRawValue());
-      console.log(this.allRawData[i].itemCode,"HEHEHEHEH")
+      console.log(this.allRawData[i].itemCode, 'HEHEHEHEH');
       temp.push({
-            productName: this.allRawData[i].productName,
-            productItemCode: this.allRawData[i].itemCode,
-            productId: this.allRawData[i].id,
-            unit: this.forms[i].formGroup.value.unit,
-            quantity: this.forms[i].formGroup.value.quantity,
-            rate: this.forms[i].formGroup.value.rate
+        productName: this.allRawData[i].productName,
+        productId: this.allRawData[i].id,
+        productItemCode: this.allRawData[i].itemCode,
+        unit: this.forms[i].formGroup.value.unit,
+        quantity: this.forms[i].formGroup.value.quantity,
+        rate: this.forms[i].formGroup.value.rate,
       });
     }
 
@@ -237,25 +251,25 @@ export class AddNewBillComponent implements OnInit {
       productId: this.allFinishedData[this.finished_index].id,
       unit: this.addNewBillForm.controls['unit'].value,
       quantity: this.addNewBillForm.controls['quantity'].value,
-      labourCost : this.addNewBillForm.controls['estimatedLabourCost'].value,
-      factoryOverhead : this.addNewBillForm.controls['estimatedFactoryOver'].value,
+      labourCost: this.addNewBillForm.controls['estimatedLabourCost'].value,
+      factoryOverhead:
+        this.addNewBillForm.controls['estimatedFactoryOver'].value,
       product: temp,
     };
     console.log(billObject);
-    this._productService
-      .addBillOfMaterial(billObject)
-      .then((data: any) => {
+    this._productService.addBillOfMaterial(billObject).then(
+      (data: any) => {
         window.location.reload();
       },
-      (err: any) => {
-      })
+      (err: any) => {}
+    );
   }
 
   transformDate(date: any) {
     return this.dataPipe.transform(date, 'yyyy-MM-dd');
   }
 
-  routeToBill(){
-    this.route.navigate(['inventory-dashboard/bill-of-material'])
+  routeToBill() {
+    this.route.navigate(['inventory-dashboard/bill-of-material']);
   }
 }

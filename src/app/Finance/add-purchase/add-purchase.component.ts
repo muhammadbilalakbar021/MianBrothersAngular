@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable, Subject } from 'rxjs';
 import { PurchasesService } from '../purchases.service';
 export interface form {
   id: string;
@@ -36,6 +37,9 @@ export class AddPurchaseComponent implements OnInit {
   fg: FormGroup | any;
   addPurchaseObject: any;
   tempArr: any = [];
+  disableCheck : boolean = false;
+  private data: Subject<any> = new Subject<any>();
+
   json: any = {
     itemCode: {
       label: 'Item Code',
@@ -190,8 +194,11 @@ export class AddPurchaseComponent implements OnInit {
       metaData: objectProps,
     };
     this.fg.valueChanges.subscribe((values: any) => {
+      console.log("VALUE",values)
       this.output.emit(values);
     });
+    console.log("FG",this.fg)
+
     this.forms.push(form);
     return form;
   }
@@ -215,6 +222,7 @@ export class AddPurchaseComponent implements OnInit {
   }
   deleteForm(index: any) {
     this.forms.splice(index, 1);
+    this.tempArr.splice(index,1);
   }
   // public hasValidator(controlName: string, validator: string): boolean {
   //   let control: AbstractControl = this.addPurchaseForm.controls[controlName];
@@ -248,10 +256,10 @@ export class AddPurchaseComponent implements OnInit {
         quantity: this.forms[i].formGroup.value.quantity,
         salesTaxRate: this.forms[i].formGroup.value.salesTaxRate,
         unit: this.forms[i].formGroup.value.unit,
-        productItemCode: this.itemCode[i].itemCode,
-        productName: this.itemCode[i].productName,
-        productType: this.itemCode[i].productType,
-        productId: this.itemCode[i].id,
+        productItemCode: this.tempArr[i].productItemCode,
+        productName: this.tempArr[i].productName,
+        productType: this.tempArr[i].productType,
+        productId: this.tempArr[i].productId,
       });
     }
 
@@ -266,14 +274,14 @@ export class AddPurchaseComponent implements OnInit {
       vendorCode: this.productCode[this.product_index].vendorCode,
       product: temp,
     };
-    // console.log("pucccccccccccccccc",this.addPurchaseObject);
-    this._purchaseService.AddPurchaseOrder(this.addPurchaseObject).then(
-      (data: any) => {
-        console.log('purchase order added successfully', data);
-        window.location.reload();
-      },
-      (err: any) => {}
-    );
+    console.log("pucccccccccccccccc",this.addPurchaseObject);
+    // this._purchaseService.AddPurchaseOrder(this.addPurchaseObject).then(
+    //   (data: any) => {
+    //     console.log('purchase order added successfully', data);
+    //     window.location.reload();
+    //   },
+    //   (err: any) => {}
+    // );
   }
   /* Load Product */
   loadProduct(index: number) {
@@ -282,14 +290,35 @@ export class AddPurchaseComponent implements OnInit {
     this.isProductCodeLoaded = true;
   }
 
-  loadItem(index: number, value: any) {
+  loadItem(index: number,i:any,f:any) {
+    console.log("INDEX",index,i)
+    console.log("length",f)
+
     this.item_index = index;
     this.isItemCodeLoaded = true;
-    this.tempArr[index] = value;
+    // this.tempArr
+    if(i < this.tempArr.length){
+      this.tempArr[i] =  {
+        productName : this.itemCode[index].productName,
+        productType : this.itemCode[index].productType,
+        productId : this.itemCode[index].id,
+        productItemCode : this.itemCode[index].itemCode
+      }
+     }else{
+    this.tempArr.push({
+      productName : this.itemCode[index].productName,
+      productType : this.itemCode[index].productType,
+      productId : this.itemCode[index].id,
+      productItemCode : this.itemCode[index].itemCode
+    });
+  }
+    console.log("THIS>REM",this.tempArr)
     this.item_id = this.itemCode[index].id;
     this.productName = this.itemCode[index].productName;
     this.productType = this.itemCode[index].productType;
+    this.disableCheck = true;
   }
+
 
   transformDate(date: any) {
     return this.dataPipe.transform(date, 'yyyy-MM-dd');

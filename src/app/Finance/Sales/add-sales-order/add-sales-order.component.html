@@ -354,7 +354,7 @@
                       <mat-option
                         *ngFor="let iCode of this.itemCodes; let i = index"
                         [value]="iCode.itemCode"
-                        (click)="loadItem(i, iCode.itemCode)"
+                        (click)="loadItem(i, ind,f)"
                         >{{ iCode.itemCode }}</mat-option
                       >
                     </mat-select>

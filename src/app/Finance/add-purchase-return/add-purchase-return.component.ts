@@ -81,7 +81,7 @@ export class AddPurchaseReturnComponent implements OnInit {
     private fb: FormBuilder,
     private bankService: BankPaymentService,
     private dataPipe: DatePipe,
-    private _snackbar : MatSnackBar
+    private _snackbar: MatSnackBar
   ) {
     this.myForm();
   }
@@ -96,7 +96,7 @@ export class AddPurchaseReturnComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
-      orderDate:['',[Validators.required]],
+      orderDate: ['', [Validators.required]],
       vendorInvoiceNumber: [
         '',
         [
@@ -121,7 +121,6 @@ export class AddPurchaseReturnComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
-
     });
   }
   ngOnInit(): void {
@@ -130,12 +129,10 @@ export class AddPurchaseReturnComponent implements OnInit {
       this.getPurchaseOrders = response.payload;
     });
 
-    this._employeesService
-      .getAllVendorAccounts()
-      .subscribe((response: any) => {
-        console.log('get all list of account', response);
-        this.allAccounts = response.payload;
-      });
+    this._employeesService.getAllVendorAccounts().subscribe((response: any) => {
+      console.log('get all list of account', response);
+      this.allAccounts = response.payload;
+    });
 
     this._purchaseService.getAllProductsCode().subscribe((data: any) => {
       console.log('get all item codes', data);
@@ -175,7 +172,6 @@ export class AddPurchaseReturnComponent implements OnInit {
       formGroup: this.fg,
       metaData: objectProps,
     };
-    console.log('FORM', form);
     this.fg.valueChanges.subscribe((values: any) => {
       this.output.emit(values);
     });
@@ -202,10 +198,11 @@ export class AddPurchaseReturnComponent implements OnInit {
 
     return formValidators;
   }
-   deleteForm(index:any){
-    console.log('Index is',index)
-    this.forms.splice(index,1);
-    console.log(this.forms,"forms")
+  deleteForm(index: any) {
+    console.log('Index is', index);
+    this.forms.splice(index, 1);
+    this.tempArr.splice(index, 1);
+    console.log(this.forms, 'forms');
   }
 
   // public hasValidator(controlName: string, validator: string): boolean {
@@ -231,7 +228,7 @@ export class AddPurchaseReturnComponent implements OnInit {
     console.log('on submit form', form);
   }
 
-  addPurchaseReturn(returnDate:any) {
+  addPurchaseReturn(returnDate: any) {
     let temp = [];
     console.log('tempArr', this.tempArr);
 
@@ -243,8 +240,8 @@ export class AddPurchaseReturnComponent implements OnInit {
         quantity: this.forms[i].formGroup.value.quantity,
         unit: this.forms[i].formGroup.value.unit,
         productName: this.itemCodesById[i].productName,
-        productItemCode:this.itemCodesById[i].itemCode,
-        productId: this.itemCodesById[i].productId,
+        productId: this.itemCodesById[i].id,
+        productItemCode: this.itemCodesById[i].itemCode,
       });
     }
 
@@ -252,9 +249,7 @@ export class AddPurchaseReturnComponent implements OnInit {
       serialNumber: this.addPurchaseReturnsForm.controls['serialNumber'].value,
       types: 'Purchases',
       debitNotes: this.addPurchaseReturnsForm.controls['debitNotes'].value,
-      returnDate: this.transformDate(
-        returnDate
-      ),
+      returnDate: this.transformDate(returnDate),
       orderDate: this.transformDate(
         this.allPurchaseSalesData[this.purchaseSales_index].orderDate
       ),
@@ -268,21 +263,22 @@ export class AddPurchaseReturnComponent implements OnInit {
         this.allPurchaseSalesData[this.purchaseSales_index].invoiceDate
       ),
       saleId: this.allPurchaseSalesData[this.purchaseSales_index].id,
-      accountCode: this.getVendorAccountByOrdersId[this.account_index].accountCode,
-      accountType: this.getVendorAccountByOrdersId[this.account_index].accountType,
+      accountCode:
+        this.getVendorAccountByOrdersId[this.account_index].accountCode,
+      accountType:
+        this.getVendorAccountByOrdersId[this.account_index].accountType,
       accountId: this.getVendorAccountByOrdersId[this.account_index].id,
       returns: temp,
       // orderDate :
     };
-    console.log("this.pruc",purchaseSalesObj);
-    this._purchaseService
-      .AddPurchaseReturn(purchaseSalesObj)
-      .then((res: any) => {
-      window.location.reload();
-    },
-    (err: any) => {
-    })
-    console.log('Purchase',purchaseSalesObj);
+    console.log('this.pruc', purchaseSalesObj);
+    this._purchaseService.AddPurchaseReturn(purchaseSalesObj).then(
+      (res: any) => {
+        window.location.reload();
+      },
+      (err: any) => {}
+    );
+    console.log('Purchase', purchaseSalesObj);
   }
 
   // loadPurchase(index: number) {
@@ -303,17 +299,24 @@ export class AddPurchaseReturnComponent implements OnInit {
   loadPurchaseSales(index: number) {
     this.purchaseSales_index = index;
     this.isPurchaseSalesLoaded = true;
-    console.log("ID",this.allPurchaseSalesData[this.purchaseSales_index].orderId)
-    console.log("ID 2",this.allPurchaseSalesData)
-    console.log("ID 3",this.purchaseSales_index)
+    console.log(
+      'ID',
+      this.allPurchaseSalesData[this.purchaseSales_index].orderId
+    );
+    console.log('ID 2', this.allPurchaseSalesData);
+    console.log('ID 3', this.purchaseSales_index);
     this._purchaseService
-      .getAllOrdersByItemCodes(this.allPurchaseSalesData[this.purchaseSales_index].orderId)
+      .getAllOrdersByItemCodes(
+        this.allPurchaseSalesData[this.purchaseSales_index].orderId
+      )
       .subscribe((res: any) => {
         this.itemCodesById = res.payload;
         console.log('itemCodes', this.itemCodesById);
       });
-      this._purchaseService
-      .getListOfAllAccountById(this.allPurchaseSalesData[this.purchaseSales_index].accountId)
+    this._purchaseService
+      .getListOfAllAccountById(
+        this.allPurchaseSalesData[this.purchaseSales_index].accountId
+      )
       .subscribe((res: any) => {
         this.getVendorAccountByOrdersId = res.payload;
         this.isPurchaseSalesLoaded = true;
@@ -321,16 +324,30 @@ export class AddPurchaseReturnComponent implements OnInit {
       });
   }
 
-  loadItem(index: number, value: any) {
-    this.tempArr[index] = value;
+  loadItem(index: number, i: any, f: any) {
+    // this.tempArr[index] = value;
     this.item_index = index;
     this.isItemCodeLoaded = true;
 
-    this.tempArr[index] = value;
+    // this.tempArr[index] = value;
     console.log('tempArr', this.itemCodesById[index]);
     this.item_id = this.itemCodesById[index].productId;
     this.productName = this.itemCodesById[index].productName;
     this.productType = this.itemCodesById[index].productType;
+
+    if (i < this.tempArr.length) {
+      this.tempArr[i] = {
+        productName: this.itemCodesById[index].productName,
+        productId: this.itemCodesById[index].id,
+        productItemCode: this.itemCodesById[index].itemCode,
+      };
+    } else {
+      this.tempArr.push({
+        productName: this.itemCodesById[index].productName,
+        productId: this.itemCodesById[index].id,
+        productItemCode: this.itemCodesById[index].itemCode,
+      });
+    }
   }
 
   transformDate(date: any) {

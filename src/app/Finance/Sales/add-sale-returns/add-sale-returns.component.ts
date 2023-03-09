@@ -195,10 +195,11 @@ export class AddSaleReturnsComponent implements OnInit {
 
     return formValidators;
   }
-  deleteForm(index:any){
-    console.log('Index is',index)
-    this.forms.splice(index,1);
-    console.log(this.forms,"forms")
+  deleteForm(index: any) {
+    console.log('Index is', index);
+    this.forms.splice(index, 1);
+    this.tempArr.splice(index, 1);
+    console.log(this.forms, 'forms');
   }
 
   // public hasValidator(controlName: string, validator: string): boolean {
@@ -235,10 +236,9 @@ export class AddSaleReturnsComponent implements OnInit {
       temp.push({
         quantity: this.forms[i].formGroup.value.quantity,
         unit: this.forms[i].formGroup.value.unit,
-        productName:this.itemCodesById[i].productName,
-        productItemCode: this.itemCodesById[i].productItemCode
-        ,
-        productId: this.itemCodesById[i].productId,
+        productName: this.itemCodesById[i].productName,
+        productId: this.itemCodesById[i].id,
+        productItemCode: this.itemCodesById[i].itemCode,
       });
     }
 
@@ -259,8 +259,10 @@ export class AddSaleReturnsComponent implements OnInit {
         this.allPurchaseSalesData[this.purchaseSales_index].invoiceDate
       ),
       saleId: this.allPurchaseSalesData[this.purchaseSales_index].id,
-      accountCode: this.getCustomerAccountByOrdersId[this.account_index].accountCode,
-      accountType: this.getCustomerAccountByOrdersId[this.account_index].accountType,
+      accountCode:
+        this.getCustomerAccountByOrdersId[this.account_index].accountCode,
+      accountType:
+        this.getCustomerAccountByOrdersId[this.account_index].accountType,
       accountId: this.getCustomerAccountByOrdersId[this.account_index].id,
       returns: temp,
       // orderDate :
@@ -270,8 +272,7 @@ export class AddSaleReturnsComponent implements OnInit {
       (res: any) => {
         window.location.reload();
       },
-      (err: any) => {
-      }
+      (err: any) => {}
     );
   }
 
@@ -305,22 +306,39 @@ export class AddSaleReturnsComponent implements OnInit {
         console.log('itemCodes', this.itemCodesById);
       });
 
-      this._purchaseService
-      .getListOfAllAccountById(this.allPurchaseSalesData[this.purchaseSales_index].accountId)
+    this._purchaseService
+      .getListOfAllAccountById(
+        this.allPurchaseSalesData[this.purchaseSales_index].accountId
+      )
       .subscribe((res: any) => {
         this.getCustomerAccountByOrdersId = res.payload;
         this.isPurchaseSalesLoaded = true;
-        console.log('GET Vendor Account', this.purchaseSales_index, res.payload);
+        console.log(
+          'GET Vendor Account',
+          this.purchaseSales_index,
+          res.payload
+        );
       });
-
   }
-  loadItem(index: number, value: any) {
-    console.log("INDEX",index,value)
+  loadItem(index: number, i: any, f: any) {
+    // console.log("INDEX",index,value)
     this.item_index = index;
     this.isItemCodeLoaded = true;
-    this.tempArr[index] = value;
+    // this.tempArr[index] = value;
     console.log('tempArr', this.itemCodesById[index]);
-
+    if (i < this.tempArr.length) {
+      this.tempArr[i] = {
+        productName: this.itemCodesById[index].productName,
+        productId: this.itemCodesById[index].id,
+        productItemCode: this.itemCodesById[index].itemCode,
+      };
+    } else {
+      this.tempArr.push({
+        productName: this.itemCodesById[index].productName,
+        productId: this.itemCodesById[index].id,
+        productItemCode: this.itemCodesById[index].itemCode,
+      });
+    }
   }
 
   transformDate(date: any) {
