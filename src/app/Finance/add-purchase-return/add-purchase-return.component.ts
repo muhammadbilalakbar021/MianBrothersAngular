@@ -243,7 +243,7 @@ export class AddPurchaseReturnComponent implements OnInit {
         quantity: this.forms[i].formGroup.value.quantity,
         unit: this.forms[i].formGroup.value.unit,
         productName: this.itemCodesById[i].productName,
-        productItemCode:this.itemCodesById[i].itemCode,
+        productItemCode:this.itemCodesById[i].productItemCode,
         productId: this.itemCodesById[i].productId,
       });
     }
