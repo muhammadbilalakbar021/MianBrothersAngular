@@ -157,7 +157,7 @@ export class AddSalesOrderComponent implements OnInit {
       this.allCustomers = customers.payload;
     });
 
-    this._purchaseService.getAllProductsCode().subscribe((data: any) => {
+    this._purchaseService.getAllSaleProductsCode().subscribe((data: any) => {
       console.log('get all item codes', data);
       this.itemCodes = data.payload;
     });

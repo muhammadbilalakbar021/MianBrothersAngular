@@ -17,6 +17,12 @@ export class PurchasesService {
     );
   }
 
+  getAllSaleProductsCode() {
+    return this.http.get<any>(
+      'http://43.205.120.176:3000/inventory/products/search_finished'
+    );
+  }
+
   getAllVendorCodes() {
     return this.http.get<any>(
       'http://43.205.120.176:3000/finance/vendors/search'

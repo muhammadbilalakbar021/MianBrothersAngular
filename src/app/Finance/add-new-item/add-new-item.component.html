@@ -30,7 +30,7 @@
       <div class="col-md-3">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Item Code</mat-label>
-          <input matInput #itemCode formControlName="itemCode" required type="number">
+          <input matInput #itemCode formControlName="itemCode" required type="string">
         </mat-form-field>
         <div *ngIf="itemForm.controls['itemCode'].invalid && (itemForm.controls['itemCode'].dirty || itemForm.controls['itemCode'].touched)">
           <mat-error *ngIf="
