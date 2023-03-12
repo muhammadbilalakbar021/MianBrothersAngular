@@ -236,9 +236,9 @@ export class AddSaleReturnsComponent implements OnInit {
       temp.push({
         quantity: this.forms[i].formGroup.value.quantity,
         unit: this.forms[i].formGroup.value.unit,
-        productName: this.itemCodesById[i].productName,
-        productId: this.itemCodesById[i].id,
-        productItemCode: this.itemCodesById[i].itemCode,
+        productName: this.tempArr[i].productName,
+        productId: this.tempArr[i].productId,
+        productItemCode: this.tempArr[i].productItemCode,
       });
     }
 
