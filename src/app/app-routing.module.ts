@@ -78,6 +78,8 @@ import { AddCustomerCreditComponent } from './Adjustments/add-customer-credit/ad
 import { AddJournalVoucherComponent } from './Adjustments/add-journal-voucher/add-journal-voucher.component';
 import { AllUsersComponent } from './auth/all-users/all-users.component';
 import { DefineRolesComponent } from './auth/define-roles/define-roles.component';
+import { AddVendorsDetailsComponent } from './Finance/add-vendors-details/add-vendors-details.component';
+import { EditVendorsComponent } from './Finance/add-vendors-details/edit-vendors/edit-vendors.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -120,6 +122,8 @@ const routes: Routes = [
       { path: 'bank-payment', component: BankPaymentComponent },
       { path: 'cash-payment', component: CashPaymentComponent },
       { path: 'purchase-return', component: PurchaseReturnComponent },
+      { path: 'add-vendors-details', component: AddVendorsDetailsComponent },
+      { path: 'edit-vendors', component: EditVendorsComponent },
       {
         path: 'chart-of-account',
         component: ChartOfAccountComponent,

@@ -1,0 +1,246 @@
+<h2 mat-dialog-title>Edit Vendors</h2>
+<mat-dialog-content class="mat-typography">
+  <p>Are you sure you want to edit vendors?</p>
+  <div class="container-fluid">
+    <form [formGroup]="editVendorsForm">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="fullName" />
+          </mat-form-field>
+          <div
+            *ngIf="
+              editVendorsForm.controls['fullName'].invalid &&
+              (editVendorsForm.controls['fullName'].dirty ||
+                editVendorsForm.controls['fullName'].touched)
+            "
+          >
+            <mat-error
+              *ngIf="editVendorsForm.controls['fullName']?.errors?.required"
+            >
+              Full Name Is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                editVendorsForm.controls['fullName']?.errors?.minlength ||
+                editVendorsForm.controls['fullName']?.errors?.maxlength
+              "
+              >Must be between 3 - 30 Characters</mat-error
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Position</mat-label>
+            <input matInput formControlName="position" />
+          </mat-form-field>
+          <div
+            *ngIf="
+              editVendorsForm.controls['position'].invalid &&
+              (editVendorsForm.controls['position'].dirty ||
+                editVendorsForm.controls['position'].touched)
+            "
+          >
+            <mat-error
+              *ngIf="editVendorsForm.controls['position']?.errors?.required"
+            >
+              Position Is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                editVendorsForm.controls['position']?.errors?.minlength ||
+                editVendorsForm.controls['position']?.errors?.maxlength
+              "
+              >Must be between 3 - 30 Characters</mat-error
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Department</mat-label>
+            <input matInput formControlName="department" />
+          </mat-form-field>
+          <div
+            *ngIf="
+              editVendorsForm.controls['department'].invalid &&
+              (editVendorsForm.controls['department'].dirty ||
+                editVendorsForm.controls['department'].touched)
+            "
+          >
+            <mat-error
+              *ngIf="editVendorsForm.controls['department']?.errors?.required"
+            >
+              Department Is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                editVendorsForm.controls['department']?.errors?.minlength ||
+                editVendorsForm.controls['department']?.errors?.maxlength
+              "
+              >Must be between 3 - 30 Characters</mat-error
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Salary</mat-label>
+            <input matInput formControlName="salary" />
+          </mat-form-field>
+          <div
+            *ngIf="
+              editVendorsForm.controls['salary'].invalid &&
+              (editVendorsForm.controls['salary'].dirty ||
+                editVendorsForm.controls['salary'].touched)
+            "
+          >
+            <mat-error
+              *ngIf="editVendorsForm.controls['salary']?.errors?.required"
+            >
+              Salary Is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                editVendorsForm.controls['salary']?.errors?.min ||
+                editVendorsForm.controls['salary']?.errors?.max
+              "
+              >Must be between 1 - 10000000 Characters</mat-error
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="example-form-field w-100">
+            <mat-label>Joining Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="datepicker1"
+              formControlName="joiningDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="datepicker1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #datepicker1>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>
+                  Apply
+                </button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Cnic</mat-label>
+            <input matInput formControlName="cnic" />
+          </mat-form-field>
+          <div
+            *ngIf="
+              editVendorsForm.controls['cnic'].invalid &&
+              (editVendorsForm.controls['cnic'].dirty ||
+                editVendorsForm.controls['cnic'].touched)
+            "
+          >
+            <mat-error
+              *ngIf="editVendorsForm.controls['cnic']?.errors?.required"
+              >CNIC Number is required</mat-error
+            >
+            <mat-error
+              *ngIf="
+                editVendorsForm.controls['cnic']?.errors?.required ||
+                editVendorsForm.controls['cnic']?.errors?.pattern
+              "
+            >
+              CNIC should be exactly 9 characters long. Should include hyphen
+              before the check digit.
+            </mat-error>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="example-form-field w-100">
+            <mat-label>DOB</mat-label>
+            <input
+              matInput
+              [matDatepicker]="datepicker2"
+              formControlName="dob"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="datepicker2"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #datepicker2>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>
+                  Apply
+                </button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="addressInformation" />
+          </mat-form-field>
+          <div
+            *ngIf="
+              editVendorsForm.controls['addressInformation'].invalid &&
+              (editVendorsForm.controls['addressInformation'].dirty ||
+                editVendorsForm.controls['addressInformation'].touched)
+            "
+          >
+            <mat-error
+              *ngIf="
+                editVendorsForm.controls['addressInformation']?.errors
+                  ?.required
+              "
+            >
+              address Is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                editVendorsForm.controls['addressInformation']?.errors
+                  ?.minlength ||
+                editVendorsForm.controls['addressInformation']?.errors
+                  ?.maxlength
+              "
+              >Must be between 2 - 50 Characters</mat-error
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="example-form-field w-100">
+            <mat-label>Leaving Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="datepicker3"
+              formControlName="leavingDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="datepicker3"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #datepicker3>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>
+                  Apply
+                </button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button cdkFocusInitial (click)="editVendors()" [disabled]="editVendorsForm.invalid">Edit</button>
+</mat-dialog-actions>
