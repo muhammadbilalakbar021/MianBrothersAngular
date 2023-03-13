@@ -18,7 +18,7 @@
           <div class="row mt-5">
             <div class="col-md-6">
               <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Purchase Order No</mat-label>
+                <mat-label>Sales Order No</mat-label>
                 <mat-select disableRipple>
                   <mat-option *ngFor="let purchaseData of this.productSales; let i = index"
                       [value]="purchaseData.serialNumber" (click)="loadSales(i)">{{purchaseData.serialNumber}}

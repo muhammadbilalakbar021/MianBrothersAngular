@@ -62,6 +62,30 @@ export class EmployeeService {
         });
     })
   }
+  deleteInventory(id: any) {
+    return new Promise<any>((resolve, reject) => {
+      this.http.patch<any>('http://43.205.120.176:3000/inventory/products/delete' + '/' + id, { undefined },
+        // Header X_AUTH_TOKEN
+        this.header.getRequestOptions())
+        .toPromise()
+        .then((data: any) => {
+          console.log('headers', this.header.getRequestOptions());
+          // Debugger
+          console.log(data);
+          // Hurrah Baby
+          this._snackbar.open(data.message,' ',{duration: 5 * 1000});
+
+          resolve(data.data);
+        })
+
+        .catch((err) => {
+          // Rejection Baby
+          this._snackbar.open(err.error.error,' ',{duration: 5 * 1000});
+
+          reject(err);
+        });
+    })
+  }
 
   addEmployee(obj:any){
 
@@ -90,6 +114,25 @@ export class EmployeeService {
   editEmployee(obj:any,id:any){
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(this.http.patch<any>(`http://43.205.120.176:3000/employees/update/${id}`,obj,
+        // Header X_AUTH_TOKEN
+        this.header.getRequestOptions()))
+        .then((data: any) => {
+          console.log("headers",this.header.getRequestOptions());
+          // Debugger
+          console.log(data)
+          // Hurrah Baby
+          resolve(data.data)
+        })
+
+        .catch((err) => {
+          // Rejection Baby
+          reject(err)
+        })
+    })
+  }
+  editInventory(obj:any,id:any){
+    return new Promise<any>((resolve, reject) => {
+      firstValueFrom(this.http.patch<any>(`http://43.205.120.176:3000/inventory/products/update/${id}`,obj,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions()))
         .then((data: any) => {

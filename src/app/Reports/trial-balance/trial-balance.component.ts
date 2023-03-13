@@ -56,6 +56,8 @@ export class TrialBalanceComponent implements OnInit {
   indexForAccount: any;
   twoColumnCheck: boolean = false;
   sixColumnCheck: boolean = false;
+  netTotalTwoColumn : number = 0;
+  netTotalSixColumn : number = 0;
   constructor(
     private _productService: ProductService,
     private _accountService: AccountsService,
@@ -120,11 +122,15 @@ export class TrialBalanceComponent implements OnInit {
   search() {
     if (this.twoColumnCheck == true) {
       console.log('ID2', this.indexForAccount);
+      console.log('HEHEHEH', this.frome, this.$toDate);
       this._productService
         .getTwoColumn(this.indexForAccount, this.frome, this.$toDate)
         .then((res: any) => {
           this.dataSource = new MatTableDataSource(res.payload);
           console.log('DATA2', this.dataSource);
+         let credit =  this.getTotalCredit(res.payload)
+         let debit =  this.getTotalDebit(res.payload)
+          this.netTotalTwoColumn  = credit - debit;
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
           this.disablePrint = true;
@@ -135,12 +141,22 @@ export class TrialBalanceComponent implements OnInit {
         .getSixColumn(this.indexForAccount, this.frome, this.$toDate)
         .then((res: any) => {
           this.dataSource2 = new MatTableDataSource(res.payload);
+          let credit =  this.getTotalCredit(res.payload)
+         let debit =  this.getTotalDebit(res.payload)
+          this.netTotalSixColumn  = credit - debit;
           this.dataSource2.sort = this.sort2;
           this.dataSource2.paginator = this.paginator2;
           this.disablePrint = true;
           console.log('DATA6', this.dataSource);
         });
     }
+  }
+
+  getTotalCredit(data:any) {
+    return data.map((t:any) => t.credit).reduce((acc:any, value:any) => acc + value, 0);
+  }
+  getTotalDebit(data:any){
+    return data.map((t:any) => t.debit).reduce((acc:any, value:any) => acc + value, 0);
   }
 
   transformDate(date: any) {

@@ -223,6 +223,12 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
 
+  <div class="container-fluid mt-2" *ngIf="this.twoColumnCheck">
+    <mat-form-field class="outline">
+      <mat-label>Account Balance</mat-label>
+      <input matInput readonly #input [value]="this.netTotalTwoColumn"/>
+    </mat-form-field>
+  </div>
   <div class="container-fluid mt-5" *ngIf="this.sixColumnCheck">
     <mat-form-field>
       <mat-label>Search</mat-label>
@@ -287,11 +293,17 @@
       </tr> -->
     </table>
 
+
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
 </div>
 
-
+<div class="container-fluid mt-2" *ngIf="this.sixColumnCheck">
+  <mat-form-field class="outline">
+    <mat-label>Account Balance</mat-label>
+    <input matInput readonly #input [value]="this.netTotalSixColumn"/>
+  </mat-form-field>
+</div>
 <!-- class="positioned"  -->
 <div id="MyDIv"  class="positioned">
   <div class="container">

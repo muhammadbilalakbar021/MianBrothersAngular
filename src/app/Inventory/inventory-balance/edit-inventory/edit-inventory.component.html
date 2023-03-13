@@ -1,0 +1,137 @@
+<h2 mat-dialog-title>Edit Inventory</h2>
+<mat-dialog-content class="mat-typography">
+  <p>Are you sure you want to edit inventory?</p>
+  <div class="container-fluid">
+    <form [formGroup]="editInventoryForm">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Item Code</mat-label>
+            <input matInput formControlName="productItemCode" />
+          </mat-form-field>
+          <div
+            *ngIf="
+              editInventoryForm.controls['productItemCode'].invalid &&
+              (editInventoryForm.controls['productItemCode'].dirty ||
+                editInventoryForm.controls['productItemCode'].touched)
+            "
+          >
+            <mat-error
+              *ngIf="
+                editInventoryForm.controls['productItemCode']?.errors?.required
+              "
+            >
+              Item Code Is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                editInventoryForm.controls['productItemCode']?.errors
+                  ?.minlength ||
+                editInventoryForm.controls['productItemCode']?.errors?.maxlength
+              "
+              >Must be between 3 - 30 Characters</mat-error
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Product Name</mat-label>
+            <input matInput formControlName="productName" />
+          </mat-form-field>
+          <div
+            *ngIf="
+              editInventoryForm.controls['productName'].invalid &&
+              (editInventoryForm.controls['productName'].dirty ||
+                editInventoryForm.controls['productName'].touched)
+            "
+          >
+            <mat-error
+              *ngIf="
+                editInventoryForm.controls['productName']?.errors?.required
+              "
+            >
+              product name Is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                editInventoryForm.controls['productName']?.errors?.minlength ||
+                editInventoryForm.controls['productName']?.errors?.maxlength
+              "
+              >Must be between 3 - 30 Characters</mat-error
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Product Type</mat-label>
+            <input matInput formControlName="productType" />
+          </mat-form-field>
+          <div
+            *ngIf="
+              editInventoryForm.controls['productType'].invalid &&
+              (editInventoryForm.controls['productType'].dirty ||
+                editInventoryForm.controls['productType'].touched)
+            "
+          >
+            <mat-error
+              *ngIf="
+                editInventoryForm.controls['productType']?.errors?.required
+              "
+            >
+              product type Is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                editInventoryForm.controls['productType']?.errors?.minlength ||
+                editInventoryForm.controls['productType']?.errors?.maxlength
+              "
+              >Must be between 3 - 30 Characters</mat-error
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Total Quantity</mat-label>
+            <input matInput formControlName="totalQuantity" />
+          </mat-form-field>
+          <div
+            *ngIf="
+              editInventoryForm.controls['totalQuantity'].invalid &&
+              (editInventoryForm.controls['totalQuantity'].dirty ||
+                editInventoryForm.controls['totalQuantity'].touched)
+            "
+          >
+            <mat-error
+              *ngIf="
+                editInventoryForm.controls['totalQuantity']?.errors?.required
+              "
+            >
+              total quantity Is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                editInventoryForm.controls['totalQuantity']?.errors?.min ||
+                editInventoryForm.controls['totalQuantity']?.errors?.max
+              "
+              >Must be between 1 - 10000000 Characters</mat-error
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row"></div>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    cdkFocusInitial
+    (click)="editEmployee()"
+    [disabled]="editInventoryForm.invalid"
+  >
+    Edit
+  </button>
+</mat-dialog-actions>

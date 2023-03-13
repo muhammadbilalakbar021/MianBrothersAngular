@@ -235,9 +235,9 @@ export class AddNewBillComponent implements OnInit {
       console.log(this.forms[i].formGroup.getRawValue());
       console.log(this.allRawData[i].itemCode, 'HEHEHEHEH');
       temp.push({
-        productName: this.allRawData[i].productName,
-        productId: this.allRawData[i].id,
-        productItemCode: this.allRawData[i].itemCode,
+        productName: this.tempArr[i].productName,
+        productId: this.tempArr[i].productId,
+        productItemCode: this.tempArr[i].productItemCode,
         unit: this.forms[i].formGroup.value.unit,
         quantity: this.forms[i].formGroup.value.quantity,
         rate: this.forms[i].formGroup.value.rate,
