@@ -73,6 +73,10 @@ export class AddPurchaseReturnComponent implements OnInit {
   public productType: any;
   itemCodesById: any;
   forms: form[] = [];
+  fieldsDisabler : boolean = false;
+  disableCheck : boolean = false;
+  value : any;
+
   @Output() output: EventEmitter<FormGroup> = new EventEmitter();
 
   constructor(
@@ -151,6 +155,8 @@ export class AddPurchaseReturnComponent implements OnInit {
   }
 
   createForm() {
+    this.fieldsDisabler = false;
+
     if (this.json == null) return;
     let dataObject = this.json;
     let objectProps = Object.keys(dataObject).map((prop) => {
@@ -173,6 +179,12 @@ export class AddPurchaseReturnComponent implements OnInit {
       metaData: objectProps,
     };
     this.fg.valueChanges.subscribe((values: any) => {
+      if(values.quantity > this.value){
+        this.disableCheck = true;
+        this._snackbar.open("Not Enough Product Quanitity Available",' ',{duration: 5 * 1000});
+      }else{
+        this.disableCheck = false;
+      }
       this.output.emit(values);
     });
     console.log('this.forms', this.fg);
@@ -326,6 +338,8 @@ export class AddPurchaseReturnComponent implements OnInit {
 
   loadItem(index: number, i: any, f: any) {
     // this.tempArr[index] = value;
+    this.fieldsDisabler = true;
+    this.value = this.itemCodesById[index].quantity;
     this.item_index = index;
     this.isItemCodeLoaded = true;
 

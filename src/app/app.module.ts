@@ -121,6 +121,7 @@ import { DefineRolesComponent } from './auth/define-roles/define-roles.component
 import { EditSaleOrderComponent } from './Finance/Sales/sales-order/edit-sale-order/edit-sale-order.component';
 import { EditBillComponent } from './Finance/bill-of-material/edit-bill/edit-bill.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { EditInventoryComponent } from './Inventory/inventory-balance/edit-inventory/edit-inventory.component';
 
 @NgModule({
   declarations: [
@@ -220,6 +221,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     DefineRolesComponent,
     EditSaleOrderComponent,
     EditBillComponent,
+    EditInventoryComponent,
   ],
   exports: [
     MatInputModule,

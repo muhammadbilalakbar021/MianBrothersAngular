@@ -349,10 +349,12 @@
                     </mat-error>
                   </mat-form-field>
                 </div> -->
+
                 <div class="col-md-4">
                   <mat-form-field appearance="outline" class="w-100">
                     <mat-label>{{ f.metaData[4].label }}</mat-label>
                     <input
+                    [readonly]="!fieldsDisabler"
                       matInput
                       #furtherTaxAmount
                       type="number"
@@ -420,7 +422,7 @@
         </form>
       </div>
     </div>
-    <div (click)="createForm()" class="col-md-2" >
+    <div (click)="createForm()" class="col-md-2">
       <a mat-button color="primary"
         ><mat-icon
           ><span class="material-symbols-outlined"> add </span></mat-icon
@@ -433,7 +435,7 @@
       <button
         mat-button
         class="blueButton ml-2"
-        [disabled]="this.addPurchaseForm.invalid ||  !this.disableForm"
+        [disabled]="this.addPurchaseForm.invalid ||  !this.disableForm || this.disableCheck"
         (click)="
           addPurchaseOrder(date.value, deliveryDate.value, buyDate.value)
         "

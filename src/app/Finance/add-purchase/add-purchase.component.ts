@@ -38,6 +38,7 @@ export class AddPurchaseComponent implements OnInit {
   addPurchaseObject: any;
   tempArr: any = [];
   disableCheck : boolean = false;
+  value : any;
   private data: Subject<any> = new Subject<any>();
 
   json: any = {
@@ -128,6 +129,7 @@ export class AddPurchaseComponent implements OnInit {
   };
 
   forms: form[] = [];
+  fieldsDisabler : boolean = false;
   @Output() output: EventEmitter<FormGroup> = new EventEmitter();
 
   constructor(
@@ -165,6 +167,7 @@ export class AddPurchaseComponent implements OnInit {
     this._purchaseService.getAllProductsCode().subscribe((data: any) => {
       this.itemCode = data.payload;
       console.log('get all item codes', data);
+
     });
 
     this._purchaseService.getAllVendorCodes().subscribe((data: any) => {
@@ -174,8 +177,10 @@ export class AddPurchaseComponent implements OnInit {
   }
 
   createForm() {
+    this.fieldsDisabler = false;
     if (this.json == null) return;
     let dataObject = this.json;
+
     let objectProps = Object.keys(dataObject).map((prop) => {
       return Object.assign({}, { key: prop }, dataObject[prop]);
     });
@@ -195,6 +200,13 @@ export class AddPurchaseComponent implements OnInit {
     };
     this.fg.valueChanges.subscribe((values: any) => {
       console.log("VALUE",values)
+      console.log("VALUE",this.value)
+      if(values.quantity > this.value){
+        this.disableCheck = true;
+        this._snackbar.open("Not Enough Product Quanitity Available",' ',{duration: 5 * 1000});
+      }else{
+        this.disableCheck = false;
+      }
       this.output.emit(values);
     });
     console.log("FG",this.fg)
@@ -291,6 +303,8 @@ export class AddPurchaseComponent implements OnInit {
   }
 
   loadItem(index: number,i:any,f:any) {
+    this.fieldsDisabler = true;
+    this.value = this.itemCode[index].totalQuantity;
     console.log("INDEX",index,i)
     console.log("length",f)
 
@@ -316,7 +330,8 @@ export class AddPurchaseComponent implements OnInit {
     this.item_id = this.itemCode[index].id;
     this.productName = this.itemCode[index].productName;
     this.productType = this.itemCode[index].productType;
-    this.disableCheck = true;
+    // this.disableCheck = true;
+    // this.temp = 0;
   }
 
 
