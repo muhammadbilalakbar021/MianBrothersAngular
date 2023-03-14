@@ -6,22 +6,23 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { PurchasesService } from '../purchases.service';
-import { EditVendorsComponent } from './edit-vendors/edit-vendors.component';
+import { PurchasesService } from '../../purchases.service';
+import { SalesService } from '../sales.service';
+import { EditCustomersComponent } from './edit-customers/edit-customers.component';
 
 @Component({
-  selector: 'app-add-vendors-details',
-  templateUrl: './add-vendors-details.component.html',
-  styleUrls: ['./add-vendors-details.component.css'],
+  selector: 'app-add-customers-details',
+  templateUrl: './add-customers-details.component.html',
+  styleUrls: ['./add-customers-details.component.css'],
 })
-export class AddVendorsDetailsComponent implements OnInit {
-  allVendors: any;
+export class AddCustomersDetailsComponent implements OnInit {
+  allCustomers: any;
   displayedColumns: string[] = [
-    'vendorCode',
+    'customerCode',
     'ntn',
     'stRegistrationNumber',
     'creditTerms',
-    'accountName',
+    'accountCode',
     'username',
     'cnic',
     'department',
@@ -43,22 +44,22 @@ export class AddVendorsDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._purchaseService.getAllVendorCodes().subscribe((data: any) => {
-      this.allVendors = data.payload;
-      this.dataSource = new MatTableDataSource(this.allVendors);
+    this._purchaseService.getAllCustomersCodes().subscribe((data: any) => {
+      this.allCustomers = data.payload;
+      this.dataSource = new MatTableDataSource(this.allCustomers);
       this.dataSource.paginator = this.paginator;
-      console.log('all vendors', this.allVendors);
+      console.log('all Customers', this.allCustomers);
     });
   }
 
   
   onDelete(index: any){
     var text = "Are you sure to delete?";
-    console.log('acbcsd',this.allVendors[index.id])
+    console.log('acbcsd',this.allCustomers[index.id])
     console.log('INDEXX',index)
     if (confirm(text) == true) {
         this._purchaseService
-          .deleteVendors(index.id)
+          .deleteCustomers(index.id)
           // .then(
           //   (res: any) => {
           //     window.location.reload();
@@ -75,7 +76,7 @@ export class AddVendorsDetailsComponent implements OnInit {
 
   onEdit(index: any) {
     console.log(index);
-    this.dialog.open(EditVendorsComponent, {
+    this.dialog.open(EditCustomersComponent, {
       data: {
         userData: index,
       },
@@ -83,7 +84,7 @@ export class AddVendorsDetailsComponent implements OnInit {
   }
 
   routeToAdd(){
-    this.router.navigate(['employee-home/add-vendor']);
+    this.router.navigate(['employee-home/add-customer']);
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

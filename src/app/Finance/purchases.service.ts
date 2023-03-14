@@ -29,6 +29,12 @@ export class PurchasesService {
     );
   }
 
+  getAllCustomersCodes() {
+    return this.http.get<any>(
+      'http://43.205.120.176:3000/finance/customers/search'
+    );
+  }
+
   getVendorById(id: any) {
     return this.http.get<any>(
       `http://43.205.120.176:3000/finance/vendors/search/${id}`
@@ -547,6 +553,65 @@ export class PurchasesService {
       });
     });
   }
+
+  editVendor(obj: any, id: any) {
+    return new Promise<any>((resolve, reject) => {
+      firstValueFrom(
+        this.http.patch<any>(
+          `http://43.205.120.176:3000/finance/vendors/update/${id}`,
+          obj,
+          // Header X_AUTH_TOKEN
+          this.header.getRequestOptions()
+        )
+      )
+      .then((data: any) => {
+        console.log('headers', this.header.getRequestOptions());
+        // Debugger
+        console.log(data);
+        // Hurrah Baby
+        this._snackBar.open(data.message,' ',{duration: 5 * 1000});
+
+        resolve(data.data);
+      })
+
+      .catch((err) => {
+        // Rejection Baby
+        this._snackBar.open(err.error.error,' ',{duration: 5 * 1000});
+
+        reject(err);
+      });
+    });
+  }
+
+  editCustomers(obj: any, id: any) {
+    return new Promise<any>((resolve, reject) => {
+      firstValueFrom(
+        this.http.patch<any>(
+          `http://43.205.120.176:3000/finance/customers/update/${id}`,
+          obj,
+          // Header X_AUTH_TOKEN
+          this.header.getRequestOptions()
+        )
+      )
+      .then((data: any) => {
+        console.log('headers', this.header.getRequestOptions());
+        // Debugger
+        console.log(data);
+        // Hurrah Baby
+        this._snackBar.open(data.message,' ',{duration: 5 * 1000});
+
+        resolve(data.data);
+      })
+
+      .catch((err) => {
+        // Rejection Baby
+        this._snackBar.open(err.error.error,' ',{duration: 5 * 1000});
+
+        reject(err);
+      });
+    });
+  }
+
   editDeliveryChallan(obj: any, id: any) {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
@@ -967,6 +1032,34 @@ export class PurchasesService {
       this.http
         .patch<any>(
           'http://43.205.120.176:3000/finance/customers/delete' + '/' + id,
+          { undefined },
+          // Header X_AUTH_TOKEN
+          this.header.getRequestOptions()
+        )
+        .toPromise()
+        .then((data: any) => {
+          console.log('headers', this.header.getRequestOptions());
+          // Debugger
+          console.log(data);
+          // Hurrah Baby
+          this._snackBar.open(data.message,' ',{duration: 5 * 1000});
+
+          resolve(data.data);
+        })
+
+        .catch((err) => {
+          // Rejection Baby
+          this._snackBar.open(err.error.error,' ',{duration: 5 * 1000});
+
+          reject(err);
+        });
+    });
+  }
+  deleteVendors(id: any) {
+    return new Promise<any>((resolve, reject) => {
+      this.http
+        .patch<any>(
+          'http://43.205.120.176:3000/finance/vendors/delete' + '/' + id,
           { undefined },
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()

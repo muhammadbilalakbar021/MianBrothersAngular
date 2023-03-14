@@ -124,6 +124,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AddVendorsDetailsComponent } from './Finance/add-vendors-details/add-vendors-details.component';
 import { EditVendorsComponent } from './Finance/add-vendors-details/edit-vendors/edit-vendors.component';
 import { EditInventoryComponent } from './Inventory/inventory-balance/edit-inventory/edit-inventory.component';
+import { AddCustomersDetailsComponent } from './Finance/Sales/add-customers-details/add-customers-details.component';
+import { EditCustomersComponent } from './Finance/Sales/add-customers-details/edit-customers/edit-customers.component';
 
 @NgModule({
   declarations: [
@@ -226,6 +228,8 @@ import { EditInventoryComponent } from './Inventory/inventory-balance/edit-inven
     AddVendorsDetailsComponent,
     EditVendorsComponent,
     EditInventoryComponent,
+    AddCustomersDetailsComponent,
+    EditCustomersComponent,
   ],
   exports: [
     MatInputModule,

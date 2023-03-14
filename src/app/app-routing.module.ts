@@ -80,6 +80,8 @@ import { AllUsersComponent } from './auth/all-users/all-users.component';
 import { DefineRolesComponent } from './auth/define-roles/define-roles.component';
 import { AddVendorsDetailsComponent } from './Finance/add-vendors-details/add-vendors-details.component';
 import { EditVendorsComponent } from './Finance/add-vendors-details/edit-vendors/edit-vendors.component';
+import { AddCustomersDetailsComponent } from './Finance/Sales/add-customers-details/add-customers-details.component';
+import { EditCustomersComponent } from './Finance/Sales/add-customers-details/edit-customers/edit-customers.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -124,6 +126,8 @@ const routes: Routes = [
       { path: 'purchase-return', component: PurchaseReturnComponent },
       { path: 'add-vendors-details', component: AddVendorsDetailsComponent },
       { path: 'edit-vendors', component: EditVendorsComponent },
+      { path: 'add-customers-details', component: AddCustomersDetailsComponent },
+      { path: 'edit-customers', component: EditCustomersComponent },
       {
         path: 'chart-of-account',
         component: ChartOfAccountComponent,
