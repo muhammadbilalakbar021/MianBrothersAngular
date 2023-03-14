@@ -59,13 +59,13 @@ export class AddVendorsDetailsComponent implements OnInit {
     if (confirm(text) == true) {
         this._purchaseService
           .deleteVendors(index.id)
-          // .then(
-          //   (res: any) => {
-          //     window.location.reload();
-          //   },
-          //   (err: any) => {
-          //   }
-          // );
+          .then(
+            (res: any) => {
+              window.location.reload();
+            },
+            (err: any) => {
+            }
+          );
     }
     else {
       alert('You pressed cancel');

@@ -60,13 +60,13 @@ export class AddCustomersDetailsComponent implements OnInit {
     if (confirm(text) == true) {
         this._purchaseService
           .deleteCustomers(index.id)
-          // .then(
-          //   (res: any) => {
-          //     window.location.reload();
-          //   },
-          //   (err: any) => {
-          //   }
-          // );
+          .then(
+            (res: any) => {
+              window.location.reload();
+            },
+            (err: any) => {
+            }
+          );
     }
     else {
       alert('You pressed cancel');
