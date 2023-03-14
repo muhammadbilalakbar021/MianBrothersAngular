@@ -291,11 +291,11 @@
                   <input
                     matInput
                     #itemName
-                    required
-                    required
+                    [readonly]="!fieldsDisabler"
+                      required
+                      type="number"
                     [formControlName]="f.metaData[1].key"
                     [id]="f.metaData[1].key"
-                    maxLength="5"
                   />
                   <mat-error *ngIf="f.metaData[1].Validation.required"
                     >Quantity is Required</mat-error
@@ -368,7 +368,7 @@
         mat-button
         class="blueButton ml-2"
         (click)="addBillOfMaterial()"
-        [disabled]="addNewBillForm.invalid || !isFinishedCode"
+        [disabled]="addNewBillForm.invalid || !isFinishedCode || this.disableCheck"
       >
         Add
       </button>

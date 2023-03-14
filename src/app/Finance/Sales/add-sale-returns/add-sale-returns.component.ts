@@ -74,7 +74,9 @@ export class AddSaleReturnsComponent implements OnInit {
   itemCodesById: any;
   forms: form[] = [];
   @Output() output: EventEmitter<FormGroup> = new EventEmitter();
-
+  disableCheck: boolean = false;
+  value: any;
+  fieldsDisabler: boolean = false;
   constructor(
     private _purchaseService: PurchasesService,
     private _employeesService: EmployeeService,
@@ -147,6 +149,8 @@ export class AddSaleReturnsComponent implements OnInit {
   }
 
   createForm() {
+    this.fieldsDisabler = false;
+
     if (this.json == null) return;
     let dataObject = this.json;
     let objectProps = Object.keys(dataObject).map((prop) => {
@@ -170,6 +174,14 @@ export class AddSaleReturnsComponent implements OnInit {
     };
     console.log('FORM', form);
     this.fg.valueChanges.subscribe((values: any) => {
+      if (values.quantity > this.value) {
+        this.disableCheck = true;
+        this._snackbar.open('Not Enough Product Quanitity Available', ' ', {
+          duration: 5 * 1000,
+        });
+      } else {
+        this.disableCheck = false;
+      }
       this.output.emit(values);
     });
     console.log('this.forms', this.fg);
@@ -321,6 +333,8 @@ export class AddSaleReturnsComponent implements OnInit {
       });
   }
   loadItem(index: number, i: any, f: any) {
+    this.fieldsDisabler = true;
+    this.value = this.itemCodes[index].totalQuantity;
     // console.log("INDEX",index,value)
     this.item_index = index;
     this.isItemCodeLoaded = true;

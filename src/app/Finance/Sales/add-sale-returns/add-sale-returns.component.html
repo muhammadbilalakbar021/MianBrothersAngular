@@ -279,6 +279,8 @@
                   <mat-form-field appearance="outline" class="w-100">
                     <mat-label>{{ f.metaData[1].label }}</mat-label>
                     <input
+                      [readonly]="!fieldsDisabler"
+                      required
                       matInput
                       type="number"
                       [formControlName]="f.metaData[1].key"
@@ -335,7 +337,7 @@
         mat-button
         class="blueButton ml-2"
         (click)="addSaleReturn(date.value)"
-        [disabled]="addSalesReturnsForm.invalid || !isPurchaseSalesLoaded"
+        [disabled]="addSalesReturnsForm.invalid || !isPurchaseSalesLoaded || this.disableCheck"
       >
         Add
       </button>
