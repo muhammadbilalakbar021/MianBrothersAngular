@@ -87,6 +87,7 @@ export class TrialBalanceComponent implements OnInit {
     //   this.dataSource.paginator = this.paginator;
     //   console.log("TWO",this.twoColumnsData);
     // })
+    this.disableSearchTo = true;
   }
   onSixColumn() {
     this.sixColumnCheck = true;
@@ -98,6 +99,7 @@ export class TrialBalanceComponent implements OnInit {
 
     //   console.log("Six",this.twoColumnsData);
     // })
+    this.disableSearchTo = true;
   }
 
   applyFilter(event: Event) {
@@ -116,7 +118,7 @@ export class TrialBalanceComponent implements OnInit {
   getDate2(date: any) {
     this.$toDate = this.transformDate(date);
     console.log('this.to', this.$toDate);
-    this.disableSearchTo = true;
+    // this.disableSearchTo = true;
   }
 
   search() {
