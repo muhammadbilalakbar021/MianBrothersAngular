@@ -200,4 +200,34 @@ export class AccountsService {
         });
     })
   }
+
+  deleteListAccount(id: any) {
+    return new Promise<any>((resolve, reject) => {
+      this.http
+        .patch<any>(
+          'http://43.205.120.176:3000/finance/list_of_accounts/delete' + '/' + id,
+          { undefined },
+          // Header X_AUTH_TOKEN
+          this.header.getRequestOptions()
+        )
+        .toPromise()
+        .then((data: any) => {
+          console.log('headers', this.header.getRequestOptions());
+          // Debugger
+          console.log(data);
+          // Hurrah Baby
+          this._snackbar.open(data.message,' ',{duration: 5 * 1000});
+
+          resolve(data.data);
+        })
+
+        .catch((err) => {
+          // Rejection Baby
+          this._snackbar.open(err.error.error,' ',{duration: 5 * 1000});
+
+          reject(err);
+        });
+    });
+  }
+
 }

@@ -611,7 +611,34 @@ export class PurchasesService {
       });
     });
   }
+  editListAccounts(obj: any, id: any) {
+    return new Promise<any>((resolve, reject) => {
+      firstValueFrom(
+        this.http.patch<any>(
+          `http://43.205.120.176:3000/finance/list_of_accounts/update/${id}`,
+          obj,
+          // Header X_AUTH_TOKEN
+          this.header.getRequestOptions()
+        )
+      )
+      .then((data: any) => {
+        console.log('headers', this.header.getRequestOptions());
+        // Debugger
+        console.log(data);
+        // Hurrah Baby
+        this._snackBar.open(data.message,' ',{duration: 5 * 1000});
 
+        resolve(data.data);
+      })
+
+      .catch((err) => {
+        // Rejection Baby
+        this._snackBar.open(err.error.error,' ',{duration: 5 * 1000});
+
+        reject(err);
+      });
+    });
+  }
   editDeliveryChallan(obj: any, id: any) {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(

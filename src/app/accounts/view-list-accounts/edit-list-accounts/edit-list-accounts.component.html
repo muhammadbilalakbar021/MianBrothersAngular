@@ -1,0 +1,97 @@
+<h2 mat-dialog-title>Add Purchase Listpf Accounts</h2>
+<mat-dialog-content class="mat-typography">
+  <p>Are you sure you want to edit List of Accounts?</p>
+  <div class="container-fluid">
+    <form [formGroup]="editListAccountsForm">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Account Code</mat-label>
+            <input matInput formControlName="accountCode" />
+          </mat-form-field>
+          <div *ngIf="
+              editListAccountsForm.controls['accountCode'].invalid &&
+              (editListAccountsForm.controls['accountCode'].dirty ||
+                editListAccountsForm.controls['accountCode'].touched)
+            ">
+            <mat-error *ngIf="editListAccountsForm.controls['accountCode']?.errors?.required">
+              Account Code Is required
+            </mat-error>
+            <mat-error *ngIf="
+                editListAccountsForm.controls['accountCode']?.errors?.minlength ||
+                editListAccountsForm.controls['accountCode']?.errors?.maxlength
+              ">Must be between 3 - 30 Characters</mat-error>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Account Type</mat-label>
+            <input matInput formControlName="accountType" />
+          </mat-form-field>
+          <div *ngIf="
+              editListAccountsForm.controls['accountType'].invalid &&
+              (editListAccountsForm.controls['accountType'].dirty ||
+                editListAccountsForm.controls['accountType'].touched)
+            ">
+            <mat-error *ngIf="editListAccountsForm.controls['accountType']?.errors?.required">
+              Account Type Is required
+            </mat-error>
+            <mat-error *ngIf="
+                editListAccountsForm.controls['accountType']?.errors?.minlength ||
+                editListAccountsForm.controls['accountType']?.errors?.maxlength
+              ">Must be between 3 - 30 Characters</mat-error>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Account Info</mat-label>
+            <input matInput formControlName="accountInfo" />
+          </mat-form-field>
+          <div *ngIf="
+              editListAccountsForm.controls['accountInfo'].invalid &&
+              (editListAccountsForm.controls['accountInfo'].dirty ||
+                editListAccountsForm.controls['accountInfo'].touched)
+            ">
+            <mat-error *ngIf="editListAccountsForm.controls['accountInfo']?.errors?.required">
+              accountInfo Is required
+            </mat-error>
+            <mat-error *ngIf="
+                editListAccountsForm.controls['accountInfo']?.errors?.minlength ||
+                editListAccountsForm.controls['accountInfo']?.errors?.maxlength
+              ">Must be between 3 - 30 Characters</mat-error>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Sub Account Id</mat-label>
+            <input matInput formControlName="subAccountId" />
+          </mat-form-field>
+          <div *ngIf="
+              editListAccountsForm.controls['subAccountId'].invalid &&
+              (editListAccountsForm.controls['subAccountId'].dirty ||
+                editListAccountsForm.controls['subAccountId'].touched)
+            ">
+            <mat-error *ngIf="
+                editListAccountsForm.controls['subAccountId']?.errors
+                  ?.required
+              ">
+              subAccountId Is required
+            </mat-error>
+            <mat-error *ngIf="
+                editListAccountsForm.controls['subAccountId']?.errors
+                  ?.minlength ||
+                editListAccountsForm.controls['subAccountId']?.errors
+                  ?.maxlength
+              ">Must be between 2 - 50 Characters</mat-error>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button cdkFocusInitial (click)="editList()" [disabled]="editListAccountsForm.invalid">Edit</button>
+</mat-dialog-actions>

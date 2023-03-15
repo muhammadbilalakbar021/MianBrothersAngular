@@ -82,6 +82,8 @@ import { AddVendorsDetailsComponent } from './Finance/add-vendors-details/add-ve
 import { EditVendorsComponent } from './Finance/add-vendors-details/edit-vendors/edit-vendors.component';
 import { AddCustomersDetailsComponent } from './Finance/Sales/add-customers-details/add-customers-details.component';
 import { EditCustomersComponent } from './Finance/Sales/add-customers-details/edit-customers/edit-customers.component';
+import { ViewListAccountsComponent } from './accounts/view-list-accounts/view-list-accounts.component';
+import { EditListAccountsComponent } from './accounts/view-list-accounts/edit-list-accounts/edit-list-accounts.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -155,6 +157,8 @@ const routes: Routes = [
       { path: 'add-delivery-challan', component: AddDeliveryChallanComponent },
       { path: 'delivery-challan', component: DeliveryChallanComponent },
       { path: 'sales-tax-invoices', component: SalesTaxInvoicesComponent },
+      { path: 'view-list-accounts', component: ViewListAccountsComponent },
+      { path: 'edit-list-accounts', component: EditListAccountsComponent },
       {
         path: 'add-sales-tax-invoices',
         component: AddSalesTaxInvoicesComponent,

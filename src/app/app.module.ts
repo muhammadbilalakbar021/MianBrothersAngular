@@ -126,6 +126,8 @@ import { EditVendorsComponent } from './Finance/add-vendors-details/edit-vendors
 import { EditInventoryComponent } from './Inventory/inventory-balance/edit-inventory/edit-inventory.component';
 import { AddCustomersDetailsComponent } from './Finance/Sales/add-customers-details/add-customers-details.component';
 import { EditCustomersComponent } from './Finance/Sales/add-customers-details/edit-customers/edit-customers.component';
+import { ViewListAccountsComponent } from './accounts/view-list-accounts/view-list-accounts.component';
+import { EditListAccountsComponent } from './accounts/view-list-accounts/edit-list-accounts/edit-list-accounts.component';
 
 @NgModule({
   declarations: [
@@ -230,6 +232,8 @@ import { EditCustomersComponent } from './Finance/Sales/add-customers-details/ed
     EditInventoryComponent,
     AddCustomersDetailsComponent,
     EditCustomersComponent,
+    ViewListAccountsComponent,
+    EditListAccountsComponent,
   ],
   exports: [
     MatInputModule,
