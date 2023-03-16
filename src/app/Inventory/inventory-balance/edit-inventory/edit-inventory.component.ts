@@ -85,7 +85,7 @@ export class EditInventoryComponent implements OnInit {
       .editInventory(this.editObj, this.data.userData.id)
       .then((data: any) => {
         console.log('Data edited succesfully', data);
-        // window.location.reload();
+        window.location.reload();
       },
       (err: any) => {
       });

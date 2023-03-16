@@ -68,8 +68,18 @@ export class DeliveryChallanComponent implements OnInit {
         this.isPurchaseLoaded = true;
         console.log('Customer', this.purchase_index, res.payload);
       });
-    let obj = new Array(this.deliveryChallanTableData[this.product_index]);
-    this.dataSource = obj;
+      // console.log("ID PUR",this.purchaseOrder[this.purchase_index].orderId)
+      // console.log("ID PUR 1",this.purchaseOrder)
+      // console.log("ID PUR 2",this.purchase_index)
+    // this._purchaseSevice.getProductHistory(this.purchaseOrder[this.purchase_index].orderId).subscribe((response: any) => {
+    //     console.log('Purchase table response', response);
+    //     this.purchaseTableData = response.payload;
+    //     this.dataSource = new MatTableDataSource(this.purchaseTableData);
+    //     this.dataSource.paginator = this.paginator;
+    //     this.dataSource.sort = this.sort;
+    // });
+    // let obj = new Array(this.deliveryChallanTableData[this.product_index]);
+    // this.dataSource = obj;
     this.disablePrint = true;
     console.log('HEHEH', this.dataSource);
   }
