@@ -322,47 +322,34 @@
           <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
         </mat-form-field>
         <table mat-table [dataSource]="dataSource" matSort>
-          <!-- fullName Column -->
-          <ng-container matColumnDef="customerId">
-            <th
-              mat-header-cell
-              *matHeaderCellDef
-              mat-sort-header
-              class="blueButton"
-            >
-              Customer ID
-            </th>
-            <td mat-cell *matCellDef="let row">{{ row.customerId }}</td>
-          </ng-container>
-
           <!-- position Column -->
-          <ng-container matColumnDef="challanDate">
+          <ng-container matColumnDef="productItemCode">
             <th
               mat-header-cell
               *matHeaderCellDef
               mat-sort-header
               class="blueButton"
             >
-              Challan Date
+              Item Code
             </th>
-            <td mat-cell *matCellDef="let row">{{ row.challanDate }}</td>
+            <td mat-cell *matCellDef="let row">{{ row.productItemCode }}</td>
           </ng-container>
 
           <!-- department Column -->
-          <ng-container matColumnDef="challanDescription">
+          <ng-container matColumnDef="quantity">
             <th
               mat-header-cell
               *matHeaderCellDef
               mat-sort-header
               class="blueButton"
             >
-              Challan Description
+              Quantity
             </th>
-            <td mat-cell *matCellDef="let row">{{ row.challanDescription }}</td>
+            <td mat-cell *matCellDef="let row">{{ row.quantity }}</td>
           </ng-container>
 
           <!-- salary Column -->
-          <ng-container matColumnDef="driverName">
+          <ng-container matColumnDef="unit">
             <th
               mat-header-cell
               *matHeaderCellDef
@@ -370,35 +357,9 @@
               class="blueButton"
               r
             >
-              Driver Name
+              Unit
             </th>
-            <td mat-cell *matCellDef="let row">{{ row.driverName }}</td>
-          </ng-container>
-
-          <!-- joiningDate Column -->
-          <ng-container matColumnDef="timeOfSupply">
-            <th
-              mat-header-cell
-              *matHeaderCellDef
-              mat-sort-header
-              class="blueButton"
-            >
-             Time Of Supply
-            </th>
-            <td mat-cell *matCellDef="let row">{{ row.timeOfSupply }}</td>
-          </ng-container>
-
-          <!-- cnic Column -->
-          <ng-container matColumnDef="vehicleDescription">
-            <th
-              mat-header-cell
-              *matHeaderCellDef
-              mat-sort-header
-              class="blueButton"
-            >
-              vehicle Description
-            </th>
-            <td mat-cell *matCellDef="let row">{{ row.vehicleDescription }}</td>
+            <td mat-cell *matCellDef="let row">{{ row.unit }}</td>
           </ng-container>
 
           <!-- Fruit Column -->
@@ -602,33 +563,33 @@
             </ng-container>
 
             <!-- position Column -->
-            <ng-container matColumnDef="challanDate">
+            <ng-container matColumnDef="productItemCode">
               <th
                 mat-header-cell
                 *matHeaderCellDef
                 mat-sort-header
                 class="blueButton"
               >
-                Challan Date
+                Item Code
               </th>
-              <td mat-cell *matCellDef="let row">{{ row.challanDate }}</td>
+              <td mat-cell *matCellDef="let row">{{ row.productItemCode }}</td>
             </ng-container>
 
             <!-- department Column -->
-            <ng-container matColumnDef="challanDescription">
+            <ng-container matColumnDef="quantity">
               <th
                 mat-header-cell
                 *matHeaderCellDef
                 mat-sort-header
                 class="blueButton"
               >
-                Challan Description
+                Quantity
               </th>
-              <td mat-cell *matCellDef="let row">{{ row.challanDescription }}</td>
+              <td mat-cell *matCellDef="let row">{{ row.quantity }}</td>
             </ng-container>
 
             <!-- salary Column -->
-            <ng-container matColumnDef="driverName">
+            <ng-container matColumnDef="unit">
               <th
                 mat-header-cell
                 *matHeaderCellDef
@@ -636,9 +597,9 @@
                 class="blueButton"
                 r
               >
-                Driver Name
+                Unit
               </th>
-              <td mat-cell *matCellDef="let row">{{ row.driverName }}</td>
+              <td mat-cell *matCellDef="let row">{{ row.unit }}</td>
             </ng-container>
 
             <!-- joiningDate Column -->

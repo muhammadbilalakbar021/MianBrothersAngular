@@ -19,13 +19,13 @@ export class PurchaseReturnComponent implements OnInit {
   dataSource: MatTableDataSource<any> | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
-  allDataById : any;
-  purchase_index : number = 0;
-  isPurchaseLoaded : boolean = false;
-  isProductCodeLoaded : boolean = false;
-  vendorByIdData : any;
-  disablePrint : boolean = false;
-  allPurchaseReturns :any;
+  allDataById: any;
+  purchase_index: number = 0;
+  isPurchaseLoaded: boolean = false;
+  isProductCodeLoaded: boolean = false;
+  vendorByIdData: any;
+  disablePrint: boolean = false;
+  allPurchaseReturns: any;
   displayedColumns: string[] = [
     'debitNotes',
     'quantity',
@@ -38,27 +38,27 @@ export class PurchaseReturnComponent implements OnInit {
   constructor(
     private _purchaseService: PurchasesService,
     public dialog: MatDialog,
-    private _snackbar:MatSnackBar
-  ) {}
+    private _snackbar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
-    this._purchaseService.getPurchaseReturnTable().subscribe((res:any)=>{
+    this._purchaseService.getPurchaseReturnTable().subscribe((res: any) => {
       this.allPurchaseReturns = res.payload;
     })
   }
   loadPurchase(index: number) {
     this.purchase_index = index;
     this.isPurchaseLoaded = true;
-    this._purchaseService.getPurchaseSalesById(this.allPurchaseReturns[this.purchase_index].saleId).subscribe((res:any)=>{
+    this._purchaseService.getPurchaseSalesById(this.allPurchaseReturns[this.purchase_index].saleId).subscribe((res: any) => {
       this._purchaseService
         .getVendorById(res.payload[0].vendorId)
         .subscribe((res: any) => {
           this.vendorByIdData = res.payload;
-          console.log('vendor ID',this.vendorByIdData)
+          console.log('vendor ID', this.vendorByIdData)
           this.isProductCodeLoaded = true;
         });
     })
-      this._purchaseService
+    this._purchaseService
       .getReturnsByOrderId(this.allPurchaseReturns[this.purchase_index].id)
       .subscribe((response: any) => {
         console.log('return table', response);
@@ -70,26 +70,26 @@ export class PurchaseReturnComponent implements OnInit {
     this.disablePrint = true;
     console.log('HEHEH', this.dataSource);
   }
-  editPurchaseReturn(index:any) {
-    this._purchaseService.getPurchaseReturnById(this.purchaseReturnTable[index].id).subscribe((res:any)=>{
-      console.log("RES",res)
-     this.allDataById = res.payload[0]
-     this.dialog.open(EditReturnComponent, {
-       data: {
-         userData: this.allDataById,
-         data : this.purchaseReturnTable[index]
-       },
-     });
+  editPurchaseReturn(index: any) {
+    this._purchaseService.getPurchaseReturnById(this.purchaseReturnTable[index].returnId).subscribe((res: any) => {
+      console.log("RES", res)
+      this.allDataById = res.payload[0]
+      this.dialog.open(EditReturnComponent, {
+        data: {
+          userData: this.allDataById,
+          data: this.purchaseReturnTable[index]
+        },
+      });
     })
   }
   onDelete(index: any) {
     var text = "Are you sure to delete?";
     if (confirm(text) == true) {
-      this._purchaseService.deletePurchseReturn(this.purchaseReturnTable[index].returnId).then((res:any)=>{
+      this._purchaseService.deletePurchseReturn(this.purchaseReturnTable[index].returnId).then((res: any) => {
         window.location.reload();
       },
-      (err: any) => {
-      })
+        (err: any) => {
+        })
     }
     else {
       alert('You pressed cancel');

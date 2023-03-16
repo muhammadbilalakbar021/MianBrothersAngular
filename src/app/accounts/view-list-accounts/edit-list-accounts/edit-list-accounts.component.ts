@@ -27,7 +27,7 @@ export class EditListAccountsComponent implements OnInit {
     this.editListAccountsForm = this.fb.group({
       accountCode: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       accountType: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      accountInfo: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      accountInfo: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
       subAccountId: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
     });
   }
@@ -48,7 +48,7 @@ export class EditListAccountsComponent implements OnInit {
     );
   }
 
-  editList() {
+  editListAccounts() {
     if (this.editListAccountsForm.controls.accountType.value != null) {
       this.editObj = {
         accountCode: this.editListAccountsForm.controls.accountCode.value,

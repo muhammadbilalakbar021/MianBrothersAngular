@@ -343,14 +343,14 @@ export class AddSaleReturnsComponent implements OnInit {
     if (i < this.tempArr.length) {
       this.tempArr[i] = {
         productName: this.itemCodesById[index].productName,
-        productId: this.itemCodesById[index].id,
-        productItemCode: this.itemCodesById[index].itemCode,
+        productId: this.itemCodesById[index].productId,
+        productItemCode: this.itemCodesById[index].productItemCode,
       };
     } else {
       this.tempArr.push({
         productName: this.itemCodesById[index].productName,
-        productId: this.itemCodesById[index].id,
-        productItemCode: this.itemCodesById[index].itemCode,
+        productId: this.itemCodesById[index].productId,
+        productItemCode: this.itemCodesById[index].productItemCode,
       });
     }
   }

@@ -29,12 +29,9 @@ export class DeliveryChallanComponent implements OnInit {
   customerByIdData: any;
   deliveryChallanById: any;
   displayedColumns: string[] = [
-    'challanDate',
-    'challanDescription',
-    'customerId',
-    'driverName',
-    'timeOfSupply',
-    'vehicleDescription',
+    'productItemCode',
+    'quantity',
+    'unit',
     'delete',
     'edit',
   ];
@@ -68,16 +65,16 @@ export class DeliveryChallanComponent implements OnInit {
         this.isPurchaseLoaded = true;
         console.log('Customer', this.purchase_index, res.payload);
       });
-      // console.log("ID PUR",this.purchaseOrder[this.purchase_index].orderId)
-      // console.log("ID PUR 1",this.purchaseOrder)
-      // console.log("ID PUR 2",this.purchase_index)
-    // this._purchaseSevice.getProductHistory(this.purchaseOrder[this.purchase_index].orderId).subscribe((response: any) => {
-    //     console.log('Purchase table response', response);
-    //     this.purchaseTableData = response.payload;
-    //     this.dataSource = new MatTableDataSource(this.purchaseTableData);
-    //     this.dataSource.paginator = this.paginator;
-    //     this.dataSource.sort = this.sort;
-    // });
+      console.log("ID PUR",this.deliveryChallanTableData[this.purchase_index].orderId)
+      console.log("ID PUR 1",this.deliveryChallanTableData)
+      console.log("ID PUR 2",this.purchase_index)
+    this._purchaseSevice.getProductHistory(this.deliveryChallanTableData[this.purchase_index].orderId).subscribe((response: any) => {
+        console.log('Purchase table response', response);
+        this.purchaseTableData = response.payload;
+        this.dataSource = new MatTableDataSource(this.purchaseTableData);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+    });
     // let obj = new Array(this.deliveryChallanTableData[this.product_index]);
     // this.dataSource = obj;
     this.disablePrint = true;

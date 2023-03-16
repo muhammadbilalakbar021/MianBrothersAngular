@@ -42,7 +42,7 @@ export class EditVendorsComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.min(1),
+          Validators.min(-1000000),
           Validators.max(1000000),
         ],
       ],

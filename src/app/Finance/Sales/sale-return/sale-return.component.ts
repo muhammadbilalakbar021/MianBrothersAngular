@@ -39,8 +39,8 @@ export class SaleReturnComponent implements OnInit {
     private _salesService: SalesService,
     public dialog: MatDialog,
     public purchaseService: PurchasesService,
-    private _snackbar : MatSnackBar
-  ) {}
+    private _snackbar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this._salesService.getSalesReturnTable().subscribe((response: any) => {
@@ -55,7 +55,7 @@ export class SaleReturnComponent implements OnInit {
     this.purchaseService
       .getSalesById(this.salesReturnData[this.sales_index].saleId)
       .subscribe((res: any) => {
-        console.log("RERERE",res)
+        console.log("RERERE", res)
         this._salesService
           .getCustomersById(res.payload[0].customerId)
           .subscribe((res: any) => {
@@ -96,14 +96,14 @@ export class SaleReturnComponent implements OnInit {
     var text = "Are you sure to delete?";
     if (confirm(text) == true) {
       this.purchaseService
-      .deletePurchseReturn(index.returnId)
-      .then(
-        (res: any) => {
-          window.location.reload();
-        },
-        (err: any) => {
-        }
-      );
+        .deletePurchseReturn(index.returnId)
+        .then(
+          (res: any) => {
+            window.location.reload();
+          },
+          (err: any) => {
+          }
+        );
     }
     else {
       alert('You pressed cancel');

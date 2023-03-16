@@ -35,7 +35,7 @@ export class EditBillComponent implements OnInit {
       labourCost: ['',[Validators.required,Validators.min(1),Validators.max(1000000)]],
       factoryOverhead: ['',[Validators.required,Validators.min(1),Validators.max(1000000)]],
       unit: ['',[Validators.required,Validators.minLength(2),Validators.maxLength(30)]],
-      rate: ['',[Validators.required,Validators.min(1),Validators.max(1000000)]],
+      // rate: ['',[Validators.required,Validators.min(1),Validators.max(1000000)]],
       quantity: ['',[Validators.required,Validators.min(1),Validators.max(1000000)]],
     });
   }
@@ -57,7 +57,7 @@ export class EditBillComponent implements OnInit {
 
     //Edit Order Usage
     this.editOrder.controls.unit.setValue(this.data.userData.unit);
-    this.editOrder.controls.rate.setValue(this.data.userData.rate);
+    // this.editOrder.controls.rate.setValue(this.data.userData.rate);
     this.editOrder.controls.quantity.setValue(this.data.userData.quantity);
     this.editOrder.controls.labourCost.setValue(
       this.data.userData.labourCost
@@ -72,7 +72,7 @@ export class EditBillComponent implements OnInit {
     let editOrderObj = {
       unit: this.editOrder.controls.unit.value,
       quantity: this.editOrder.controls.quantity.value,
-      rate: this.editOrder.controls.rate.value,
+      // rate: this.editOrder.controls.rate.value,
       labourCost: this.editOrder.controls.labourCost.value,
       factoryOverhead: this.editOrder.controls.factoryOverhead.value,
     };
