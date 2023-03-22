@@ -48,6 +48,14 @@ export class EmployeeRegisterComponent implements OnInit {
           Validators.maxLength(30),
         ],
       ],
+      department: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
       salary: [
         '',
         [

@@ -71,6 +71,32 @@
       <div class="col-md-4">
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Department</mat-label>
+          <input matInput #department formControlName="department" required />
+        </mat-form-field>
+        <div
+          *ngIf="
+            requiredForm.controls['department'].invalid &&
+            (requiredForm.controls['department'].dirty ||
+              requiredForm.controls['department'].touched)
+          "
+        >
+          <mat-error
+            *ngIf="requiredForm.controls['department']?.errors?.required"
+          >
+          Department Is required
+          </mat-error>
+          <mat-error
+            *ngIf="
+              requiredForm.controls['department']?.errors?.minlength ||
+              requiredForm.controls['department']?.errors?.maxlength
+            "
+            >Must be between 3 - 30 Characters</mat-error
+          >
+        </div>
+      </div>
+      <!-- <div class="col-md-4">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Department</mat-label>
           <mat-select
             disableRipple
             (selectionChange)="changeValue($event.value)"
@@ -80,7 +106,7 @@
             <mat-option value="Management">Managment</mat-option>
           </mat-select>
         </mat-form-field>
-      </div>
+      </div> -->
     </div>
     <div class="row p-3">
       <div class="col-md-4">
