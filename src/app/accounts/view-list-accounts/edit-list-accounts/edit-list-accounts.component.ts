@@ -28,7 +28,6 @@ export class EditListAccountsComponent implements OnInit {
       accountCode: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       accountType: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       accountInfo: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-      subAccountId: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
     });
   }
 
@@ -43,9 +42,6 @@ export class EditListAccountsComponent implements OnInit {
     this.editListAccountsForm.controls.accountInfo.setValue(
       this.data.userData.accountInfo
     );
-    this.editListAccountsForm.controls.subAccountId.setValue(
-      this.data.userData.subAccountId
-    );
   }
 
   editListAccounts() {
@@ -54,25 +50,23 @@ export class EditListAccountsComponent implements OnInit {
         accountCode: this.editListAccountsForm.controls.accountCode.value,
         accountType: this.editListAccountsForm.controls.accountType.value,
         accountInfo: this.editListAccountsForm.controls.accountInfo.value,
-        subAccountInfo: this.editListAccountsForm.controls.subAccountId.value,
       };
     } else {
       this.editObj = {
         accountCode: this.editListAccountsForm.controls.accountCode.value,
         accountType: this.editListAccountsForm.controls.accountType.value,
         accountInfo: this.editListAccountsForm.controls.accountInfo.value,
-        subAccountInfo: this.editListAccountsForm.controls.subAccountId.value,
       }
-      console.log('EDIT OBJ', this.editObj);
-      this._purchaseService
-        .editListAccounts(this.editObj, this.data.userData.id)
-        .then((data: any) => {
-          console.log('Data edited succesfully', data);
-          window.location.reload();
-        },
-          (err: any) => {
-          });
-      console.log('Data edited succesfully', this.data);
     }
+    console.log('EDIT OBJ', this.editObj);
+    this._purchaseService
+      .editListAccounts(this.editObj, this.data.userData.id)
+      .then((data: any) => {
+        console.log('Data edited succesfully', data);
+        window.location.reload();
+      },
+        (err: any) => {
+        });
+    console.log('Data edited succesfully', this.data);
   }
 }

@@ -62,32 +62,6 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <mat-form-field appearance="outline">
-            <mat-label>Sub Account Id</mat-label>
-            <input matInput formControlName="subAccountId" />
-          </mat-form-field>
-          <div *ngIf="
-              editListAccountsForm.controls['subAccountId'].invalid &&
-              (editListAccountsForm.controls['subAccountId'].dirty ||
-                editListAccountsForm.controls['subAccountId'].touched)
-            ">
-            <mat-error *ngIf="
-                editListAccountsForm.controls['subAccountId']?.errors
-                  ?.required
-              ">
-              subAccountId Is required
-            </mat-error>
-            <mat-error *ngIf="
-                editListAccountsForm.controls['subAccountId']?.errors
-                  ?.minlength ||
-                editListAccountsForm.controls['subAccountId']?.errors
-                  ?.maxlength
-              ">Must be between 2 - 50 Characters</mat-error>
-          </div>
-        </div>
-      </div>
     </form>
   </div>
 </mat-dialog-content>
