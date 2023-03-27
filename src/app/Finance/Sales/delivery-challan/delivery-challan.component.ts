@@ -83,7 +83,7 @@ export class DeliveryChallanComponent implements OnInit {
 
   onEdit(index: any) {
     this._purchaseSevice
-      .getDeliveryChallanById(this.deliveryChallanTableData[index].id)
+      .getDeliveryChallanById(this.deliveryChallanTableData[this.purchase_index].id)
       .subscribe((res: any) => {
         this.allDataById = res.payload[0];
         this.dialog.open(EditDeliveryComponent, {
@@ -105,7 +105,7 @@ export class DeliveryChallanComponent implements OnInit {
     var text = "Are you sure to delete?";
     if (confirm(text) == true) {
       this._purchaseSevice
-      .deleteAdjustments(index.id)
+      .deleteDeliveryChallan(this.deliveryChallanTableData[this.purchase_index].id)
       .then(
         (res: any) => {
           window.location.reload();

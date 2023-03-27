@@ -42,27 +42,13 @@
             mat-raised-button
             [disabled]="
             !this.disableSearchFrom ||
-            !this.disableSearchTo ||
-              !this.disableSearch
+            !this.disableSearchTo
             "
             (click)="search()"
           >
             Search
           </button>
           <div class="row mt-3">
-            <div class="col-md-4">
-              <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Account No</mat-label>
-                <mat-select disableRipple>
-                  <mat-option
-                    *ngFor="let accountData of this.allAccounts; let i = index"
-                    [value]="accountData.accountCode"
-                    (click)="loadAccount(i)"
-                    >{{ accountData.accountCode }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
             <div class="col-md-3 offset-md-2">
               <mat-form-field
                 appearance="outline"
@@ -121,34 +107,6 @@
               </mat-form-field>
             </div>
           </div>
-
-          <div class="row">
-            <div class="col-md-4">
-              <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Account Name</mat-label>
-                <input
-                  matInput
-                  readonly
-                  [value]="
-                    isAccountCodeLoaded
-                      ? this.allAccounts[account_index]?.accountInfo
-                      : ''
-                  "
-                />
-                <!-- <mat-select disableRipple>
-                  <mat-option
-                    *ngFor="
-                      let purchaseData of this.purchaseTableData;
-                      let i = index
-                    "
-                    [value]="purchaseData.serialNumber"
-                    (click)="loadPurchase(i)"
-                    >{{ purchaseData.serialNumber }}
-                  </mat-option>
-                </mat-select> -->
-              </mat-form-field>
-            </div>
-          </div>
         </mat-card>
       </div>
     </div>
@@ -175,13 +133,13 @@
       <!-- fullName Column -->
       <ng-container matColumnDef="accountCode">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Account Code </th>
-        <td mat-cell *matCellDef="let row"> {{row.paidToCode}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.accountCode}} </td>
       </ng-container>
 
       <!-- position Column -->
       <ng-container matColumnDef="accountName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Account Name </th>
-        <td mat-cell *matCellDef="let row"> {{row.paidToInfo}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.accountInfo}} </td>
       </ng-container>
 
       <!-- department Column -->
@@ -224,10 +182,14 @@
   </div>
 
   <div class="container-fluid mt-2" *ngIf="this.twoColumnCheck">
-    <mat-form-field class="outline">
-      <mat-label>Account Balance</mat-label>
-      <input matInput readonly #input [value]="this.netTotalTwoColumn"/>
+    <!-- <mat-form-field class="outline" style="float: right; padding-right: 10px;">
+      <mat-label>Total Debit</mat-label>
+      <input matInput readonly #input [value]="this.allTrialBalance.debitSum"/>
     </mat-form-field>
+    <mat-form-field class="outline" style="float: right">
+      <mat-label>Total Credit</mat-label>
+      <input matInput readonly #input [value]="this.allTrialBalance.creditSum"/>
+    </mat-form-field> -->
   </div>
   <div class="container-fluid mt-5" *ngIf="this.sixColumnCheck">
     <mat-form-field>
@@ -249,13 +211,13 @@
       <!-- fullName Column -->
       <ng-container matColumnDef="accountCode">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Account Code </th>
-        <td mat-cell *matCellDef="let row"> {{row.paidToCode}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.accountCode}} </td>
       </ng-container>
 
       <!-- position Column -->
       <ng-container matColumnDef="accountName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Account Name </th>
-        <td mat-cell *matCellDef="let row"> {{row.paidToInfo}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.accountInfo}} </td>
       </ng-container>
       <ng-container matColumnDef="openingBalance">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Opening Balance </th>
@@ -339,7 +301,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <div class="p-2">
           <div class="row">
             <h3>Account No.</h3>
@@ -363,9 +325,10 @@
               }}
             </h3>
           </div>
+          
         </div>
         <mat-divider [inset]="true"></mat-divider>
-      </div>
+      </div> -->
       <div class="container-fluid mt-5">
         <table mat-table [dataSource]="dataSource" matSort>
           <!-- fullName Column -->
@@ -390,7 +353,7 @@
             <td mat-cell *matCellDef="let row"> {{row.credit}} </td>
           </ng-container>
           <!-- Fruit Column -->
-          <ng-container matColumnDef="delete">
+          <!-- <ng-container matColumnDef="delete">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton">Delete</th>
             <td mat-cell *matCellDef="let row; let i = index">
               <mat-icon class="material-symbols-outlined">
@@ -405,7 +368,7 @@
                 edit
               </mat-icon>
             </td>
-          </ng-container>
+          </ng-container> -->
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -464,7 +427,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <div class="p-2">
           <div class="row">
             <h3>Account No.</h3>
@@ -490,7 +453,7 @@
           </div>
         </div>
         <mat-divider [inset]="true"></mat-divider>
-      </div>
+      </div> -->
       <div class="container-fluid mt-5">
         <table mat-table [dataSource]="dataSource2" matSort2>
           <!-- fullName Column -->

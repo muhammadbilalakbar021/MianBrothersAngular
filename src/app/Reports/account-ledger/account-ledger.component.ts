@@ -16,6 +16,7 @@ import { ProductService } from 'src/app/Finance/product.service';
 })
 export class AccountLedgerComponent implements OnInit {
   allAccounts: any;
+  allLedger: any;
   account_index: number = 0;
   isAccountCodeLoaded: boolean = false;
   disablePrint: boolean = false;
@@ -92,7 +93,8 @@ export class AccountLedgerComponent implements OnInit {
     this._productService
       .getAccountLedger(this.indexForAccount,this.frome,this.$toDate)
       .then((res: any) => {
-        this.dataSource = new MatTableDataSource(res.payload);
+        this.allLedger = res.payload;
+        this.dataSource = new MatTableDataSource(res.payload.accountLedger);
         console.log('DATA2', this.dataSource);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

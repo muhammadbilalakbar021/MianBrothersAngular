@@ -133,6 +133,108 @@
               </mat-form-field>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-3">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Total Debit</mat-label>
+                <input
+                  matInput
+                  readonly
+                  [value]="
+                    isAccountCodeLoaded
+                      ? this.allLedger?.debitSum
+                      : ''
+                  "
+                />
+                <!-- <mat-select disableRipple>
+                  <mat-option
+                    *ngFor="
+                      let purchaseData of this.purchaseTableData;
+                      let i = index
+                    "
+                    [value]="purchaseData.serialNumber"
+                    (click)="loadPurchase(i)"
+                    >{{ purchaseData.serialNumber }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Total Credit</mat-label>
+                <input
+                  matInput
+                  readonly
+                  [value]="
+                    isAccountCodeLoaded
+                      ? this.allLedger?.creditSum
+                      : ''
+                  "
+                />
+                <!-- <mat-select disableRipple>
+                  <mat-option
+                    *ngFor="
+                      let purchaseData of this.purchaseTableData;
+                      let i = index
+                    "
+                    [value]="purchaseData.serialNumber"
+                    (click)="loadPurchase(i)"
+                    >{{ purchaseData.serialNumber }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Total Balance</mat-label>
+                <input
+                  matInput
+                  readonly
+                  [value]="
+                    isAccountCodeLoaded
+                      ? this.allLedger?.balanceSum
+                      : ''
+                  "
+                />
+                <!-- <mat-select disableRipple>
+                  <mat-option
+                    *ngFor="
+                      let purchaseData of this.purchaseTableData;
+                      let i = index
+                    "
+                    [value]="purchaseData.serialNumber"
+                    (click)="loadPurchase(i)"
+                    >{{ purchaseData.serialNumber }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Final Status</mat-label>
+                <input
+                  matInput
+                  readonly
+                  [value]="
+                    isAccountCodeLoaded
+                      ? this.allLedger?.balanceStatus
+                      : ''
+                  "
+                />
+                <!-- <mat-select disableRipple>
+                  <mat-option
+                    *ngFor="
+                      let purchaseData of this.purchaseTableData;
+                      let i = index
+                    "
+                    [value]="purchaseData.serialNumber"
+                    (click)="loadPurchase(i)"
+                    >{{ purchaseData.serialNumber }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+          </div>
         </mat-card>
       </div>
     </div>

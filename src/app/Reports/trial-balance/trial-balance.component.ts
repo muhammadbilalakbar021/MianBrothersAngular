@@ -20,8 +20,6 @@ export class TrialBalanceComponent implements OnInit {
     'accountName',
     'debit',
     'credit',
-    'delete',
-    'edit',
   ];
   displayedColumns2: string[] = [
     'accountCode',
@@ -38,7 +36,7 @@ export class TrialBalanceComponent implements OnInit {
   SixColumnsData: any;
   dataSource: MatTableDataSource<any> | any;
   dataSource2: MatTableDataSource<any> | any;
-  disableSearch: boolean = false;
+  // disableSearch: boolean = false;
   disableSearchFrom: boolean = false;
   disableSearchTo: boolean = false;
   frome: any;
@@ -51,6 +49,7 @@ export class TrialBalanceComponent implements OnInit {
   columnTwoCheck: boolean = false;
   columnSixCheck: boolean = false;
   allAccounts: any;
+  allTrialBalance: any;
   account_index: number = 0;
   isAccountCodeLoaded: boolean = false;
   indexForAccount: any;
@@ -75,7 +74,7 @@ export class TrialBalanceComponent implements OnInit {
     this.account_index = index;
     this.isAccountCodeLoaded = true;
     this.indexForAccount = this.allAccounts[this.account_index].id;
-    this.disableSearch = true;
+    // this.disableSearch = true;
   }
 
   onTwoColumn() {
@@ -88,6 +87,7 @@ export class TrialBalanceComponent implements OnInit {
     //   console.log("TWO",this.twoColumnsData);
     // })
     this.disableSearchTo = true;
+    this.sixColumnCheck = false;
   }
   onSixColumn() {
     this.sixColumnCheck = true;
@@ -100,6 +100,7 @@ export class TrialBalanceComponent implements OnInit {
     //   console.log("Six",this.twoColumnsData);
     // })
     this.disableSearchTo = true;
+    this.twoColumnCheck = false;
   }
 
   applyFilter(event: Event) {
@@ -126,9 +127,10 @@ export class TrialBalanceComponent implements OnInit {
       console.log('ID2', this.indexForAccount);
       console.log('HEHEHEH', this.frome, this.$toDate);
       this._productService
-        .getTwoColumn(this.indexForAccount, this.frome, this.$toDate)
+        .getTwoColumn(this.frome, this.$toDate)
         .then((res: any) => {
-          this.dataSource = new MatTableDataSource(res.payload);
+          this.allTrialBalance = res.payload;
+          this.dataSource = new MatTableDataSource(res.payload.trialBalance);
           console.log('DATA2', this.dataSource);
          let credit =  this.getTotalCredit(res.payload)
          let debit =  this.getTotalDebit(res.payload)
@@ -140,9 +142,10 @@ export class TrialBalanceComponent implements OnInit {
     } else if (this.sixColumnCheck == true) {
       console.log('ID6', this.indexForAccount);
       this._productService
-        .getSixColumn(this.indexForAccount, this.frome, this.$toDate)
+        .getSixColumn(this.frome, this.$toDate)
         .then((res: any) => {
-          this.dataSource2 = new MatTableDataSource(res.payload);
+          this.allTrialBalance = res.payload;
+          this.dataSource2 = new MatTableDataSource(res.payload.trialBalance);
           let credit =  this.getTotalCredit(res.payload)
          let debit =  this.getTotalDebit(res.payload)
           this.netTotalSixColumn  = credit - debit;

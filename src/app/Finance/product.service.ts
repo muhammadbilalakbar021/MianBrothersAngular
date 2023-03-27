@@ -32,13 +32,13 @@ export class ProductService {
         })
     })
   }
-  getTwoColumn(id: any,from:any,to:any) {
+  getTwoColumn(from:any,to:any) {
     // return this.http.get<any>(
     //   `http://43.205.120.176:3000/finance/account_ledger/search/${id}?dateStart=${from}&dateEnd=${to}`
     // );
 
     return new Promise<any>((resolve, reject) => {
-      this.http.get<any>(`http://43.205.120.176:3000/finance/trial_balance/search/${id}?dateStart=${from}&dateEnd=${to}`,
+      this.http.get<any>(`http://43.205.120.176:3000/finance/trial_balance/search?dateStart=${from}&dateEnd=${to}`,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -80,13 +80,13 @@ export class ProductService {
         })
     })
   }
-  getSixColumn(id: any,from:any,to:any) {
+  getSixColumn(from:any,to:any) {
     // return this.http.get<any>(
     //   `http://43.205.120.176:3000/finance/account_ledger/search/${id}?dateStart=${from}&dateEnd=${to}`
     // );
 
     return new Promise<any>((resolve, reject) => {
-      this.http.get<any>(`http://43.205.120.176:3000/finance/trial_balance/search_6c/${id}?dateStart=${from}&dateEnd=${to}`,
+      this.http.get<any>(`http://43.205.120.176:3000/finance/trial_balance/search_6c?dateStart=${from}&dateEnd=${to}`,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
