@@ -38,7 +38,8 @@ export class TrialBalanceComponent implements OnInit {
   dataSource2: MatTableDataSource<any> | any;
   // disableSearch: boolean = false;
   disableSearchFrom: boolean = false;
-  disableSearchTo: boolean = false;
+  disableSearchTwo: boolean = false;
+  disableSearchSix: boolean = false;
   frome: any;
   $toDate: any;
 
@@ -86,7 +87,7 @@ export class TrialBalanceComponent implements OnInit {
     //   this.dataSource.paginator = this.paginator;
     //   console.log("TWO",this.twoColumnsData);
     // })
-    this.disableSearchTo = true;
+    this.disableSearchTwo = true;
     this.sixColumnCheck = false;
   }
   onSixColumn() {
@@ -99,7 +100,7 @@ export class TrialBalanceComponent implements OnInit {
 
     //   console.log("Six",this.twoColumnsData);
     // })
-    this.disableSearchTo = true;
+    this.disableSearchSix = true;
     this.twoColumnCheck = false;
   }
 
@@ -114,11 +115,12 @@ export class TrialBalanceComponent implements OnInit {
   getDate(date: any) {
     this.frome = this.transformDate(date);
     console.log('this.frome', this.frome);
-    this.disableSearchFrom = true;
   }
   getDate2(date: any) {
     this.$toDate = this.transformDate(date);
     console.log('this.to', this.$toDate);
+    this.disableSearchFrom = true;
+
     // this.disableSearchTo = true;
   }
 

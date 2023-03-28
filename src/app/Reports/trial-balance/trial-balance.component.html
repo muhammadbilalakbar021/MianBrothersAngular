@@ -42,7 +42,7 @@
             mat-raised-button
             [disabled]="
             !this.disableSearchFrom ||
-            !this.disableSearchTo
+            (!this.disableSearchTwo && !this.disableSearchSix)
             "
             (click)="search()"
           >
@@ -325,7 +325,7 @@
               }}
             </h3>
           </div>
-          
+
         </div>
         <mat-divider [inset]="true"></mat-divider>
       </div> -->
