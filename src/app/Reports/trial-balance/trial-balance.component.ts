@@ -20,6 +20,7 @@ export class TrialBalanceComponent implements OnInit {
     'accountName',
     'debit',
     'credit',
+    
   ];
   displayedColumns2: string[] = [
     'accountCode',
@@ -30,7 +31,6 @@ export class TrialBalanceComponent implements OnInit {
     'credit',
     'closingBalance',
     'netStatus',
-
   ];
   twoColumnsData: any;
   SixColumnsData: any;
@@ -55,6 +55,8 @@ export class TrialBalanceComponent implements OnInit {
   indexForAccount: any;
   twoColumnCheck: boolean = false;
   sixColumnCheck: boolean = false;
+  twoTableColumnCheck: boolean = false;
+  sixTableColumnCheck: boolean = false;
   netTotalTwoColumn : number = 0;
   netTotalSixColumn : number = 0;
   constructor(
@@ -88,6 +90,8 @@ export class TrialBalanceComponent implements OnInit {
     // })
     this.disableSearchTo = true;
     this.sixColumnCheck = false;
+    this.sixTableColumnCheck = false;
+    this.twoTableColumnCheck = true;
   }
   onSixColumn() {
     this.sixColumnCheck = true;
@@ -101,6 +105,8 @@ export class TrialBalanceComponent implements OnInit {
     // })
     this.disableSearchTo = true;
     this.twoColumnCheck = false;
+    this.sixTableColumnCheck = true;
+    this.twoTableColumnCheck = false;
   }
 
   applyFilter(event: Event) {
@@ -119,7 +125,7 @@ export class TrialBalanceComponent implements OnInit {
   getDate2(date: any) {
     this.$toDate = this.transformDate(date);
     console.log('this.to', this.$toDate);
-    // this.disableSearchTo = true;
+    this.disableSearchTo = true;
   }
 
   search() {
@@ -132,8 +138,8 @@ export class TrialBalanceComponent implements OnInit {
           this.allTrialBalance = res.payload;
           this.dataSource = new MatTableDataSource(res.payload.trialBalance);
           console.log('DATA2', this.dataSource);
-         let credit =  this.getTotalCredit(res.payload)
-         let debit =  this.getTotalDebit(res.payload)
+         let credit =  this.getTotalCredit(res.payload.trialBalance)
+         let debit =  this.getTotalDebit(res.payload.trialBalance)
           this.netTotalTwoColumn  = credit - debit;
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
@@ -146,8 +152,8 @@ export class TrialBalanceComponent implements OnInit {
         .then((res: any) => {
           this.allTrialBalance = res.payload;
           this.dataSource2 = new MatTableDataSource(res.payload.trialBalance);
-          let credit =  this.getTotalCredit(res.payload)
-         let debit =  this.getTotalDebit(res.payload)
+          let credit =  this.getTotalCredit(res.payload.trialBalance)
+         let debit =  this.getTotalDebit(res.payload.trialBalance)
           this.netTotalSixColumn  = credit - debit;
           this.dataSource2.sort = this.sort2;
           this.dataSource2.paginator = this.paginator2;

@@ -111,6 +111,194 @@
       </div>
     </div>
   </div>
+  <div class="container-fluid mt-5" *ngIf="this.twoTableColumnCheck">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card>
+          <div class="row mt-3">
+            <div class="col-md-3 offset-md-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Debit Sum</mat-label>
+                <input
+                  matInput
+                  readonly
+                  [value]="this.allTrialBalance.debitSum"
+                />
+                <!-- <mat-select disableRipple>
+                  <mat-option
+                    *ngFor="
+                      let purchaseData of this.purchaseTableData;
+                      let i = index
+                    "
+                    [value]="purchaseData.serialNumber"
+                    (click)="loadPurchase(i)"
+                    >{{ purchaseData.serialNumber }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Credit Sum</mat-label>
+                <input
+                  matInput
+                  readonly
+                  [value]="this.allTrialBalance.creditSum"
+                />
+                <!-- <mat-select disableRipple>
+                  <mat-option
+                    *ngFor="
+                      let purchaseData of this.purchaseTableData;
+                      let i = index
+                    "
+                    [value]="purchaseData.serialNumber"
+                    (click)="loadPurchase(i)"
+                    >{{ purchaseData.serialNumber }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-5" *ngIf="this.sixTableColumnCheck">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card>
+          <div class="row mt-3">
+            <div class="col-md-3 offset-md-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Debit Sum</mat-label>
+                <input
+                  matInput
+                  readonly
+                  [value]="this.allTrialBalance.openingStatus"
+                />
+                <!-- <mat-select disableRipple>
+                  <mat-option
+                    *ngFor="
+                      let purchaseData of this.purchaseTableData;
+                      let i = index
+                    "
+                    [value]="purchaseData.serialNumber"
+                    (click)="loadPurchase(i)"
+                    >{{ purchaseData.serialNumber }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Credit Sum</mat-label>
+                <input
+                  matInput
+                  readonly
+                  [value]="this.allTrialBalance.openingSum"
+                />
+                <!-- <mat-select disableRipple>
+                  <mat-option
+                    *ngFor="
+                      let purchaseData of this.purchaseTableData;
+                      let i = index
+                    "
+                    [value]="purchaseData.serialNumber"
+                    (click)="loadPurchase(i)"
+                    >{{ purchaseData.serialNumber }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Credit Sum</mat-label>
+                <input
+                  matInput
+                  readonly
+                  [value]="this.allTrialBalance.debitSum"
+                />
+                <!-- <mat-select disableRipple>
+                  <mat-option
+                    *ngFor="
+                      let purchaseData of this.purchaseTableData;
+                      let i = index
+                    "
+                    [value]="purchaseData.serialNumber"
+                    (click)="loadPurchase(i)"
+                    >{{ purchaseData.serialNumber }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Credit Sum</mat-label>
+                <input
+                  matInput
+                  readonly
+                  [value]="this.allTrialBalance.creditSum"
+                />
+                <!-- <mat-select disableRipple>
+                  <mat-option
+                    *ngFor="
+                      let purchaseData of this.purchaseTableData;
+                      let i = index
+                    "
+                    [value]="purchaseData.serialNumber"
+                    (click)="loadPurchase(i)"
+                    >{{ purchaseData.serialNumber }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Credit Sum</mat-label>
+                <input
+                  matInput
+                  readonly
+                  [value]="this.allTrialBalance.closingSum"
+                />
+                <!-- <mat-select disableRipple>
+                  <mat-option
+                    *ngFor="
+                      let purchaseData of this.purchaseTableData;
+                      let i = index
+                    "
+                    [value]="purchaseData.serialNumber"
+                    (click)="loadPurchase(i)"
+                    >{{ purchaseData.serialNumber }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Credit Sum</mat-label>
+                <input
+                  matInput
+                  readonly
+                  [value]="this.allTrialBalance.closingStatus"
+                />
+                <!-- <mat-select disableRipple>
+                  <mat-option
+                    *ngFor="
+                      let purchaseData of this.purchaseTableData;
+                      let i = index
+                    "
+                    [value]="purchaseData.serialNumber"
+                    (click)="loadPurchase(i)"
+                    >{{ purchaseData.serialNumber }}
+                  </mat-option>
+                </mat-select> -->
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 
   <div class="container-fluid mt-5" *ngIf="this.twoColumnCheck">
 
