@@ -100,7 +100,7 @@ export class EmployeeRegisterComponent implements OnInit {
     let obj = {
       fullName: this.requiredForm.controls['name'].value,
       position: this.requiredForm.controls['position'].value,
-      department: this.departmentValue,
+      department:this.requiredForm.controls['department'].value,
       salary: this.requiredForm.controls['salary'].value,
       joiningDate: this.transformDate(date),
       cnic: this.requiredForm.controls['cnic'].value,
@@ -115,6 +115,7 @@ export class EmployeeRegisterComponent implements OnInit {
     },(err:any)=>{
       console.log("error",err)
     });
+    console.log('employeeee');
   }
 
   transformDate(date : any){
