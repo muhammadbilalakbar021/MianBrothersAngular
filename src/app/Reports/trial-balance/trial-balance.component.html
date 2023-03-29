@@ -300,7 +300,7 @@
     </div>
   </div>
 
-  <div class="container-fluid mt-5" *ngIf="this.twoColumnCheck">
+  <div class="container-fluid mt-5" *ngIf="this.twoTableColumnCheck">
 
     <mat-form-field>
       <mat-label>Search</mat-label>
@@ -369,7 +369,7 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
 
-  <div class="container-fluid mt-2" *ngIf="this.twoColumnCheck">
+  <div class="container-fluid mt-2" *ngIf="this.sixTableColumnCheck">
     <!-- <mat-form-field class="outline" style="float: right; padding-right: 10px;">
       <mat-label>Total Debit</mat-label>
       <input matInput readonly #input [value]="this.allTrialBalance.debitSum"/>
@@ -379,7 +379,7 @@
       <input matInput readonly #input [value]="this.allTrialBalance.creditSum"/>
     </mat-form-field> -->
   </div>
-  <div class="container-fluid mt-5" *ngIf="this.sixColumnCheck">
+  <div class="container-fluid mt-5" *ngIf="this.sixTableColumnCheck">
     <mat-form-field>
       <mat-label>Search</mat-label>
       <input matInput (keyup)="applyFilter2($event)" placeholder="Ex. ium" #input>
@@ -517,7 +517,7 @@
         </div>
         <mat-divider [inset]="true"></mat-divider>
       </div> -->
-      <div class="container-fluid mt-5">
+      <div class="container-fluid mt-5" *ngIf="this.twoTableColumnCheck">
         <table mat-table [dataSource]="dataSource" matSort>
           <!-- fullName Column -->
           <ng-container matColumnDef="accountCode">

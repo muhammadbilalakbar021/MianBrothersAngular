@@ -94,6 +94,8 @@ export class TrialBalanceComponent implements OnInit {
     // this.sixTableColumnCheck = false;
     this.disableSearchTwo = true;
     this.twoTableColumnCheck = true;
+    this.sixTableColumnCheck = false;
+    this.sixColumnCheck = false;
   }
   onSixColumn() {
     this.sixColumnCheck = true;
@@ -109,7 +111,9 @@ export class TrialBalanceComponent implements OnInit {
     // this.twoColumnCheck = false;
     // this.twoTableColumnCheck = false;
     this.sixTableColumnCheck = true;
+    this.twoTableColumnCheck = false;
     this.disableSearchTwo = true;
+    this.twoColumnCheck = false;
   }
 
   applyFilter(event: Event) {
