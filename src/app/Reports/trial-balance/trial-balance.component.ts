@@ -20,7 +20,6 @@ export class TrialBalanceComponent implements OnInit {
     'accountName',
     'debit',
     'credit',
-    
   ];
   displayedColumns2: string[] = [
     'accountCode',
@@ -57,8 +56,10 @@ export class TrialBalanceComponent implements OnInit {
   sixColumnCheck: boolean = false;
   twoTableColumnCheck: boolean = false;
   sixTableColumnCheck: boolean = false;
-  netTotalTwoColumn : number = 0;
-  netTotalSixColumn : number = 0;
+  netTotalTwoColumn: number = 0;
+  netTotalSixColumn: number = 0;
+  disableSearchTwo: boolean = false;
+  disableSearchSix: boolean = false;
   constructor(
     private _productService: ProductService,
     private _accountService: AccountsService,
@@ -88,9 +89,10 @@ export class TrialBalanceComponent implements OnInit {
     //   this.dataSource.paginator = this.paginator;
     //   console.log("TWO",this.twoColumnsData);
     // })
-    this.disableSearchTo = true;
-    this.sixColumnCheck = false;
-    this.sixTableColumnCheck = false;
+    // this.disableSearchTo = true;
+    // this.sixColumnCheck = false;
+    // this.sixTableColumnCheck = false;
+    this.disableSearchTwo = true;
     this.twoTableColumnCheck = true;
   }
   onSixColumn() {
@@ -103,10 +105,11 @@ export class TrialBalanceComponent implements OnInit {
 
     //   console.log("Six",this.twoColumnsData);
     // })
-    this.disableSearchTo = true;
-    this.twoColumnCheck = false;
+    // this.disableSearchTo = true;
+    // this.twoColumnCheck = false;
+    // this.twoTableColumnCheck = false;
     this.sixTableColumnCheck = true;
-    this.twoTableColumnCheck = false;
+    this.disableSearchTwo = true;
   }
 
   applyFilter(event: Event) {
@@ -120,12 +123,11 @@ export class TrialBalanceComponent implements OnInit {
   getDate(date: any) {
     this.frome = this.transformDate(date);
     console.log('this.frome', this.frome);
-    this.disableSearchFrom = true;
   }
   getDate2(date: any) {
     this.$toDate = this.transformDate(date);
     console.log('this.to', this.$toDate);
-    this.disableSearchTo = true;
+    this.disableSearchFrom = true;
   }
 
   search() {
@@ -138,9 +140,9 @@ export class TrialBalanceComponent implements OnInit {
           this.allTrialBalance = res.payload;
           this.dataSource = new MatTableDataSource(res.payload.trialBalance);
           console.log('DATA2', this.dataSource);
-         let credit =  this.getTotalCredit(res.payload.trialBalance)
-         let debit =  this.getTotalDebit(res.payload.trialBalance)
-          this.netTotalTwoColumn  = credit - debit;
+          let credit = this.getTotalCredit(res.payload.trialBalance);
+          let debit = this.getTotalDebit(res.payload.trialBalance);
+          this.netTotalTwoColumn = credit - debit;
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
           this.disablePrint = true;
@@ -152,9 +154,9 @@ export class TrialBalanceComponent implements OnInit {
         .then((res: any) => {
           this.allTrialBalance = res.payload;
           this.dataSource2 = new MatTableDataSource(res.payload.trialBalance);
-          let credit =  this.getTotalCredit(res.payload.trialBalance)
-         let debit =  this.getTotalDebit(res.payload.trialBalance)
-          this.netTotalSixColumn  = credit - debit;
+          let credit = this.getTotalCredit(res.payload.trialBalance);
+          let debit = this.getTotalDebit(res.payload.trialBalance);
+          this.netTotalSixColumn = credit - debit;
           this.dataSource2.sort = this.sort2;
           this.dataSource2.paginator = this.paginator2;
           this.disablePrint = true;
@@ -163,11 +165,15 @@ export class TrialBalanceComponent implements OnInit {
     }
   }
 
-  getTotalCredit(data:any) {
-    return data.map((t:any) => t.credit).reduce((acc:any, value:any) => acc + value, 0);
+  getTotalCredit(data: any) {
+    return data
+      .map((t: any) => t.credit)
+      .reduce((acc: any, value: any) => acc + value, 0);
   }
-  getTotalDebit(data:any){
-    return data.map((t:any) => t.debit).reduce((acc:any, value:any) => acc + value, 0);
+  getTotalDebit(data: any) {
+    return data
+      .map((t: any) => t.debit)
+      .reduce((acc: any, value: any) => acc + value, 0);
   }
 
   transformDate(date: any) {
