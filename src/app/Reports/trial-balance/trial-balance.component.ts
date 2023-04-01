@@ -60,6 +60,7 @@ export class TrialBalanceComponent implements OnInit {
   netTotalSixColumn: number = 0;
   disableSearchTwo: boolean = false;
   disableSearchSix: boolean = false;
+  myDate : any;
   constructor(
     private _productService: ProductService,
     private _accountService: AccountsService,
@@ -125,6 +126,7 @@ export class TrialBalanceComponent implements OnInit {
     this.dataSource2.filter = filterValue.trim().toLowerCase();
   }
   getDate(date: any) {
+    this.myDate = this.transformDate(date)
     this.frome = this.transformDate(date);
     console.log('this.frome', this.frome);
   }

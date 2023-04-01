@@ -37,6 +37,7 @@ export class AccountLedgerComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort | any;
 
   frome: any;
+  myFromDate:any
   $toDate : any;
   constructor(
     private _accountService: AccountsService,
@@ -78,6 +79,7 @@ export class AccountLedgerComponent implements OnInit {
     });
   }
   getDate(date:any){
+    this.myFromDate = this.transformDate(date);
     this.frome = this.transformDate(date);
     console.log("this.frome",this.frome)
     this.disableSearchFrom = true;

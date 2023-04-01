@@ -341,7 +341,7 @@
   </div>
 
   <!-- class="positioned"  -->
-  <div id="MyDIv" class="positioned">
+  <div id="MyDIv" class="positioned" >
     <div class="container">
       <div class="row" style="background-color: rgb(50, 120, 226)">
         <div class="col-md-6">
@@ -399,8 +399,48 @@
                   }}
                 </h3>
               </div>
+
+              <div class="row">
+                <h3>From:</h3>
+                &nbsp;&nbsp;&nbsp;
+                <h3>
+                  {{
+                   this.myFromDate
+                  }}
+                </h3>
+              </div>
+              <div class="row">
+                <h3>To:</h3>
+                &nbsp;&nbsp;&nbsp;
+                <h3>
+
+                  {{
+                    this.$toDate
+                  }}
+                </h3>
+              </div>
             </div>
           <mat-divider [inset]="true"></mat-divider>
+        </div>
+        <div class="col-md-4 offset-md-4">
+          <div class="row">
+            <h3>Total Debited:</h3>
+            &nbsp;&nbsp;&nbsp;
+            <h3>
+              {{
+                this.allLedger?.debitSum
+              }}
+            </h3>
+          </div>
+          <div class="row">
+            <h3>Total Credited:</h3>
+            &nbsp;&nbsp;&nbsp;
+            <h3>
+              {{
+                this.allLedger?.creditSum
+              }}
+            </h3>
+          </div>
         </div>
         <div class="container-fluid mt-5">
           <table mat-table [dataSource]="dataSource" matSort>
@@ -510,7 +550,7 @@
           <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
         </tr> -->
           </table>
-<!-- 
+<!--
           <mat-paginator
             [pageSizeOptions]="[5, 10, 25, 100]"
             aria-label="Select page of users"
