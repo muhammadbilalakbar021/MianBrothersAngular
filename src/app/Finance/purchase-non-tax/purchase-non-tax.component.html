@@ -295,7 +295,8 @@
           </mat-card>
         </div>
 
-        <button
+        <div class="mat-elevation-z8 container-fluid p-2 mt-5">
+          <button
         [disabled]="!this.disablePrint"
         mat-stroked-button
         class="mb-2"
@@ -304,7 +305,6 @@
       >
         Print
       </button>
-        <div class="mat-elevation-z8 container-fluid p-2 mt-5">
         <mat-form-field appearance="standard" class="w-100">
           <mat-label>Filter</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>

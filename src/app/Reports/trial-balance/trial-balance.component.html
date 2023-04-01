@@ -5,30 +5,17 @@
 
   <div class="col-md-7">
     <mat-chip-list>
-      <mat-chip color="basic" routerLink="/employee-home/reports"
-        >Reports</mat-chip
-      >
+      <mat-chip color="basic" routerLink="/employee-home/reports">Reports</mat-chip>
       /
-      <mat-chip
-        style="background-color: rgb(10, 116, 238); color: white"
-        selected
-        >Trial Balance</mat-chip
-      >
+      <mat-chip style="background-color: rgb(10, 116, 238); color: white" selected>Trial Balance</mat-chip>
     </mat-chip-list>
   </div>
 
   <div class="container-fluid mt-5">
     <div class="row">
       <div class="col-md-4 offset-md-4">
-        <mat-chip
-          style="background-color: rgb(10, 116, 238); color: white"
-          (click)="onTwoColumn()"
-          >2 Column</mat-chip
-        >
-        <mat-chip color="basic" class="ml-5"
-        (click)="onSixColumn()"
-          >6 Column</mat-chip
-        >
+        <mat-chip style="background-color: rgb(10, 116, 238); color: white" (click)="onTwoColumn()">2 Column</mat-chip>
+        <mat-chip color="basic" class="ml-5" (click)="onSixColumn()">6 Column</mat-chip>
       </div>
     </div>
   </div>
@@ -37,38 +24,22 @@
     <div class="row">
       <div class="col-md-12">
         <mat-card>
-          <button
-            color="primary"
-            mat-raised-button
-            [disabled]="
+          <button color="primary" mat-raised-button [disabled]="
             !this.disableSearchFrom
             || !this.disableSearchTwo
-            "
-            (click)="search()"
-          >
+            " (click)="search()">
             Search
           </button>
           <div class="row mt-3">
             <div class="col-md-3 offset-md-2">
-              <mat-form-field
-                appearance="outline"
-                class="example-form-field ml-2 w-100"
-              >
+              <mat-form-field appearance="outline" class="example-form-field ml-2 w-100">
                 <mat-label>From</mat-label>
                 <input matInput [matDatepicker]="datepicker2" #frome />
-                <mat-datepicker-toggle
-                  matSuffix
-                  [for]="datepicker2"
-                ></mat-datepicker-toggle>
+                <mat-datepicker-toggle matSuffix [for]="datepicker2"></mat-datepicker-toggle>
                 <mat-datepicker #datepicker2>
                   <mat-datepicker-actions>
                     <button mat-button matDatepickerCancel>Cancel</button>
-                    <button
-                      mat-raised-button
-                      color="primary"
-                      matDatepickerApply
-                      (click)="getDate(frome.value)"
-                    >
+                    <button mat-raised-button color="primary" matDatepickerApply (click)="getDate(frome.value)">
                       Apply
                     </button>
                   </mat-datepicker-actions>
@@ -76,30 +47,14 @@
               </mat-form-field>
             </div>
             <div class="col-md-3">
-              <mat-form-field
-                appearance="outline"
-                class="example-form-field ml-2 w-100"
-              >
+              <mat-form-field appearance="outline" class="example-form-field ml-2 w-100">
                 <mat-label>To</mat-label>
-                <input
-                  readonly
-                  matInput
-                  [matDatepicker]="datepicker3"
-                  #toDate
-                />
-                <mat-datepicker-toggle
-                  matSuffix
-                  [for]="datepicker3"
-                ></mat-datepicker-toggle>
+                <input readonly matInput [matDatepicker]="datepicker3" #toDate />
+                <mat-datepicker-toggle matSuffix [for]="datepicker3"></mat-datepicker-toggle>
                 <mat-datepicker #datepicker3>
                   <mat-datepicker-actions>
                     <button mat-button matDatepickerCancel>Cancel</button>
-                    <button
-                      mat-raised-button
-                      color="primary"
-                      matDatepickerApply
-                      (click)="getDate2(toDate.value)"
-                    >
+                    <button mat-raised-button color="primary" matDatepickerApply (click)="getDate2(toDate.value)">
                       Apply
                     </button>
                   </mat-datepicker-actions>
@@ -119,11 +74,7 @@
             <div class="col-md-3 offset-md-2">
               <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Debit Sum</mat-label>
-                <input
-                  matInput
-                  readonly
-                  [value]="this.allTrialBalance?.debitSum"
-                />
+                <input matInput readonly [value]="this.allTrialBalance?.debitSum" />
                 <!-- <mat-select disableRipple>
                   <mat-option
                     *ngFor="
@@ -140,11 +91,7 @@
             <div class="col-md-3">
               <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Credit Sum</mat-label>
-                <input
-                  matInput
-                  readonly
-                  [value]="this.allTrialBalance?.creditSum"
-                />
+                <input matInput readonly [value]="this.allTrialBalance?.creditSum" />
                 <!-- <mat-select disableRipple>
                   <mat-option
                     *ngFor="
@@ -171,11 +118,7 @@
             <div class="col-md-2">
               <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Opening Status</mat-label>
-                <input
-                  matInput
-                  readonly
-                  [value]="this.allTrialBalance?.openingStatus"
-                />
+                <input matInput readonly [value]="this.allTrialBalance?.openingStatus" />
                 <!-- <mat-select disableRipple>
                   <mat-option
                     *ngFor="
@@ -192,11 +135,7 @@
             <div class="col-md-2">
               <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Opening Sum</mat-label>
-                <input
-                  matInput
-                  readonly
-                  [value]="this.allTrialBalance?.openingSum"
-                />
+                <input matInput readonly [value]="this.allTrialBalance?.openingSum" />
                 <!-- <mat-select disableRipple>
                   <mat-option
                     *ngFor="
@@ -213,11 +152,7 @@
             <div class="col-md-2">
               <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Debit Sum</mat-label>
-                <input
-                  matInput
-                  readonly
-                  [value]="this.allTrialBalance?.debitSum"
-                />
+                <input matInput readonly [value]="this.allTrialBalance?.debitSum" />
                 <!-- <mat-select disableRipple>
                   <mat-option
                     *ngFor="
@@ -234,11 +169,7 @@
             <div class="col-md-2">
               <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Credit Sum</mat-label>
-                <input
-                  matInput
-                  readonly
-                  [value]="this.allTrialBalance?.creditSum"
-                />
+                <input matInput readonly [value]="this.allTrialBalance?.creditSum" />
                 <!-- <mat-select disableRipple>
                   <mat-option
                     *ngFor="
@@ -255,11 +186,7 @@
             <div class="col-md-2">
               <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Closing Sum</mat-label>
-                <input
-                  matInput
-                  readonly
-                  [value]="this.allTrialBalance?.closingSum"
-                />
+                <input matInput readonly [value]="this.allTrialBalance?.closingSum" />
                 <!-- <mat-select disableRipple>
                   <mat-option
                     *ngFor="
@@ -276,11 +203,7 @@
             <div class="col-md-2">
               <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Closing Status</mat-label>
-                <input
-                  matInput
-                  readonly
-                  [value]="this.allTrialBalance?.closingStatus"
-                />
+                <input matInput readonly [value]="this.allTrialBalance?.closingStatus" />
                 <!-- <mat-select disableRipple>
                   <mat-option
                     *ngFor="
@@ -307,15 +230,10 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
     <div class="row mr-4" style="float:right">
-      <button
-      [disabled]="!this.disablePrint"
-      mat-stroked-button
-      class="mb-2"
-      style="float: right"
-      (click)="printReceipt('MyDIv')"
-    >
-      Print
-    </button>
+      <button [disabled]="!this.disablePrint" mat-stroked-button class="mb-2" style="float: right"
+        (click)="printReceipt('MyDIv')">
+        Print
+      </button>
     </div>
     <table mat-table [dataSource]="dataSource" matSort>
       <!-- fullName Column -->
@@ -385,15 +303,10 @@
       <input matInput (keyup)="applyFilter2($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
     <div class="row mr-4" style="float:right">
-      <button
-      [disabled]="!this.disablePrint"
-      mat-stroked-button
-      class="mb-2"
-      style="float: right"
-      (click)="printReceipt('MyDIv2')"
-    >
-      Print
-    </button>
+      <button [disabled]="!this.disablePrint" mat-stroked-button class="mb-2" style="float: right"
+        (click)="printReceipt('MyDIv2')">
+        Print
+      </button>
     </div>
     <table mat-table [dataSource]="dataSource2" matSort2>
       <!-- fullName Column -->
@@ -451,11 +364,11 @@
 <div class="container-fluid mt-2" *ngIf="this.sixColumnCheck">
   <mat-form-field class="outline">
     <mat-label>Account Balance</mat-label>
-    <input matInput readonly #input [value]="this.netTotalSixColumn"/>
+    <input matInput readonly #input [value]="this.netTotalSixColumn" />
   </mat-form-field>
 </div>
 <!-- class="positioned"  -->
-<div id="MyDIv"  class="positioned">
+<div id="MyDIv" class="positioned">
   <div class="container">
     <div class="row" style="background-color: rgb(50, 120, 226)">
       <div class="col-md-6">
@@ -485,6 +398,23 @@
         <ul class="colorWhite">
           Lahore,Pakistan
         </ul>
+      </div>
+    </div>
+
+    <div class="col-md-4 p-3">
+      <div class="row">
+        <h3>Debit Sum:</h3>
+        &nbsp;&nbsp;&nbsp;
+        <h3>{{
+          this.allTrialBalance?.debitSum
+          }}</h3>
+      </div>
+      <div class="row">
+        <h3>Credit Sum:</h3>
+        &nbsp;&nbsp;&nbsp;
+        <h3>{{
+          this.allTrialBalance?.creditSum
+          }}</h3>
       </div>
     </div>
 
@@ -522,13 +452,13 @@
           <!-- fullName Column -->
           <ng-container matColumnDef="accountCode">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Account Code </th>
-            <td mat-cell *matCellDef="let row"> {{row.paidToCode}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.accountCode}} </td>
           </ng-container>
 
           <!-- position Column -->
           <ng-container matColumnDef="accountName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Account Name </th>
-            <td mat-cell *matCellDef="let row"> {{row.paidToInfo}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.accountInfo}} </td>
           </ng-container>
 
           <!-- department Column -->
@@ -567,10 +497,10 @@
           </tr> -->
         </table>
 
-        <mat-paginator
+        <!-- <mat-paginator
           [pageSizeOptions]="[5, 10, 25, 100]"
           aria-label="Select page of users"
-        ></mat-paginator>
+        ></mat-paginator> -->
       </div>
     </div>
   </div>
@@ -586,7 +516,7 @@
     <div class="row" style="background-color: rgb(50, 120, 226)">
       <div class="col-md-6">
         <h1 class="mt-5" style="font-size: 30px; color: #ffff">
-         Trial Balance
+          Trial Balance
         </h1>
       </div>
 
@@ -611,6 +541,50 @@
         <ul class="colorWhite">
           Lahore,Pakistan
         </ul>
+      </div>
+    </div>
+    <div class="col-md-4 p-3">
+      <div class="row">
+        <h3>Opening Status:</h3>
+        &nbsp;&nbsp;&nbsp;
+        <h3>{{
+          this.allTrialBalance?.openingStatus
+          }}</h3>
+      </div>
+      <div class="row">
+        <h3>Opening Sum:</h3>
+        &nbsp;&nbsp;&nbsp;
+        <h3>{{
+          this.allTrialBalance?.openingSum
+          }}</h3>
+      </div>
+      <div class="row">
+        <h3>Debit Sum:</h3>
+        &nbsp;&nbsp;&nbsp;
+        <h3>{{
+          this.allTrialBalance?.debitSum
+          }}</h3>
+      </div>
+      <div class="row">
+        <h3>Credit Sum:</h3>
+        &nbsp;&nbsp;&nbsp;
+        <h3>{{
+          this.allTrialBalance?.creditSum
+          }}</h3>
+      </div>
+      <div class="row">
+        <h3>Closing Status:</h3>
+        &nbsp;&nbsp;&nbsp;
+        <h3>{{
+          this.allTrialBalance?.closingStatus
+          }}</h3>
+      </div>
+      <div class="row">
+        <h3>Closing Sum:</h3>
+        &nbsp;&nbsp;&nbsp;
+        <h3>{{
+          this.allTrialBalance?.closingSum
+          }}</h3>
       </div>
     </div>
 
@@ -647,13 +621,13 @@
           <!-- fullName Column -->
           <ng-container matColumnDef="accountCode">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Account Code </th>
-            <td mat-cell *matCellDef="let row"> {{row.paidToCode}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.accountCode}} </td>
           </ng-container>
 
           <!-- position Column -->
           <ng-container matColumnDef="accountName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Account Name </th>
-            <td mat-cell *matCellDef="let row"> {{row.paidToInfo}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.accountInfo}} </td>
           </ng-container>
           <ng-container matColumnDef="openingBalance">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Opening Balance </th>
@@ -662,7 +636,7 @@
 
           <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Status </th>
-            <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.status1}} </td>
           </ng-container>
           <!-- department Column -->
           <ng-container matColumnDef="debit">
@@ -679,7 +653,7 @@
           </ng-container>
           <ng-container matColumnDef="netStatus">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="blueButton"> Net Status </th>
-            <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.status2}} </td>
           </ng-container>
           <!-- Fruit Column -->
           <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
@@ -691,10 +665,7 @@
           </tr> -->
         </table>
 
-        <mat-paginator
-          [pageSizeOptions]="[5, 10, 25, 100]"
-          aria-label="Select page of users"
-        ></mat-paginator>
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator> -->
       </div>
     </div>
   </div>

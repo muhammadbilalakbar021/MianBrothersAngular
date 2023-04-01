@@ -104,6 +104,7 @@ export class CustomerAdjustmentComponent implements OnInit {
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
       pdf.addImage(contentDataURL, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save('customer-adjustments.pdf');
+      window.location.reload();
     });
   }
 }

@@ -31,8 +31,8 @@ export class BillOfMaterialComponent implements OnInit {
     'unit',
     'rate',
     'amount',
-    'delete',
-    'edit',
+    // 'delete',
+    // 'edit',
   ];
   constructor(
     public router: Router,
