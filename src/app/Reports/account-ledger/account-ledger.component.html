@@ -441,6 +441,15 @@
               }}
             </h3>
           </div>
+          <div class="row">
+            <h3>Total Balance:</h3>
+            &nbsp;&nbsp;&nbsp;
+            <h3>
+              {{
+                this.allLedger?.balanceSum
+              }}
+            </h3>
+          </div>
         </div>
         <div class="container-fluid mt-5">
           <table mat-table [dataSource]="dataSource" matSort>

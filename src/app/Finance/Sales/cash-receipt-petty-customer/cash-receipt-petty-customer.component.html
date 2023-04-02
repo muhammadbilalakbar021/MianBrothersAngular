@@ -230,41 +230,6 @@
               </h3>
             </div>
             <div class="row">
-              <h4>Payment Type:</h4>
-              &nbsp;&nbsp;&nbsp;
-              <h5>
-                {{
-                  isAccountCodeLoaded
-                    ? (this.cashReceiptPettyPaymentTable[account_index].paymentDate
-                      | date : "medium")
-                    : ""
-                }}
-              </h5>
-            </div>
-            <div class="row">
-              <h4>Cheque No:</h4>
-              &nbsp;&nbsp;&nbsp;
-              <h5>
-                {{
-                  isAccountCodeLoaded
-                    ? this.cashReceiptPettyPaymentTable[account_index].chequeNumber
-                    : ""
-                }}
-              </h5>
-            </div>
-            <div class="row">
-              <h4>Dated:</h4>
-              &nbsp;&nbsp;&nbsp;
-              <h5>
-                {{
-                  isAccountCodeLoaded
-                    ? (this.cashReceiptPettyPaymentTable[account_index].createdDate
-                      | date : "medium")
-                    : ""
-                }}
-              </h5>
-            </div>
-            <div class="row">
               <h4>Drawn On:</h4>
               &nbsp;&nbsp;
               <h4>

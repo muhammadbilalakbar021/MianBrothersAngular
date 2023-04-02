@@ -506,14 +506,14 @@
       <div class="row">
         <div class="col-md-4">
           <div class="row">
-            <h3>P.O.NO.</h3>
+            <h3>Serial No.</h3>
             &nbsp;&nbsp;&nbsp;
             <h3>
               {{ isSaleLoaded ? this.allSales[sales_index]?.serialNumber : "" }}
             </h3>
           </div>
           <div class="row">
-            <h3>P.O.Date</h3>
+            <h3>Date</h3>
             &nbsp;&nbsp;&nbsp;
             <h3>
               {{
@@ -524,11 +524,11 @@
             </h3>
           </div>
           <div class="row">
-            <h4 style="color: grey">To:</h4>
+            <h4 style="color: grey">From:</h4>
           </div>
           <div class="row">
             <h2>
-              {{ isProductCodeLoaded ? this.vendorByIdData[0].vendorName : "" }}
+              {{ isProductCodeLoaded ? this.vendorByIdData[0].customerName : "" }}
             </h2>
           </div>
           <div class="row">
@@ -541,21 +541,21 @@
           <div class="row">
             <h5>
               {{
-                isProductCodeLoaded ? this.vendorByIdData[0].vendorAddress : ""
+                isProductCodeLoaded ? this.vendorByIdData[0].customerAddress : ""
               }}
             </h5>
           </div>
         </div>
         <div class="col-md-4 offset-md-4">
           <div class="row">
-            <h3>Terms Of Payment</h3>
+            <h3>Terms Of Payment:</h3>
             &nbsp;&nbsp;&nbsp;
             <h3>
               {{ isSaleLoaded ? this.allSales[sales_index]?.paymentTerms : "" }}
             </h3>
           </div>
           <div class="row">
-            <h3>Customer Reference No.</h3>
+            <h3>Customer Reference No:</h3>
             &nbsp;&nbsp;&nbsp;
             <h3>
               {{
@@ -566,7 +566,7 @@
             </h3>
           </div>
           <div class="row">
-            <h3>Delivery Date</h3>
+            <h3>Delivery Date:</h3>
             &nbsp;&nbsp;&nbsp;
             <h3>
               {{
@@ -742,11 +742,6 @@
             </tr> -->
           </table>
         </div>
-      </div>
-      <div class="row mt-2">
-        <h3 class="colorBlue">Net Total:</h3>
-        &nbsp;&nbsp;&nbsp;
-        <h3>{{ isSaleLoaded ? this.allSales[sales_index]?.rate : "" }}</h3>
       </div>
       <div class="row mt-3">
         <h5 style="color: rgb(10, 116, 238)">Authorized Signature</h5>

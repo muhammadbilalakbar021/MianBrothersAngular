@@ -289,7 +289,7 @@
 
 
 <!-- class="positioned"  -->
-<div id="MyDIv"  class="positioned">
+<div id="MyDIv" class="positioned">
   <div class="container">
     <div class="row" style="background-color: rgb(50, 120, 226)">
       <div class="col-md-6">
@@ -339,12 +339,7 @@
           <div class="row">
             <h4>Received From:</h4>
           &nbsp;&nbsp;&nbsp;
-          <h4>{{isAccountCodeLoaded ? this.bankPaymentTable[account_index].paidToId : ''}}</h4>
-          </div>
-          <div class="row">
-            <h4>Receipt Type:</h4>
-          &nbsp;&nbsp;&nbsp;
-            <h5>{{isAccountCodeLoaded ? (this.bankPaymentTable[account_index].paymentType) : ''}}</h5>
+          <h4>{{isAccountCodeLoaded ? this.bankPaymentTable[account_index].paidToCode : ''}}</h4>
           </div>
           <div class="row">
             <h4>Cheque No:</h4>
@@ -354,7 +349,7 @@
           <div class="row">
             <h4>Dated:</h4>
           &nbsp;&nbsp;&nbsp;
-            <h5>{{isAccountCodeLoaded ? (this.bankPaymentTable[account_index].createdDate | date:'medium') : ''}}</h5>
+            <h5>{{isAccountCodeLoaded ? (this.bankPaymentTable[account_index].chequeDate | date:'medium') : ''}}</h5>
           </div>
         </div></div>
       <div class="col-md-4 offset-md-4 mt-3">
@@ -366,11 +361,6 @@
         <div class="row">
           <h4>Against Invoices:</h4>&nbsp;&nbsp;<h4>{{isAccountCodeLoaded
             ? (this.bankPaymentTable[account_index]?.invoice  )
-            : ''}}</h4>
-        </div>
-        <div class="row">
-          <h4>Remarks:</h4>&nbsp;&nbsp;<h4>{{isAccountCodeLoaded
-            ? (this.bankPaymentTable[account_index]?.paymentDescription  )
             : ''}}</h4>
         </div>
       </div>

@@ -306,14 +306,14 @@
       <div class="row">
         <div class="col-md-4"><div class="p-2">
           <div class="row">
-            <h3>P.O.NO.</h3>
+            <h3>Serial No.</h3>
             &nbsp;&nbsp;&nbsp;
             <h3>{{ isBankLoaded
               ? (this.bankPaymentTable[bank_index]?.serialNumber)
               : ''}}</h3>
           </div>
           <div class="row">
-            <h3>P.O.Date</h3>
+            <h3>Date</h3>
             &nbsp;&nbsp;&nbsp;
             <h3>{{isBankLoaded
               ? (this.bankPaymentTable[bank_index]?.paymentDate  | date:"medium")
@@ -322,12 +322,7 @@
             <div class="row">
               <h4>Payment To:</h4>
             &nbsp;&nbsp;&nbsp;
-            <h4>{{isBankLoaded ? this.bankPaymentTable[bank_index].paidToId : ''}}</h4>
-            </div>
-            <div class="row">
-              <h4>Payment Type:</h4>
-            &nbsp;&nbsp;&nbsp;
-              <h5>{{isBankLoaded ? (this.bankPaymentTable[bank_index].paymentDate | date:'medium') : ''}}</h5>
+            <h4>{{isBankLoaded ? this.bankPaymentTable[bank_index].paidToCode : ''}}</h4>
             </div>
             <div class="row">
               <h4>Cheque No:</h4>

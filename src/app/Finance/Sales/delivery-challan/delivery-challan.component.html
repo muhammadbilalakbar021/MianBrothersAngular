@@ -462,7 +462,7 @@
               <h3>
                 {{
                   isPurchaseLoaded
-                    ? (this.deliveryChallanTableData[purchase_index]?.orderDate
+                    ? (this.deliveryChallanTableData[purchase_index]?.createdDate
                       | date : "medium")
                     : ""
                 }}
@@ -475,21 +475,21 @@
             <div class="row">
               <h2>
                 {{
-                  isProductCodeLoaded ? this.customerByIdData[0].customerName : ""
+                  isPurchaseLoaded ? this.customerByIdData[0].customerName : ""
                 }}
               </h2>
             </div>
             <div class="row">
               <h5>
                 {{
-                  isProductCodeLoaded ? this.customerByIdData[0].mobileNumber : ""
+                  isPurchaseLoaded ? this.customerByIdData[0].mobileNumber : ""
                 }}
               </h5>
             </div>
             <div class="row">
               <h5>
                 {{
-                  isProductCodeLoaded
+                  isPurchaseLoaded
                     ? this.customerByIdData[0].customerAddress
                     : ""
                 }}
@@ -523,23 +523,23 @@
             </h4>
           </div>
           <div class="row">
-            <h4>Time Of Supply</h4>
+            <h4>Driver Name:</h4>
             &nbsp;&nbsp;
             <h4>
               {{
                 isPurchaseLoaded
-                  ? this.deliveryChallanTableData[purchase_index]?.timeOfSupply
+                  ? this.deliveryChallanTableData[purchase_index]?.driverName
                   : ""
               }}
             </h4>
           </div>
           <div class="row">
-            <h4>Delivery Order No:</h4>
+            <h4>Vehicle Description:</h4>
             &nbsp;&nbsp;
             <h4>
               {{
                 isPurchaseLoaded
-                  ? this.deliveryChallanTableData[purchase_index]?.deliveryChallan
+                  ? this.deliveryChallanTableData[purchase_index]?.vehicleDescription
                   : ""
               }}
             </h4>

@@ -253,18 +253,6 @@
               </h3>
             </div>
             <div class="row">
-              <h4>Payment Type:</h4>
-              &nbsp;&nbsp;&nbsp;
-              <h5>
-                {{
-                  isAccountCodeLoaded
-                    ? (this.bankReceiptPettyPaymentTable[account_index].paymentDate
-                      | date : "medium")
-                    : ""
-                }}
-              </h5>
-            </div>
-            <div class="row">
               <h4>Cheque No:</h4>
               &nbsp;&nbsp;&nbsp;
               <h5>
@@ -281,7 +269,7 @@
               <h5>
                 {{
                   isAccountCodeLoaded
-                    ? (this.bankReceiptPettyPaymentTable[account_index].createdDate
+                    ? (this.bankReceiptPettyPaymentTable[account_index].chequeDate
                       | date : "medium")
                     : ""
                 }}

@@ -325,7 +325,7 @@
 
 
   <!-- class="positioned"  -->
-  <div id="MyDIv"  class="positioned">
+  <div id="MyDIv" class="positioned">
     <div class="container">
       <div class="row" style="background-color: rgb(50, 120, 226)">
         <div class="col-md-6">
@@ -359,21 +359,21 @@
       <div class="row">
         <div class="col-md-4"><div class="p-2">
           <div class="row">
-            <h3>Invoice NO.</h3>
+            <h3>Serial No.</h3>
             &nbsp;&nbsp;&nbsp;
             <h3>{{ isSaleLoaded
-              ? (this.salesReturnData[sales_index]?.invoice)
+              ? (this.salesReturnData[sales_index]?.serialNumber)
               : ''}}</h3>
           </div>
           <div class="row">
-            <h3>Invoice Date</h3>
+            <h3>Date</h3>
             &nbsp;&nbsp;&nbsp;
             <h3>{{isSaleLoaded
-              ? (this.salesReturnData[sales_index]?.invoiceDate  | date:"medium")
+              ? (this.salesReturnData[sales_index]?.returnDate  | date:"medium")
               : ''}}</h3>
           </div>
           <div class="row">
-            <h4 style="color: grey" >To:</h4>
+            <h4 style="color: grey" >From:</h4>
 
           </div>
 

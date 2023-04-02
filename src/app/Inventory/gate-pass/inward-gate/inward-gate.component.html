@@ -188,7 +188,7 @@
   </div>
 
   <!-- class="positioned"  -->
-  <div id="MyDIv" class="positioned" >
+  <div id="MyDIv" class="positioned">
     <div class="container">
       <div class="row" style="background-color: rgb(50, 120, 226)">
         <div class="col-md-6">
@@ -225,7 +225,7 @@
         <div class="col-md-4">
           <div class="p-2">
             <div class="row">
-              <h3>Serial Number:</h3>
+              <h3>Purchase Order:</h3>
               &nbsp;&nbsp;&nbsp;
               <h3>
                 {{
@@ -271,6 +271,17 @@
                     : ""
                 }}
               </h5>
+            </div>
+            <div class="row">
+              <h3>Purchase Order No:</h3>
+              &nbsp;&nbsp;&nbsp;
+              <h3>
+                {{
+                  isPurchaseLoaded
+                    ? this.productSales[purchase_index]?.serialNumber
+                    : ""
+                }}
+              </h3>
             </div>
           </div>
         </div>
