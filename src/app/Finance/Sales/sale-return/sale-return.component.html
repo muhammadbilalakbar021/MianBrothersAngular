@@ -395,12 +395,12 @@
             </div>
             <div class="row">
               <h4>Sale Invoice No:</h4>&nbsp;&nbsp;<h4>{{isSaleLoaded
-                ? (this.salesReturnData[sales_index]?.saleId  )
+                ? (this.salesReturnData[sales_index]?.invoice  )
                 : ''}}</h4>
             </div>
             <div class="row">
               <h4>Sale Invoice Date:</h4>&nbsp;&nbsp;<h4>{{isSaleLoaded
-                ? (this.salesReturnData[sales_index]?.returnDate  | date:"medium")
+                ? (this.salesReturnData[sales_index]?.invoiceDate  | date:"medium")
                 : ''}}</h4>
             </div>
 

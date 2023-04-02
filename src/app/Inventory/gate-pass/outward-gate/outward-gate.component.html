@@ -287,14 +287,14 @@
     <div class="row">
       <div class="col-md-4">
         <div class="row">
-          <h3>P.O.NO.</h3>
+          <h3>Serial N.</h3>
           &nbsp;&nbsp;&nbsp;
           <h3>{{ isSaleLoaded
             ? (this.productSales[sales_index]?.serialNumber)
             : ''}}</h3>
         </div>
         <div class="row">
-          <h3>P.O.Date</h3>
+          <h3>Date</h3>
           &nbsp;&nbsp;&nbsp;
           <h3>{{isSaleLoaded
             ? (this.productSales[sales_index]?.orderDate  | date:"medium")
@@ -314,13 +314,6 @@
           </div>
     </div>
     <div class="col-md-4 offset-md-4">
-      <div class="row">
-        <h3>Sales Order No:</h3>
-          &nbsp;&nbsp;&nbsp;
-          <h3>{{isSaleLoaded
-            ? (this.productSales[sales_index]?.paymentTerms)
-            : ''}}</h3>
-      </div>
       <div class="row">
         <h3>Delivery Challan No:</h3>
           &nbsp;&nbsp;&nbsp;
