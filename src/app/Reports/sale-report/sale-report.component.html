@@ -4,6 +4,19 @@
       Sale Report / Account Receivable Aging
     </h1>
   </div>
+  <div class="col-md-7">
+    <mat-chip-list>
+      <mat-chip color="basic" routerLink="/employee-home/reports"
+        >Reports</mat-chip
+      >
+      /
+      <mat-chip
+        style="background-color: rgb(229, 188, 9); color: white"
+        selected
+        >Account Receivable</mat-chip
+      >
+    </mat-chip-list>
+  </div>
   <div class="container-fluid mt-5">
     <mat-form-field>
       <mat-label>Search</mat-label>
@@ -88,9 +101,8 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
 
-
-  <div id="MyDIv" class="positioned" >
-    <div class="container">
+  <div id="MyDIv"  class="positioned">
+    <div class="container-fluid">
       <div class="row" style="background-color: rgb(50, 120, 226)">
         <div class="col-md-6">
           <h1 class="mt-5" style="font-size: 30px;color:#ffff" >ACCOUNT RECEIVABLE AGING</h1>
