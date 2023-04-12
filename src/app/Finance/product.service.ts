@@ -8,14 +8,15 @@ import Header from '../utils/headers';
 })
 export class ProductService {
   constructor(private http: HttpClient, public header: Header,private _snackBar: MatSnackBar) {}
+  API_KEY = 'http://43.205.120.176'
 
   getAccountLedger(id: any,from:any,to:any) {
     // return this.http.get<any>(
-    //   `http://43.205.120.176:3000/finance/account_ledger/search/${id}?dateStart=${from}&dateEnd=${to}`
+    //   `${this.API_KEY}:3000/finance/account_ledger/search/${id}?dateStart=${from}&dateEnd=${to}`
     // );
 
     return new Promise<any>((resolve, reject) => {
-      this.http.get<any>(`http://43.205.120.176:3000/finance/account_ledger/search/${id}?dateStart=${from}&dateEnd=${to}`,
+      this.http.get<any>(`${this.API_KEY}:3000/finance/account_ledger/search/${id}?dateStart=${from}&dateEnd=${to}`,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -34,11 +35,11 @@ export class ProductService {
   }
   getTwoColumn(from:any,to:any) {
     // return this.http.get<any>(
-    //   `http://43.205.120.176:3000/finance/account_ledger/search/${id}?dateStart=${from}&dateEnd=${to}`
+    //   `${this.API_KEY}:3000/finance/account_ledger/search/${id}?dateStart=${from}&dateEnd=${to}`
     // );
 
     return new Promise<any>((resolve, reject) => {
-      this.http.get<any>(`http://43.205.120.176:3000/finance/trial_balance/search?dateStart=${from}&dateEnd=${to}`,
+      this.http.get<any>(`${this.API_KEY}:3000/finance/trial_balance/search?dateStart=${from}&dateEnd=${to}`,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -59,7 +60,7 @@ export class ProductService {
   updateRolls(id: any,obj:any) {
 
     return new Promise<any>((resolve, reject) => {
-      this.http.patch<any>(`http://43.205.120.176:3000/roles/update/${id}`,obj,
+      this.http.patch<any>(`${this.API_KEY}:3000/roles/update/${id}`,obj,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -82,11 +83,11 @@ export class ProductService {
   }
   getSixColumn(from:any,to:any) {
     // return this.http.get<any>(
-    //   `http://43.205.120.176:3000/finance/account_ledger/search/${id}?dateStart=${from}&dateEnd=${to}`
+    //   `${this.API_KEY}:3000/finance/account_ledger/search/${id}?dateStart=${from}&dateEnd=${to}`
     // );
 
     return new Promise<any>((resolve, reject) => {
-      this.http.get<any>(`http://43.205.120.176:3000/finance/trial_balance/search_6c?dateStart=${from}&dateEnd=${to}`,
+      this.http.get<any>(`${this.API_KEY}:3000/finance/trial_balance/search_6c?dateStart=${from}&dateEnd=${to}`,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -106,7 +107,7 @@ export class ProductService {
 
   getPurchaseReportAging(){
     return new Promise<any>((resolve, reject) => {
-      this.http.get<any>(`http://43.205.120.176:3000/finance/reports/search_payable`,
+      this.http.get<any>(`${this.API_KEY}:3000/finance/reports/search_payable`,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -126,34 +127,34 @@ export class ProductService {
 
   getAllOrders(){
     return this.http.get<any>(
-      'http://43.205.120.176:3000/inventory/orders/search'
+      `${this.API_KEY}:3000/inventory/orders/search`
     )
   }
 
   getUsageOrdersByOrdersId(id:any){
     return this.http.get<any>(
-      `http://43.205.120.176:3000/inventory/orders_usage/search_by_order/${id}`
+      `${this.API_KEY}:3000/inventory/orders_usage/search_by_order/${id}`
     );
   }
   getOrdersById(id:any){
     return this.http.get<any>(
-      `http://43.205.120.176:3000/inventory/orders/search/${id}`
+      `${this.API_KEY}:3000/inventory/orders/search/${id}`
     );
   }
   getAllFinishedProducts(){
     return this.http.get<any>(
-      'http://43.205.120.176:3000/inventory/products/search_finished'
+      `${this.API_KEY}:3000/inventory/products/search_finished`
     )
   }
   getAllRawProducts(){
     return this.http.get<any>(
-      'http://43.205.120.176:3000/inventory/products/search_raw'
+      `${this.API_KEY}:3000/inventory/products/search_raw`
     )
   }
 
   getSaleReportAging(){
     return new Promise<any>((resolve, reject) => {
-      this.http.get<any>(`http://43.205.120.176:3000/finance/reports/search_receivable`,
+      this.http.get<any>(`${this.API_KEY}:3000/finance/reports/search_receivable`,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -176,7 +177,7 @@ export class ProductService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .post<any>(
-          'http://43.205.120.176:3000/inventory/products/add',
+          `${this.API_KEY}:3000/inventory/products/add`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -205,7 +206,7 @@ export class ProductService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .post<any>(
-          'http://43.205.120.176:3000/inventory/orders/add',
+          `${this.API_KEY}:3000/inventory/orders/add`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()

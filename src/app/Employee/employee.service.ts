@@ -8,15 +8,16 @@ import Header from '../utils/headers';
   providedIn: 'root'
 })
 export class EmployeeService {
+  API_KEY = 'http://43.205.120.176'
   constructor(private http: HttpClient, public header: Header,private _snackbar : MatSnackBar) { }
 
   getAllEmployees() {
-    return this.http.get<any>('http://43.205.120.176:3000/employees/search')
+    return this.http.get<any>(`${this.API_KEY}:3000/employees/search`)
   }
 
   deleteEmployee(id: any) {
     return new Promise<any>((resolve, reject) => {
-      this.http.patch<any>('http://43.205.120.176:3000/employees/delete' + '/' + id, { undefined },
+      this.http.patch<any>(`${this.API_KEY}:3000/employees/delete` + '/' + id, { undefined },
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -40,7 +41,7 @@ export class EmployeeService {
   }
   deleteUser(id: any) {
     return new Promise<any>((resolve, reject) => {
-      this.http.patch<any>('http://43.205.120.176:3000/users/delete' + '/' + id, { undefined },
+      this.http.patch<any>(`${this.API_KEY}:3000/users/delete` + '/' + id, { undefined },
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -64,7 +65,7 @@ export class EmployeeService {
   }
   deleteInventory(id: any) {
     return new Promise<any>((resolve, reject) => {
-      this.http.patch<any>('http://43.205.120.176:3000/inventory/products/delete' + '/' + id, { undefined },
+      this.http.patch<any>(`${this.API_KEY}:3000/inventory/products/delete` + '/' + id, { undefined },
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -90,7 +91,7 @@ export class EmployeeService {
   addEmployee(obj:any){
 
     return new Promise<any>((resolve, reject) => {
-      firstValueFrom(this.http.post<any>('http://43.205.120.176:3000/employees/add',obj,
+      firstValueFrom(this.http.post<any>(`${this.API_KEY}:3000/employees/add`,obj,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions()))
         .then((data: any) => {
@@ -113,7 +114,7 @@ export class EmployeeService {
 
   editEmployee(obj:any,id:any){
     return new Promise<any>((resolve, reject) => {
-      firstValueFrom(this.http.patch<any>(`http://43.205.120.176:3000/employees/update/${id}`,obj,
+      firstValueFrom(this.http.patch<any>(`${this.API_KEY}:3000/employees/update/${id}`,obj,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions()))
         .then((data: any) => {
@@ -132,7 +133,7 @@ export class EmployeeService {
   }
   editInventory(obj:any,id:any){
     return new Promise<any>((resolve, reject) => {
-      firstValueFrom(this.http.patch<any>(`http://43.205.120.176:3000/inventory/products/update/${id}`,obj,
+      firstValueFrom(this.http.patch<any>(`${this.API_KEY}:3000/inventory/products/update/${id}`,obj,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions()))
         .then((data: any) => {
@@ -150,19 +151,19 @@ export class EmployeeService {
     })
   }
   getAllListOfEmployees(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search`)
   }
   getAllListOfCustomersAccounts(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_customer_type_accounts')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search_customer_type_accounts`)
   }
   getAllListOfVendorAccounts(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_vendor_type_accounts')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search_vendor_type_accounts`)
   }
   getAllCustomerAccounts(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_customer_accounts')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search_customer_accounts`)
   }
   getAllVendorAccounts(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_vendor_accounts')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search_vendor_accounts`)
   }
 
 

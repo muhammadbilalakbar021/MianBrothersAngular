@@ -9,10 +9,12 @@ import Header from '../utils/headers';
   providedIn: 'root'
 })
 export class AuthService {
+  API_KEY = 'http://43.205.120.176'
+
   constructor(private http: HttpClient, public header: Header,private router:Router,private _snackBar:MatSnackBar) { }
 
   login(username:string,pass:string){
-    return this.http.post<any>('http://43.205.120.176:3000/users/login',{ username, pass }).subscribe(
+    return this.http.post<any>(`${this.API_KEY}:3000/users/login`,{ username, pass }).subscribe(
       (res:any)=>{
       console.log("res",res)
       this._snackBar.open(res.message,' ',{duration: 5 * 1000});
@@ -25,13 +27,17 @@ export class AuthService {
     })
   }
 
+  isLoggedIn(){
+    return !!localStorage.getItem('user');
+  }
   logout(){
-    localStorage.clear()
+    localStorage.removeItem('user')
+    localStorage.clear();
   }
   register(id:string,username:string,pass:string){
     console.log("token",this.header.getRequestOptions());
     return new Promise<any>((resolve, reject) => {
-      this.http.patch<any>('http://43.205.120.176:3000/users/signup' + '/' + id,{ username, pass },
+      this.http.patch<any>(`${this.API_KEY}:3000/users/signup` + '/' + id,{ username, pass },
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -53,7 +59,7 @@ export class AuthService {
   }
 
   getEmployeesByCnic(){
-    return this.http.get<any>('http://43.205.120.176:3000/employees/search_cnic');
+    return this.http.get<any>(`${this.API_KEY}:3000/employees/search_cnic`);
   }
 
 }

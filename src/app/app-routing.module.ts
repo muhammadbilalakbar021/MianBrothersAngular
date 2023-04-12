@@ -84,167 +84,173 @@ import { AddCustomersDetailsComponent } from './Finance/Sales/add-customers-deta
 import { EditCustomersComponent } from './Finance/Sales/add-customers-details/edit-customers/edit-customers.component';
 import { ViewListAccountsComponent } from './accounts/view-list-accounts/view-list-accounts.component';
 import { EditListAccountsComponent } from './accounts/view-list-accounts/edit-list-accounts/edit-list-accounts.component';
+import { AuthguardGuard } from './authguard.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: 'main-page',
     component: MainPageComponent,
+    canActivate: [AuthguardGuard]
   },
 
   {
     path: 'inventory-dashboard',
     component: InventoryDashboardComponent,
     children: [
-      { path: 'inventory-balance', component: InventoryBalanceComponent },
-      { path: 'gate-pass', component: GatePassComponent },
-      { path: 'inward', component: InwardGateComponent },
-      { path: 'outward', component: OutwardGateComponent },
-      { path: 'add-inward', component: AddInwardComponent },
-      { path: 'add-outward', component: AddOutwardComponent },
-      { path: 'bill-of-material', component: BillOfMaterialComponent },
-      { path: 'add-new-bill', component: AddNewBillComponent },
+      { path: 'inventory-balance', component: InventoryBalanceComponent,canActivate: [AuthguardGuard] },
+      { path: 'gate-pass', component: GatePassComponent,canActivate: [AuthguardGuard] },
+      { path: 'inward', component: InwardGateComponent,canActivate: [AuthguardGuard] },
+      { path: 'outward', component: OutwardGateComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-inward', component: AddInwardComponent ,canActivate: [AuthguardGuard]},
+      { path: 'add-outward', component: AddOutwardComponent,canActivate: [AuthguardGuard] },
+      { path: 'bill-of-material', component: BillOfMaterialComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-new-bill', component: AddNewBillComponent ,canActivate: [AuthguardGuard]},
     ],
   },
   {
     path: 'main-employee-dashboard',
     component: MainEmployeeDashboardComponent,
     children: [
-      { path: 'employee-register', component: EmployeeRegisterComponent },
-      { path: 'all-employees', component: AllEmployeesComponent },
+      { path: 'employee-register', component: EmployeeRegisterComponent,canActivate: [AuthguardGuard] },
+      { path: 'all-employees', component: AllEmployeesComponent,canActivate: [AuthguardGuard] },
     ],
   },
   {
     path: 'employee-home',
     component: EmployeeHomeComponent,
     children: [
-      { path: 'finance-dashboard', component: DashboardComponent },
-      { path: 'purchases', component: PurchasesComponent },
-      { path: 'purchase-order', component: PurchaseOrderComponent },
-      { path: 'purchase-sales-tax', component: PurchaseSalesTaxComponent },
-      { path: 'purchase-non-sales', component: PurchaseNonTaxComponent },
-      { path: 'bank-payment', component: BankPaymentComponent },
-      { path: 'cash-payment', component: CashPaymentComponent },
-      { path: 'purchase-return', component: PurchaseReturnComponent },
-      { path: 'add-vendors-details', component: AddVendorsDetailsComponent },
-      { path: 'edit-vendors', component: EditVendorsComponent },
-      { path: 'add-customers-details', component: AddCustomersDetailsComponent },
-      { path: 'edit-customers', component: EditCustomersComponent },
+      { path: 'finance-dashboard', component: DashboardComponent ,canActivate: [AuthguardGuard]},
+      { path: 'purchases', component: PurchasesComponent ,canActivate: [AuthguardGuard]},
+      { path: 'purchase-order', component: PurchaseOrderComponent ,canActivate: [AuthguardGuard]},
+      { path: 'purchase-sales-tax', component: PurchaseSalesTaxComponent ,canActivate: [AuthguardGuard]},
+      { path: 'purchase-non-sales', component: PurchaseNonTaxComponent ,canActivate: [AuthguardGuard]},
+      { path: 'bank-payment', component: BankPaymentComponent ,canActivate: [AuthguardGuard]},
+      { path: 'cash-payment', component: CashPaymentComponent,canActivate: [AuthguardGuard] },
+      { path: 'purchase-return', component: PurchaseReturnComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-vendors-details', component: AddVendorsDetailsComponent,canActivate: [AuthguardGuard] },
+      { path: 'edit-vendors', component: EditVendorsComponent ,canActivate: [AuthguardGuard]},
+      { path: 'add-customers-details', component: AddCustomersDetailsComponent,canActivate: [AuthguardGuard] },
+      { path: 'edit-customers', component: EditCustomersComponent,canActivate: [AuthguardGuard] },
       {
         path: 'chart-of-account',
         component: ChartOfAccountComponent,
+        canActivate: [AuthguardGuard]
       },
-      { path: 'sales', component: SalesComponent },
-      { path: 'add-purchase-order', component: AddPurchaseComponent },
-      { path: 'add-vendor', component: AddVendorComponent },
-      { path: 'add-purchase-sales', component: AddPurchaseSalesComponent },
-      { path: 'add-non-purchase', component: AddNonPurchaseSalesComponent },
-      { path: 'add-new-item', component: AddNewItemComponent },
-      { path: 'choose-account', component: ChooseAccountComponent },
-      { path: 'main-account', component: MainAccountComponent },
-      { path: 'sub-account', component: SubAccountComponent },
-      { path: 'list-account', component: ListAccountComponent },
-      { path: 'add-purchase-return', component: AddPurchaseReturnComponent },
-      { path: 'add-bank-payment', component: AddBankPaymentComponent },
-      { path: 'bank-petty', component: BankPettyComponent },
-      { path: 'add-bank-petty', component: AddBankPettyComponent },
-      { path: 'add-cash-payment', component: AddCashPaymentComponent },
-      { path: 'cash-petty', component: CashPettyComponent },
-      { path: 'add-cash-petty', component: AddCashPettyComponent },
-      { path: 'sales-order', component: SalesOrderComponent },
-      { path: 'add-sales-order', component: AddSalesOrderComponent },
-      { path: 'add-customer', component: AddCustomerComponent },
-      { path: 'add-delivery-challan', component: AddDeliveryChallanComponent },
-      { path: 'delivery-challan', component: DeliveryChallanComponent },
-      { path: 'sales-tax-invoices', component: SalesTaxInvoicesComponent },
-      { path: 'view-list-accounts', component: ViewListAccountsComponent },
-      { path: 'edit-list-accounts', component: EditListAccountsComponent },
+      { path: 'sales', component: SalesComponent ,canActivate: [AuthguardGuard]},
+      { path: 'add-purchase-order', component: AddPurchaseComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-vendor', component: AddVendorComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-purchase-sales', component: AddPurchaseSalesComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-non-purchase', component: AddNonPurchaseSalesComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-new-item', component: AddNewItemComponent,canActivate: [AuthguardGuard] },
+      { path: 'choose-account', component: ChooseAccountComponent,canActivate: [AuthguardGuard] },
+      { path: 'main-account', component: MainAccountComponent,canActivate: [AuthguardGuard] },
+      { path: 'sub-account', component: SubAccountComponent ,canActivate: [AuthguardGuard]},
+      { path: 'list-account', component: ListAccountComponent ,canActivate: [AuthguardGuard]},
+      { path: 'add-purchase-return', component: AddPurchaseReturnComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-bank-payment', component: AddBankPaymentComponent,canActivate: [AuthguardGuard] },
+      { path: 'bank-petty', component: BankPettyComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-bank-petty', component: AddBankPettyComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-cash-payment', component: AddCashPaymentComponent,canActivate: [AuthguardGuard] },
+      { path: 'cash-petty', component: CashPettyComponent ,canActivate: [AuthguardGuard]},
+      { path: 'add-cash-petty', component: AddCashPettyComponent,canActivate: [AuthguardGuard] },
+      { path: 'sales-order', component: SalesOrderComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-sales-order', component: AddSalesOrderComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-customer', component: AddCustomerComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-delivery-challan', component: AddDeliveryChallanComponent,canActivate: [AuthguardGuard] },
+      { path: 'delivery-challan', component: DeliveryChallanComponent ,canActivate: [AuthguardGuard]},
+      { path: 'sales-tax-invoices', component: SalesTaxInvoicesComponent,canActivate: [AuthguardGuard] },
+      { path: 'view-list-accounts', component: ViewListAccountsComponent ,canActivate: [AuthguardGuard]},
+      { path: 'edit-list-accounts', component: EditListAccountsComponent,canActivate: [AuthguardGuard] },
       {
         path: 'add-sales-tax-invoices',
         component: AddSalesTaxInvoicesComponent,
+        canActivate: [AuthguardGuard]
       },
       {
         path: 'sales-non-tax-invoices',
-        component: SalesNonTaxInvoicesComponent,
+        component: SalesNonTaxInvoicesComponent,canActivate: [AuthguardGuard]
       },
       {
         path: 'bank-customer-receipt',
-        component: BankCustomerReceiptComponent,
+        component: BankCustomerReceiptComponent,canActivate: [AuthguardGuard]
       },
       {
         path: 'add-sales-non-tax-invoices',
-        component: AddSalesNonTaxInvoicesComponent,
+        component: AddSalesNonTaxInvoicesComponent,canActivate: [AuthguardGuard]
       },
-      { path: 'sale-returns', component: SaleReturnComponent },
-      { path: 'add-sale-returns', component: AddSaleReturnsComponent },
+      { path: 'sale-returns', component: SaleReturnComponent,canActivate: [AuthguardGuard] },
+      { path: 'add-sale-returns', component: AddSaleReturnsComponent,canActivate: [AuthguardGuard] },
       {
         path: 'bank-customer-receipt',
         component: BankCustomerReceiptComponent,
+        canActivate: [AuthguardGuard]
       },
       {
         path: 'add-bank-customer-receipt',
         component: AddBankCustomerReceiptComponent,
+        canActivate: [AuthguardGuard]
       },
       { path: 'bank-receipt-petty', component: BankReceiptPettyComponent },
       {
         path: 'add-bank-receipt-petty',
-        component: AddBankReceiptPettyComponent,
+        component: AddBankReceiptPettyComponent,canActivate: [AuthguardGuard]
       },
       {
         path: 'cash-receipt-customer',
-        component: CashReceiptCustomerComponent,
+        component: CashReceiptCustomerComponent,canActivate: [AuthguardGuard]
       },
       {
         path: 'add-cash-receipt-customer',
-        component: AddCashReceiptCustomerComponent,
+        component: AddCashReceiptCustomerComponent,canActivate: [AuthguardGuard]
       },
       {
         path: 'cash-receipt-petty-customer',
-        component: CashReceiptPettyCustomerComponent,
+        component: CashReceiptPettyCustomerComponent,canActivate: [AuthguardGuard]
       },
       {
         path: 'add-cash-receipt-petty-customer',
-        component: AddCashReceiptPettyCustomerComponent,
+        component: AddCashReceiptPettyCustomerComponent,canActivate: [AuthguardGuard]
       },
       {
         path: 'adjustments',
-        component: AsjustmentsMainComponent,
+        component: AsjustmentsMainComponent,canActivate: [AuthguardGuard]
       },
       {
         path: 'journal-voucher',
-        component: JournalVoucherComponent,
+        component: JournalVoucherComponent,canActivate: [AuthguardGuard]
       },
       {
         path: 'customer-adjustment',
-        component: CustomerAdjustmentComponent,
+        component: CustomerAdjustmentComponent,canActivate: [AuthguardGuard]
       },
       {
         path : 'add-customer-debit',
-        component : AddCustomerDebitComponent
+        component : AddCustomerDebitComponent,canActivate: [AuthguardGuard]
       },
       {
         path : 'add-customer-credit',
-        component : AddCustomerCreditComponent
+        component : AddCustomerCreditComponent,canActivate: [AuthguardGuard]
       },
       {
         path: 'add-journal-voucher',
-        component : AddJournalVoucherComponent
+        component : AddJournalVoucherComponent,canActivate: [AuthguardGuard]
       },
-      { path: 'reports', component: ReportsMainComponent },
-      { path: 'account-ledger', component: AccountLedgerComponent },
-      { path: 'trial-balance', component: TrialBalanceComponent },
-      { path: 'purchase-report', component: PurchaseReportComponent },
-      { path: 'sale-report', component: SaleReportComponent },
+      { path: 'reports', component: ReportsMainComponent,canActivate: [AuthguardGuard] },
+      { path: 'account-ledger', component: AccountLedgerComponent,canActivate: [AuthguardGuard] },
+      { path: 'trial-balance', component: TrialBalanceComponent,canActivate: [AuthguardGuard] },
+      { path: 'purchase-report', component: PurchaseReportComponent,canActivate: [AuthguardGuard] },
+      { path: 'sale-report', component: SaleReportComponent,canActivate: [AuthguardGuard] },
     ],
   },
-  { path: 'dashboard', component: EmployeeDashboardComponent },
-  { path: 'finance-dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: EmployeeDashboardComponent,canActivate: [AuthguardGuard] },
+  { path: 'finance-dashboard', component: DashboardComponent,canActivate: [AuthguardGuard] },
   { path: 'register', component: RegistrationComponent },
-  { path: 'system-choice', component: SystemChoiceComponent },
-  { path: 'system-users', component: SystemUsersComponent },
-  { path: 'employee-delete', component: EmployeeDeleteComponent },
-  { path: 'all-users',component: AllUsersComponent},
-  {path : 'define',component:DefineRolesComponent}
+  { path: 'system-choice', component: SystemChoiceComponent,canActivate: [AuthguardGuard] },
+  { path: 'system-users', component: SystemUsersComponent,canActivate: [AuthguardGuard] },
+  { path: 'employee-delete', component: EmployeeDeleteComponent,canActivate: [AuthguardGuard] },
+  { path: 'all-users',component: AllUsersComponent,canActivate: [AuthguardGuard]},
+  {path : 'define',component:DefineRolesComponent,canActivate: [AuthguardGuard]}
 
 ];
 

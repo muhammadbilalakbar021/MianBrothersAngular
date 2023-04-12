@@ -7,63 +7,63 @@ import Header from '../utils/headers';
   providedIn: 'root'
 })
 export class AccountsService {
-
+  API_KEY = 'http://43.205.120.176'
   constructor(private http: HttpClient, public header: Header,private _snackbar :MatSnackBar) { }
 
   getAllListOfAccounts(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search`)
   }
   getAllUserAccounts(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_user_all_accounts')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search_user_all_accounts`)
   }
   getUserBankAccounts(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_user_bank_accounts')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search_user_bank_accounts`)
   }
   getUserCashAccounts(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_user_cash_accounts')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search_user_cash_accounts`)
   }
   getUserCustomerAccounts(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_vendor_accounts')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search_vendor_accounts`)
   }
 
   getCustomerAccounts(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_customer_accounts')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search_customer_accounts`)
   }
 
   getAccountOfOtherType(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_other_type_accounts')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search_other_type_accounts`)
   }
 
   getMainAccount(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/accounts/search')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/accounts/search`)
   }
 
   getSubAccount(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/sub_accounts/search')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/sub_accounts/search`)
   }
 
   getSubBySearchId(index:any){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/sub_accounts/search_by_account/' + index)
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/sub_accounts/search_by_account/` + index)
   }
 
   getListBySearchId(index:any){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/list_of_accounts/search_by_sub_account/' + index)
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/list_of_accounts/search_by_sub_account/` + index)
   }
 
   getCustomerCode(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/customers/search')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/customers/search`)
   }
 
   getJournalVoucher(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/adjustments/search_vouchers')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/adjustments/search_vouchers`)
   }
   getcustomerAdjustments(){
-    return this.http.get<any>('http://43.205.120.176:3000/finance/adjustments/search_customers')
+    return this.http.get<any>(`${this.API_KEY}:3000/finance/adjustments/search_customers`)
   }
   addCustomer(obj:any){
     console.log("token",this.header.getRequestOptions());
     return new Promise<any>((resolve, reject) => {
-      this.http.post<any>('http://43.205.120.176:3000/finance/customers/add',obj,
+      this.http.post<any>(`${this.API_KEY}:3000/finance/customers/add`,obj,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -88,7 +88,7 @@ export class AccountsService {
   getAllUsers(){
     console.log("token",this.header.getRequestOptions());
     return new Promise<any>((resolve, reject) => {
-      this.http.get<any>('http://43.205.120.176:3000/users/search',
+      this.http.get<any>(`${this.API_KEY}:3000/users/search`,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -107,7 +107,7 @@ export class AccountsService {
   }
   getRollsByUserId(id:any){
     return new Promise<any>((resolve, reject) => {
-      this.http.get<any>(`http://43.205.120.176:3000/roles/search/${id}`,
+      this.http.get<any>(`${this.API_KEY}:3000/roles/search/${id}`,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -128,7 +128,7 @@ export class AccountsService {
   addMainAccount(obj:any){
     console.log("token",this.header.getRequestOptions());
     return new Promise<any>((resolve, reject) => {
-      this.http.post<any>('http://43.205.120.176:3000/finance/accounts/add',obj,
+      this.http.post<any>(`${this.API_KEY}:3000/finance/accounts/add`,obj,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -153,7 +153,7 @@ export class AccountsService {
 
   addSubAccount(obj:any){
     return new Promise<any>((resolve, reject) => {
-      this.http.post<any>('http://43.205.120.176:3000/finance/sub_accounts/add',obj,
+      this.http.post<any>(`${this.API_KEY}:3000/finance/sub_accounts/add`,obj,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -178,7 +178,7 @@ export class AccountsService {
 
   addListAccount(obj:any){
     return new Promise<any>((resolve, reject) => {
-      this.http.post<any>('http://43.205.120.176:3000/finance/list_of_accounts/add',obj,
+      this.http.post<any>(`${this.API_KEY}:3000/finance/list_of_accounts/add`,obj,
         // Header X_AUTH_TOKEN
         this.header.getRequestOptions())
         .toPromise()
@@ -205,7 +205,7 @@ export class AccountsService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .patch<any>(
-          'http://43.205.120.176:3000/finance/list_of_accounts/delete' + '/' + id,
+          `${this.API_KEY}:3000/finance/list_of_accounts/delete` + '/' + id,
           { undefined },
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()

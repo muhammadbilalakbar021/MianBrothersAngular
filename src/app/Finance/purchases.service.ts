@@ -9,121 +9,123 @@ import Header from '../utils/headers';
   providedIn: 'root',
 })
 export class PurchasesService {
+  API_KEY = 'http://43.205.120.176'
+
   constructor(private http: HttpClient, public header: Header,private _snackBar :MatSnackBar) {}
 
   getAllProductsCode() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/inventory/products/search_raw'
+      `${this.API_KEY}:3000/inventory/products/search_raw`
     );
   }
 
   getAllSaleProductsCode() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/inventory/products/search_finished'
+      `${this.API_KEY}:3000/inventory/products/search_finished`
     );
   }
 
   getAllVendorCodes() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/finance/vendors/search'
+      `${this.API_KEY}:3000/finance/vendors/search`
     );
   }
 
   getAllCustomersCodes() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/finance/customers/search'
+      `${this.API_KEY}:3000/finance/customers/search`
     );
   }
 
   getVendorById(id: any) {
     return this.http.get<any>(
-      `http://43.205.120.176:3000/finance/vendors/search/${id}`
+      `${this.API_KEY}:3000/finance/vendors/search/${id}`
     );
   }
   getAllOrdersByItemCodes(id: any) {
     return this.http.get<any>(
-      `http://43.205.120.176:3000/finance/purchase_sale_orders/search_codes/${id}`
+      `${this.API_KEY}:3000/finance/purchase_sale_orders/search_codes/${id}`
     );
   }
   getPurchaseOrders() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/finance/purchase_sale_orders/search_purchases'
+      `${this.API_KEY}:3000/finance/purchase_sale_orders/search_purchases`
     );
   }
 
   getUngeneratedPurchaseOrders() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/finance/purchase_sale_orders/search_non_generated_purchases'
+      `${this.API_KEY}:3000/finance/purchase_sale_orders/search_non_generated_purchases`
     );
   }
 
   getPurchaseSales() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/finance/purchase_sales/search'
+      `${this.API_KEY}:3000/finance/purchase_sales/search`
     );
   }
 
   getAllPurchaseTable() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/finance/purchase_sale_orders/search_purchases_table'
+      `${this.API_KEY}:3000/finance/purchase_sale_orders/search_purchases_table`
     );
   }
 
   getAllPurchaseSalesTaxTable() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/finance/purchase_sale_sales/search_purchases_tax'
+      `${this.API_KEY}:3000/finance/purchase_sale_sales/search_purchases_tax`
     );
   }
   getAllPurchaseSalesNonTaxTable() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/finance/purchase_sale_sales/search_purchases_nonTax'
+      `${this.API_KEY}:3000/finance/purchase_sale_sales/search_purchases_nonTax`
     );
   }
 
   getPurchaseReturnTable() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/finance/purchase_sale_returns/search_purchases'
+      `${this.API_KEY}:3000/finance/purchase_sale_returns/search_purchases`
     );
   }
   getAlldeliveryChallan() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/finance/delivery_challans/search'
+      `${this.API_KEY}:3000/finance/delivery_challans/search`
     );
   }
   getDeliveryChallanById(id: any) {
     return this.http.get<any>(
-      `http://43.205.120.176:3000/finance/delivery_challans/search/${id}`
+      `${this.API_KEY}:3000/finance/delivery_challans/search/${id}`
     );
   }
   getPurchaseSalesById(id: any) {
     return this.http.get<any>(
-      `http://43.205.120.176:3000/finance/purchase_sale_sales/search_purchase/${id}`
+      `${this.API_KEY}:3000/finance/purchase_sale_sales/search_purchase/${id}`
     );
   }
   getSalesById(id: any) {
     return this.http.get<any>(
-      `http://43.205.120.176:3000/finance/purchase_sale_sales/search_sale/${id}`
+      `${this.API_KEY}:3000/finance/purchase_sale_sales/search_sale/${id}`
     );
   }
   getReturnsByOrderId(id: any) {
     return this.http.get<any>(
-      `http://43.205.120.176:3000/inventory/returns_inventory/search_by_return/${id}`
+      `${this.API_KEY}:3000/inventory/returns_inventory/search_by_return/${id}`
     );
   }
   getPurchaseReturnById(id: any) {
     return this.http.get<any>(
-      `http://43.205.120.176:3000/finance/purchase_sale_returns/search_purchase/${id}`
+      `${this.API_KEY}:3000/finance/purchase_sale_returns/search_purchase/${id}`
     );
   }
 
   getInventoryBalance() {
     return this.http.get<any>(
-      'http://43.205.120.176:3000/inventory/products/search'
+      `${this.API_KEY}:3000/inventory/products/search`
     );
   }
   getProductHistory(id: any) {
     return this.http.get<any>(
-      `http://43.205.120.176:3000/inventory/products_history/search_by_order/${id}`
+      `${this.API_KEY}:3000/inventory/products_history/search_by_order/${id}`
     );
   }
   AddPurchaseOrder(obj: any) {
@@ -131,7 +133,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .post<any>(
-          'http://43.205.120.176:3000/finance/purchase_sale_orders/add',
+          `${this.API_KEY}:3000/finance/purchase_sale_orders/add`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -160,7 +162,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .post<any>(
-          'http://43.205.120.176:3000/finance/delivery_challans/add',
+          `${this.API_KEY}:3000/finance/delivery_challans/add`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -189,7 +191,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .post<any>(
-          'http://43.205.120.176:3000/finance/purchase_sale_orders/add_sale',
+          `${this.API_KEY}:3000/finance/purchase_sale_orders/add_sale`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -218,7 +220,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .post<any>(
-          'http://43.205.120.176:3000/finance/purchase_sale_returns/add',
+          `${this.API_KEY}:3000/finance/purchase_sale_returns/add`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -247,7 +249,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.post<any>(
-          'http://43.205.120.176:3000/finance/vendors/add',
+          `${this.API_KEY}:3000/finance/vendors/add`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -276,7 +278,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.post<any>(
-          'http://43.205.120.176:3000/finance/purchase_sale_sales/add_sale',
+          `${this.API_KEY}:3000/finance/purchase_sale_sales/add_sale`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -304,7 +306,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.post<any>(
-          'http://43.205.120.176:3000/finance/purchase_sale_sales/add',
+          `${this.API_KEY}:3000/finance/purchase_sale_sales/add`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -333,7 +335,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/purchase_sale_orders/update/${id}`,
+          `${this.API_KEY}:3000/finance/purchase_sale_orders/update/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -361,7 +363,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/inventory/orders/update/${id}`,
+          `${this.API_KEY}:3000/inventory/orders/update/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -389,7 +391,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/inventory/orders_usage/update/${id}`,
+          `${this.API_KEY}:3000/inventory/orders_usage/update/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -417,7 +419,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/inventory/products_history/update/${id}`,
+          `${this.API_KEY}:3000/inventory/products_history/update/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -445,7 +447,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/purchase_sale_orders/update_sale/${id}`,
+          `${this.API_KEY}:3000/finance/purchase_sale_orders/update_sale/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -473,7 +475,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/users/update/${id}`,
+          `${this.API_KEY}:3000/users/update/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -501,7 +503,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/adjustments/update_voucher/${id}`,
+          `${this.API_KEY}:3000/finance/adjustments/update_voucher/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -529,7 +531,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/adjustments/update_customer/${id}`,
+          `${this.API_KEY}:3000/finance/adjustments/update_customer/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -558,7 +560,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/vendors/update/${id}`,
+          `${this.API_KEY}:3000/finance/vendors/update/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -587,7 +589,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/customers/update/${id}`,
+          `${this.API_KEY}:3000/finance/customers/update/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -615,7 +617,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/list_of_accounts/update/${id}`,
+          `${this.API_KEY}:3000/finance/list_of_accounts/update/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -643,7 +645,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/delivery_challans/update/${id}`,
+          `${this.API_KEY}:3000/finance/delivery_challans/update/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -671,7 +673,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/purchase_sale_payments/update_bank/${id}`,
+          `${this.API_KEY}:3000/finance/purchase_sale_payments/update_bank/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -699,7 +701,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/purchase_sale_payments/update_bank_petty/${id}`,
+          `${this.API_KEY}:3000/finance/purchase_sale_payments/update_bank_petty/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -727,7 +729,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/purchase_sale_payments/update_cash_petty/${id}`,
+          `${this.API_KEY}:3000/finance/purchase_sale_payments/update_cash_petty/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -755,7 +757,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/purchase_sale_payments/update_cash/${id}`,
+          `${this.API_KEY}:3000/finance/purchase_sale_payments/update_cash/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -783,7 +785,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/purchase_sale_returns/update/${id}`,
+          `${this.API_KEY}:3000/finance/purchase_sale_returns/update/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -811,7 +813,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/inventory/returns_inventory/update/${id}`,
+          `${this.API_KEY}:3000/inventory/returns_inventory/update/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -839,7 +841,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       firstValueFrom(
         this.http.patch<any>(
-          `http://43.205.120.176:3000/finance/purchase_sale_sales/update/${id}`,
+          `${this.API_KEY}:3000/finance/purchase_sale_sales/update/${id}`,
           obj,
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -866,13 +868,13 @@ export class PurchasesService {
 
   getPurchaseOrdersById(id: any) {
     return this.http.get<any>(
-      `http://43.205.120.176:3000/finance/purchase_sale_orders/search_purchase/${id}`
+      `${this.API_KEY}:3000/finance/purchase_sale_orders/search_purchase/${id}`
     );
   }
 
   getVendorsById(id: any) {
     return this.http.get<any>(
-      `http://43.205.120.176:3000/finance/vendors/search/${id}`
+      `${this.API_KEY}:3000/finance/vendors/search/${id}`
     );
   }
 
@@ -880,7 +882,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .patch<any>(
-          'http://43.205.120.176:3000/finance/purchase_sale_orders/delete' +
+          `${this.API_KEY}:3000/finance/purchase_sale_orders/delete` +
             '/' +
             id,
           { undefined },
@@ -910,7 +912,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .patch<any>(
-          'http://43.205.120.176:3000/finance/purchase_sale_sales/delete' +
+          `${this.API_KEY}:3000/finance/purchase_sale_sales/delete` +
             '/' +
             id,
           { undefined },
@@ -940,7 +942,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .patch<any>(
-          'http://43.205.120.176:3000/finance/purchase_sale_returns/delete' +
+          `${this.API_KEY}:3000/finance/purchase_sale_returns/delete` +
             '/' +
             id,
           { undefined },
@@ -970,7 +972,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .patch<any>(
-          'http://43.205.120.176:3000/finance/purchase_sale_payments/delete' +
+          `${this.API_KEY}:3000/finance/purchase_sale_payments/delete` +
             '/' +
             id,
           { undefined },
@@ -1000,7 +1002,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .patch<any>(
-          'http://43.205.120.176:3000/finance/adjustments/delete' + '/' + id,
+          `${this.API_KEY}:3000/finance/adjustments/delete` + '/' + id,
           { undefined },
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -1028,7 +1030,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .patch<any>(
-          'http://43.205.120.176:3000/finance/delivery_challans/delete' +
+          `${this.API_KEY}:3000/finance/delivery_challans/delete` +
             '/' +
             id,
           { undefined },
@@ -1058,7 +1060,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .patch<any>(
-          'http://43.205.120.176:3000/finance/customers/delete' + '/' + id,
+          `${this.API_KEY}:3000/finance/customers/delete` + '/' + id,
           { undefined },
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -1086,7 +1088,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .patch<any>(
-          'http://43.205.120.176:3000/finance/vendors/delete' + '/' + id,
+          `${this.API_KEY}:3000/finance/vendors/delete` + '/' + id,
           { undefined },
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -1114,7 +1116,7 @@ export class PurchasesService {
     return new Promise<any>((resolve, reject) => {
       this.http
         .patch<any>(
-          'http://43.205.120.176:3000/inventory/orders/delete' + '/' + id,
+          `${this.API_KEY}:3000/inventory/orders/delete` + '/' + id,
           { undefined },
           // Header X_AUTH_TOKEN
           this.header.getRequestOptions()
@@ -1139,14 +1141,14 @@ export class PurchasesService {
     });
   }
   getVendorAccountByOrdersId(id:any){
-    return this.http.get<any>(`http://43.205.120.176:3000/finance/list_of_accounts/search_vendor_account/${id}`)
+    return this.http.get<any>(`${this.API_KEY}3000/finance/list_of_accounts/search_vendor_account/${id}`)
   }
 
   getCustomerAccountByOrdersId(id:any){
-    return this.http.get<any>(`http://43.205.120.176:3000/finance/list_of_accounts/search_customer_account/${id}`)
+    return this.http.get<any>(`${this.API_KEY}3000/finance/list_of_accounts/search_customer_account/${id}`)
   }
   getListOfAllAccountById(id:any){
-    return this.http.get<any>(`http://43.205.120.176:3000/finance/list_of_accounts/search/${id}`)
+    return this.http.get<any>(`${this.API_KEY}3000/finance/list_of_accounts/search/${id}`)
 
   }
 }
