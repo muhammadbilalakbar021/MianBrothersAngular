@@ -32,7 +32,7 @@ export class OutwardGateComponent implements OnInit {
     'itemCode',
     'quantity',
     'unit',
-    'rate',
+    // 'rate',
   ];
   constructor(
     private salesService: SalesService,
